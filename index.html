@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valluri Keerthi Ram — Engineering Reality</title>
+  <meta name="description" content="Portfolio of Valluri Keerthi Ram.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-line"></div>
+    <div class="loading-text">Calibrating Physics</div>
+  </div>
+
+  <!-- Global Particle Canvas -->
+  <canvas id="global-canvas"></canvas>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="section hero">
+      <div class="hero-content">
+        <div class="hero-overline serif">Engineering the Physical World Through Abstract Computation</div>
+        <h1 class="hero-name">Valluri<br>Keerthi<br>Ram</h1>
+        <div class="hero-divider"></div>
+        <div class="hero-meta">
+          <span class="institution">Amrita School of Engineering, Bengaluru</span>
+          <span class="degree">B.Tech · Computer Science · 4th Year</span>
+          <span class="cgpa">CGPA <strong>8.74</strong></span>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Professional Experience</div>
+        <h2 class="section-title reveal stagger-1">Where I've Built</h2>
+        
+        <div class="exp-block reveal stagger-2">
+          <div class="exp-header">
+            <h3 class="exp-company">AlgoUniversity</h3>
+            <span class="exp-badge"><span class="dot"></span> SWE Intern</span>
+          </div>
+          <div class="exp-role mono">Software Engineering Intern — DB Orchestrator AI</div>
+          <div class="exp-timeline">JUN 2026 – JUL 2026</div>
+          <p class="exp-desc">
+            Worked on a Natural Language to SQL module that is fundamentally permission-aware and schema-aware. Built custom models and architecture to ensure secure, context-driven database orchestration using AI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Selected Works</div>
+        <h2 class="section-title reveal stagger-1">Engineering Projects</h2>
+        
+        <div class="projects-grid stagger" id="projects-grid">
+          
+          <div class="project-card interactive-card span-2" style="--card-accent:#9d8b83">
+            <div class="card-domain">NLP / Deep Learning</div>
+            <h3 class="card-name">Scriptio Continua (Final Year Project)</h3>
+            <div class="card-time"><span class="dot"></span> IN PROGRESS (JAN 2026)</div>
+            <p class="card-desc">Building a model to convert unspaced ancient texts (Scriptio Continua) into normal sentences. Achieved a 0.96 BERT score, competing head-on with local LLMs like Gemma 4e2b, Qwen, and Deepseek R1 32b, but with vastly reduced parameters. Also handling OCR-induced error simulations.</p>
+            <div class="card-tags">
+              <span class="tag hl">NLP</span><span class="tag hl">Transformers</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card" style="--card-accent:#8b9d83">
+            <div class="card-domain">Computer Vision</div>
+            <h3 class="card-name">CT to MRI Translation</h3>
+            <div class="card-time"><span class="dot"></span> IN PROGRESS (JUL 2026)</div>
+            <p class="card-desc">Converting CT scans to MRI images utilizing advanced computer vision techniques. Project currently in initial architectural phases.</p>
+            <div class="card-tags">
+              <span class="tag hl">Deep Learning</span><span class="tag">Computer Vision</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card span-2" style="--card-accent:#83939d">
+            <div class="card-domain">Systems Engineering</div>
+            <h3 class="card-name">Weight-Aware Elevator Optimization</h3>
+            <div class="card-time"><span class="dot off"></span> OCT 2024 - NOV 2024</div>
+            <p class="card-desc">Designed an algorithm integrating real-time load constraints to optimize multi-elevator dispatching, preventing scenarios where full cabins stop unnecessarily. Built the algorithm to interface with weight/camera sensors.</p>
+            <div class="card-tags">
+              <span class="tag hl">Algorithms</span><span class="tag">Systems</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project" style="--card-accent:#94839d">
+            <div class="card-domain">Machine Learning</div>
+            <h3 class="card-name">Emotion & Sentiment Detection</h3>
+            <div class="card-time"><span class="dot off"></span> AUG 2025 - NOV 2025</div>
+            <p class="card-desc">Fine-tuned multilingual transformer models to simultaneously detect emotion and sentiment in Telugu text. Handled class imbalance via language translation and back-translation, achieving an F1-Score of 0.784.</p>
+            <div class="card-tags">
+              <span class="tag hl">Transformers</span><span class="tag">NLP</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project" style="--card-accent:#9d9983">
+            <div class="card-domain">Deep Learning</div>
+            <h3 class="card-name">Adaptive Hydration Prediction</h3>
+            <div class="card-time"><span class="dot off"></span> AUG 2025 - NOV 2025</div>
+            <p class="card-desc">Utilized Deep Learning and PINNs on data aggregated from Garmin Venu and smart water bottles to predict hydration needs adaptively based on physical activity levels.</p>
+            <div class="card-tags">
+              <span class="tag hl">PINNs</span><span class="tag hl">DL</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project" style="--card-accent:#839d89">
+            <div class="card-domain">Data Science</div>
+            <h3 class="card-name">Groundwater Level Prediction</h3>
+            <div class="card-time"><span class="dot off"></span> AUG 2025 - NOV 2025</div>
+            <p class="card-desc">Analyzed meteorological data for semi-arid North-Western India to predict groundwater levels from pre/post-monsoon rainfall data.</p>
+            <div class="card-tags">
+              <span class="tag hl">Forecasting</span><span class="tag">ML</span>
+            </div>
+          </div>
+          
+          <div class="project-card interactive-card hidden-project span-2" style="--card-accent:#a87d7d">
+            <div class="card-domain">Finance / ML</div>
+            <h3 class="card-name">Probability-based Crypto Trading Tool</h3>
+            <div class="card-time"><span class="dot off"></span> JAN 2025 - MAY 2025</div>
+            <p class="card-desc">Optimized decision-making for volatile crypto assets using probability-based compounding forecasting.</p>
+            <div class="card-tags">
+              <span class="tag hl">Forecasting</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project" style="--card-accent:#8ba87d">
+            <div class="card-domain">Platform Architecture</div>
+            <h3 class="card-name">Teacher-Course Allocation Module</h3>
+            <div class="card-time"><span class="dot off"></span> OCT 2024 - NOV 2024</div>
+            <p class="card-desc">Developed a university management module facilitating preference-based course selection for faculty, enabling automated conflict resolution and workload balancing.</p>
+            <div class="card-tags">
+              <span class="tag hl">Platform Architecture</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project span-2" style="--card-accent:#7d94a8">
+            <div class="card-domain">Platform Architecture</div>
+            <h3 class="card-name">Farm Lease Transparency Platform</h3>
+            <div class="card-time"><span class="dot off"></span> FEB 2026 - MAY 2026</div>
+            <p class="card-desc">Building a marketplace and logging system for agricultural leasing, ensuring transparency, lease tracking, and verification for remote landowners.</p>
+            <div class="card-tags">
+              <span class="tag hl">Web Development</span>
+            </div>
+          </div>
+
+          <div class="project-card interactive-card hidden-project" style="--card-accent:#9a7da8">
+            <div class="card-domain">Web Development</div>
+            <h3 class="card-name">Eye Tracking & CV Lab Portal</h3>
+            <div class="card-time"><span class="dot off"></span> MAY 2024 - AUG 2024</div>
+            <p class="card-desc">Developed a university portal to showcase the research output and publications of the Eye Tracking and Computer Vision Lab.</p>
+            <div class="card-tags">
+              <span class="tag hl">Web Development</span>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="view-all-btn reveal" id="view-all-btn">
+          View All Projects <span style="color:var(--text-3); font-size: 0.8em;" id="view-all-count"></span> <span class="arrow">↓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Research</div>
+        <h2 class="section-title reveal stagger-1">Published Works</h2>
+        
+        <div class="pub-list stagger">
+          <div class="pub-row reveal">
+            <div class="pub-details">
+              <h3 class="pub-title">Optimizing Multi-Cabin Elevator Dispatch Using Mass Constraints</h3>
+              <p class="pub-conf serif">Journal of Engineering Design and Analysis (Vol. 9 No. 1, 2026)</p>
+            </div>
+            <a href="https://adrjournalshouse.com/index.php/engineering-design-analysis/article/view/2681" target="_blank" class="pub-link">View Paper ↗</a>
+          </div>
+
+          <div class="pub-row reveal">
+            <div class="pub-details">
+              <h3 class="pub-title">Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models</h3>
+              <p class="pub-conf serif">IEEE International Conference on Knowledge Engineering and Communication Systems (ICKECS, 2026)</p>
+            </div>
+            <a href="https://doi.org/10.1109/ickecs70176.2026.11527911" target="_blank" class="pub-link">View Paper ↗</a>
+          </div>
+
+          <div class="pub-row reveal">
+            <div class="pub-details">
+              <h3 class="pub-title">Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data</h3>
+              <p class="pub-conf serif">IEEE International Conference on Computational Intelligence and Networks (CINE, 2026)</p>
+            </div>
+            <a href="https://doi.org/10.1109/cine68769.2026.11502929" target="_blank" class="pub-link">View Paper ↗</a>
+          </div>
+
+          <div class="pub-row reveal">
+            <div class="pub-details">
+              <h3 class="pub-title">Probability-based Crypto Trading Tool</h3>
+              <p class="pub-conf serif">IEEE International Conference on Computing Theory and Wireless Communications (ICCTWC, 2026)</p>
+            </div>
+            <a href="https://doi.org/10.1109/icctwc68241.2026.11583560" target="_blank" class="pub-link">View Paper ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Capabilities</div>
+        <h2 class="section-title reveal stagger-1">Technical Arsenal</h2>
+        
+        <div class="skills-cloud stagger">
+          <span class="skill-tag reveal">PYTHON</span>
+          <span class="skill-tag reveal">JAVA</span>
+          <span class="skill-tag reveal">SQL</span>
+          <span class="skill-tag reveal">NUMPY</span>
+          <span class="skill-tag reveal">SCIKIT-LEARN</span>
+          <span class="skill-tag reveal">PLOTLY</span>
+          <span class="skill-tag reveal">GIT</span>
+          <span class="skill-tag reveal">FIGMA</span>
+          <span class="skill-tag reveal">PYQT5</span>
+          <span class="skill-tag reveal">WAMP</span>
+          <span class="skill-tag reveal">AWS</span>
+          <span class="skill-tag reveal">NEURAL NETWORKS</span>
+          <span class="skill-tag reveal">DEEP LEARNING</span>
+          <span class="skill-tag reveal">MACHINE LEARNING</span>
+          <span class="skill-tag reveal">NLP</span>
+          <span class="skill-tag reveal">FORECASTING</span>
+          <span class="skill-tag reveal">OPTIMIZATIONS</span>
+          <span class="skill-tag reveal">DATA VISUALIZATION</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Validation</div>
+        <h2 class="section-title reveal stagger-1">Certifications</h2>
+        
+        <div class="cert-list stagger">
+          <a href="https://www.credly.com/badges/315c0393-d440-4c8b-8488-74f01da90757/linked_in_profile" target="_blank" class="cert-row reveal">
+            <h3 class="cert-name">AWS Certified Cloud Practitioner</h3>
+            <span class="cert-issuer">Amazon Web Services ↗</span>
+          </a>
+          <a href="https://www.credly.com/badges/44940883-0dac-4c33-98d2-5f5284de27bc/linked_in_profile" target="_blank" class="cert-row reveal">
+            <h3 class="cert-name">AWS Academy Graduate - Cloud Foundations</h3>
+            <span class="cert-issuer">Amazon Web Services ↗</span>
+          </a>
+          <a href="https://www.skills.google/public_profiles/e4344aa9-c665-4e54-8412-153d0fbf3aac/badges/12538813" target="_blank" class="cert-row reveal">
+            <h3 class="cert-name">Introduction to Generative AI</h3>
+            <span class="cert-issuer">Google Cloud Skills Boost ↗</span>
+          </a>
+          <a href="https://www.linkedin.com/learning/certificates/8c3149fe7969152b2511388390c4370bb560802a4e0a3c1ae334bca1e58dfd33" target="_blank" class="cert-row reveal">
+            <h3 class="cert-name">Project Management Foundations</h3>
+            <span class="cert-issuer">NASBA ↗</span>
+          </a>
+          <a href="https://www.linkedin.com/learning/certificates/6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4" target="_blank" class="cert-row reveal">
+            <h3 class="cert-name">Project Management Foundations</h3>
+            <span class="cert-issuer">Project Management Institute ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-inner">
+        <div class="section-label reveal">Connect</div>
+        <h2 class="section-title reveal stagger-1">Let's Build.</h2>
+        
+        <div class="contact-grid">
+          <div class="contact-links stagger">
+            <a href="https://github.com/Vallurikeerthiram" target="_blank" class="contact-link reveal">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/valluri-keerthi-ram-503576216" target="_blank" class="contact-link reveal">LinkedIn ↗</a>
+            <a href="https://orcid.org/0009-0000-5416-1406" target="_blank" class="contact-link reveal">OrcId ↗</a>
+            <a href="tel:+918309247221" class="contact-link reveal">Phone ↗</a>
+          </div>
+
+          <div class="contact-form-container reveal">
+            <p class="contact-form-title">Send a Direct Message</p>
+            <form id="contact-form" class="contact-form">
+              <input type="text" id="subject" placeholder="Subject" required>
+              <textarea id="message" placeholder="What would you like to discuss?" required></textarea>
+              <button type="submit" class="contact-submit">Send via Mail Client ↗</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>© 2026 Valluri Keerthi Ram. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

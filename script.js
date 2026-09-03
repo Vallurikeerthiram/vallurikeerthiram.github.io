@@ -49,28 +49,41 @@
   // ─────────────────────────────────────────────
   // 2. THREE.JS HYBRID ENGINE
   // ─────────────────────────────────────────────
-  let uMouse3D = new THREE.Vector3(0, 0, 0);
+  let uMouse3D = null;
   let uHoverIntensity = 0;
 
   function initParticles() {
-    if (typeof THREE === 'undefined' || prefersReduced) return;
+    if (typeof THREE === 'undefined') {
+      window.addEventListener('load', () => {
+        if (typeof THREE !== 'undefined') initParticles();
+      }, { once: true });
+      return;
+    }
     const canvas = document.getElementById('global-canvas');
     if (!canvas) return;
 
+    if (!uMouse3D) uMouse3D = new THREE.Vector3(0, 0, 0);
+
+    const isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     const scene = new THREE.Scene();
     const SKY = 0xf7f2ea;
     scene.background = new THREE.Color(SKY);
 
-    // Camera setup - heightened to prevent clipping under dunes at the bottom of the page
+    // Camera setup - heightened and calibrated for aspect ratio
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 150);
-    const initialCamY = 14; // Lifted from 8 to 14
-    const initialCamZ = 30; // Pulled back from 20 to 30
+    const initialCamY = isMobile ? 18 : 14;
+    const initialCamZ = isMobile ? 36 : 30;
     camera.position.set(0, initialCamY, initialCamZ);
     camera.lookAt(0, 4, 0);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: !isMobile,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
 
     // ── Shared Shader Uniforms & Logic ──
     const uniforms = {
@@ -122,7 +135,8 @@
     // ── 1. Base Terrain Mesh (Solid Foundation) ──
     const baseWidth = 120;
     const baseDepth = 180;
-    const baseGeo = new THREE.PlaneGeometry(baseWidth, baseDepth, 250, 250);
+    const gridRes = isMobile ? 120 : 220;
+    const baseGeo = new THREE.PlaneGeometry(baseWidth, baseDepth, gridRes, gridRes);
     baseGeo.rotateX(-Math.PI / 2);
     baseGeo.translate(0, 0, -20); // shift forward
 
@@ -185,8 +199,8 @@
     const baseTerrain = new THREE.Mesh(baseGeo, baseMat);
     scene.add(baseTerrain);
 
-    // ── 2. Loose Sand Particles (Mobile Friendly: 125k) ──
-    const PARTICLE_COUNT = 125000;
+    // ── 2. Loose Sand Particles (Mobile: 35k, Desktop: 120k) ──
+    const PARTICLE_COUNT = isMobile ? 35000 : 120000;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(PARTICLE_COUNT * 3);
     const randoms = new Float32Array(PARTICLE_COUNT);
@@ -268,21 +282,43 @@
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // ── Mouse & Raycaster ──
+    // ── Mouse, Touch & Raycaster ──
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2(-9999, -9999); // start off screen
     // Intersect plane at y=3 (average dune height) to map mouse accurately
     const hitPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -3); 
     
-    document.addEventListener('mousemove', (e) => {
-      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    });
+    function updatePointer(clientX, clientY) {
+      mouse.x = (clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      updatePointer(e.clientX, e.clientY);
+    }, { passive: true });
+
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+        uHoverIntensity = 0.8;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updatePointer(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      uHoverIntensity = 0.0;
+      mouse.set(-9999, -9999);
+    }, { passive: true });
 
     // ── Scroll Sync ──
     let scrollY = 0;
     let targetScrollY = 0;
-    window.addEventListener('scroll', () => { targetScrollY = window.scrollY; });
+    window.addEventListener('scroll', () => { targetScrollY = window.scrollY; }, { passive: true });
 
     // ── Animation Loop ──
     const clock = new THREE.Clock();
@@ -291,11 +327,11 @@
       requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
       
-      uniforms.uTime.value = elapsedTime;
+      const timeScale = prefersReduced ? 0.15 : 1.0;
+      uniforms.uTime.value = elapsedTime * timeScale;
       uniforms.uHover.value = lerp(uniforms.uHover.value, uHoverIntensity, 0.1);
       
       // Update raycaster every frame because camera moves during scroll!
-      // This prevents the "guessing game" where hover only works when moving the mouse
       raycaster.setFromCamera(mouse, camera);
       raycaster.ray.intersectPlane(hitPlane, uMouse3D);
       uniforms.uMouse.value.copy(uMouse3D);
@@ -303,13 +339,17 @@
       scrollY = lerp(scrollY, targetScrollY, 0.05);
       const scrollRatio = scrollY / (document.body.scrollHeight - window.innerHeight || 1);
       
-      // Travel forward on Z (reduced from 60 to 45 so we don't go past the grid)
-      camera.position.z = initialCamZ - (scrollRatio * 45);
-      
-      // Maintain a safe Y height so we NEVER clip under the dunes
-      camera.position.y = initialCamY - (scrollRatio * 3) + Math.sin(scrollRatio * Math.PI * 4) * 2.0;
-      
-      camera.lookAt(0, camera.position.y - 7, camera.position.z - 20);
+      if (!prefersReduced) {
+        // Dynamic camera travel for full visual experience
+        camera.position.z = initialCamZ - (scrollRatio * (isMobile ? 35 : 45));
+        camera.position.y = initialCamY - (scrollRatio * 3) + Math.sin(scrollRatio * Math.PI * 4) * 2.0;
+        camera.lookAt(0, camera.position.y - 7, camera.position.z - 20);
+      } else {
+        // Gentle, non-disorienting camera adjustment for reduced-motion users
+        camera.position.z = initialCamZ - (scrollRatio * 15);
+        camera.position.y = initialCamY - (scrollRatio * 1.5);
+        camera.lookAt(0, camera.position.y - 7, camera.position.z - 20);
+      }
 
       renderer.render(scene, camera);
     }
@@ -317,10 +357,20 @@
     animate();
 
     window.addEventListener('resize', () => {
+      const mobileNow = window.innerWidth < 768;
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobileNow ? 1.5 : 2));
     });
+
+    canvas.addEventListener('webglcontextlost', (e) => {
+      e.preventDefault();
+    }, false);
+
+    canvas.addEventListener('webglcontextrestored', () => {
+      initParticles();
+    }, false);
   }
 
   // ─────────────────────────────────────────────

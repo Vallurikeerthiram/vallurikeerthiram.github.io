@@ -171,9 +171,9 @@
 
     /* Editor Sidebar */
     .editor-pane {
-      width: 480px;
+      width: 490px;
       min-width: 360px;
-      max-width: 560px;
+      max-width: 580px;
       background: var(--surface);
       border-right: 1px solid var(--surface-border);
       overflow-y: auto;
@@ -188,6 +188,7 @@
       border: 1px solid var(--surface-border);
       border-radius: 8px;
       overflow: hidden;
+      transition: border-color 0.15s;
     }
 
     .section-header {
@@ -200,12 +201,27 @@
       justify-content: space-between;
       cursor: pointer;
       user-select: none;
+      transition: background 0.15s;
+    }
+
+    .section-header:hover {
+      background: #273549;
     }
 
     .section-header span {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    .section-header .chevron {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .section-card.is-collapsed .chevron {
+      transform: rotate(-90deg);
     }
 
     .section-body {
@@ -215,7 +231,7 @@
       gap: 0.75rem;
     }
 
-    .section-body.collapsed {
+    .section-card.is-collapsed .section-body {
       display: none;
     }
 
@@ -232,9 +248,9 @@
     }
 
     label {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.03em;
     }
@@ -257,8 +273,15 @@
 
     textarea {
       resize: vertical;
-      min-height: 55px;
+      min-height: 48px;
       line-height: 1.35;
+    }
+
+    /* Dynamic Item Cards */
+    .items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
     }
 
     .item-card {
@@ -270,38 +293,162 @@
       flex-direction: column;
       gap: 0.5rem;
       position: relative;
+      transition: border-color 0.15s, background 0.15s, opacity 0.15s;
     }
 
-    .btn-danger-sm {
-      align-self: flex-end;
-      background: transparent;
-      color: #f87171;
-      border: 1px solid #7f1d1d;
-      padding: 0.2rem 0.5rem;
+    .item-card.dragging {
+      opacity: 0.4;
+      border: 1px dashed var(--accent);
+    }
+
+    .item-card.drag-over {
+      border: 2px dashed var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .item-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .drag-handle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: grab;
+      user-select: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      max-width: 320px;
+    }
+
+    .drag-handle:active {
+      cursor: grabbing;
+    }
+
+    .drag-icon {
+      font-size: 1.05rem;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .item-card-title {
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .btn-icon {
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      width: 24px;
+      height: 24px;
       border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-icon:hover {
+      background: #334155;
+      color: var(--text);
+    }
+
+    .btn-icon-danger {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.72rem;
       cursor: pointer;
+      padding: 0;
+      transition: background 0.15s, color 0.15s;
     }
 
-    .btn-danger-sm:hover {
-      background: #7f1d1d;
+    .btn-icon-danger:hover {
+      background: #ef4444;
       color: white;
     }
 
-    .btn-add-sm {
+    /* Sub-bullets list inside item card */
+    .bullets-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .bullet-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    .bullet-row textarea {
+      flex: 1;
+      min-height: 42px;
+    }
+
+    .btn-add-item {
       background: transparent;
       color: var(--accent);
       border: 1px dashed var(--accent);
-      padding: 0.4rem;
-      border-radius: 5px;
+      padding: 0.45rem;
+      border-radius: 6px;
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background 0.15s;
+      width: 100%;
     }
 
-    .btn-add-sm:hover {
+    .btn-add-item:hover {
       background: rgba(56, 189, 248, 0.1);
+    }
+
+    .btn-add-bullet {
+      align-self: flex-start;
+      background: transparent;
+      color: var(--accent);
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .btn-add-bullet:hover {
+      text-decoration: underline;
     }
 
     /* Preview Pane */
@@ -393,7 +540,7 @@
       font-size: 11pt;
       font-weight: bold;
       color: #000000;
-      margin-top: 5pt;
+      margin-top: 4.5pt;
       margin-bottom: 1.5pt;
       border-bottom: 1pt solid #000000;
       padding-bottom: 0.5pt;
@@ -580,296 +727,109 @@
     <!-- Editor Pane -->
     <aside class="editor-pane">
 
-      <!-- Profile & Contact -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyProfile')">
+      <!-- Profile & Contact (COLLAPSED BY DEFAULT) -->
+      <div class="section-card is-collapsed" id="cardProfile">
+        <div class="section-header" onclick="toggleSection('cardProfile')">
           <span>👤 Header & Contact Info</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyProfile">
+        <div class="section-body">
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" id="inpName" value="Valluri Keerthi Ram" oninput="updateResume()">
+            <input type="text" id="inpName" oninput="resumeState.profile.name = this.value; updateResume();">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Location</label>
-              <input type="text" id="inpLocation" value="Bangalore, 560035" oninput="updateResume()">
+              <input type="text" id="inpLocation" oninput="resumeState.profile.location = this.value; updateResume();">
             </div>
             <div class="form-group">
               <label>Phone</label>
-              <input type="text" id="inpPhone" value="+91 8309247221" oninput="updateResume()">
+              <input type="text" id="inpPhone" oninput="resumeState.profile.phone = this.value; updateResume();">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Email</label>
-              <input type="email" id="inpEmail" value="keerthiramvalluri@gmail.com" oninput="updateResume()">
+              <input type="email" id="inpEmail" oninput="resumeState.profile.email = this.value; updateResume();">
             </div>
             <div class="form-group">
               <label>Portfolio URL</label>
-              <input type="url" id="inpPortfolio" value="https://vallurikeerthiram.github.io/" oninput="updateResume()">
+              <input type="url" id="inpPortfolio" oninput="resumeState.profile.portfolio = this.value; updateResume();">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Education -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyEdu')">
+      <!-- Education (COLLAPSED BY DEFAULT) -->
+      <div class="section-card is-collapsed" id="cardEdu">
+        <div class="section-header" onclick="toggleSection('cardEdu')">
           <span>🎓 Education</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyEdu">
-          <div class="form-group">
-            <label>University / College</label>
-            <input type="text" id="inpUni" value="Amrita Vishwa Vidyapeetham" oninput="updateResume()">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Campus</label>
-              <input type="text" id="inpCampus" value="ASEB, Bangalore" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Duration</label>
-              <input type="text" id="inpUniDates" value="2023–Present" oninput="updateResume()">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Degree & CGPA Details</label>
-            <input type="text" id="inpDegree" value="BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934" oninput="updateResume()">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>School Board</label>
-              <input type="text" id="inpBoard" value="Central Board of Secondary Education" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Percentages</label>
-              <input type="text" id="inpSchoolMarks" value="Class 12, Percentage: 72.6% | Class 10, Percentage: 84%" oninput="updateResume()">
-            </div>
-          </div>
+        <div class="section-body">
+          <div class="items-container" id="eduContainer"></div>
+          <button class="btn-add-item" onclick="addItem('education')">+ Add Education</button>
         </div>
       </div>
 
-      <!-- Experience -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyExp')">
+      <!-- Experience (COLLAPSED BY DEFAULT) -->
+      <div class="section-card is-collapsed" id="cardExp">
+        <div class="section-header" onclick="toggleSection('cardExp')">
           <span>💼 Experience</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyExp">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Organization</label>
-              <input type="text" id="inpExpOrg" value="AlgoUniversity" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Dates</label>
-              <input type="text" id="inpExpDates" value="June 2026 – July 2026" oninput="updateResume()">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Role & Subtitle</label>
-            <input type="text" id="inpExpRole" value="Software Engineering Intern (Systems & AI) – DB Orchestrator AI" oninput="updateResume()">
-          </div>
-          <div class="form-group">
-            <label>Bullet 1</label>
-            <textarea id="inpExpB1" oninput="updateResume()">Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.</textarea>
-          </div>
-          <div class="form-group">
-            <label>Bullet 2</label>
-            <textarea id="inpExpB2" oninput="updateResume()">Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.</textarea>
-          </div>
-          <div class="form-group">
-            <label>Bullet 3</label>
-            <textarea id="inpExpB3" oninput="updateResume()">Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.</textarea>
-          </div>
+        <div class="section-body">
+          <div class="items-container" id="expContainer"></div>
+          <button class="btn-add-item" onclick="addItem('experience')">+ Add Experience</button>
         </div>
       </div>
 
-      <!-- Projects -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyProjects')">
-          <span>🚀 Projects (3 Entries)</span>
-          <span>▼</span>
+      <!-- Projects (EXPANDED BY DEFAULT) -->
+      <div class="section-card" id="cardProjects">
+        <div class="section-header" onclick="toggleSection('cardProjects')">
+          <span>🚀 Projects</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyProjects">
-          <!-- Project 1 -->
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Project 1 Title</label>
-                <input type="text" id="inpP1Title" value="Breaking the Continuum: Neural Word Segmentation for Scriptio Continua" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Dates</label>
-                <input type="text" id="inpP1Dates" value="Jan 2026 – Present" oninput="updateResume()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Tech Stack Tags</label>
-              <input type="text" id="inpP1Tags" value="Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Bullet 1</label>
-              <textarea id="inpP1B1" oninput="updateResume()">Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.</textarea>
-            </div>
-            <div class="form-group">
-              <label>Bullet 2</label>
-              <textarea id="inpP1B2" oninput="updateResume()">Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).</textarea>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Project 2 Title</label>
-                <input type="text" id="inpP2Title" value="Weight-Aware Dynamic Dispatch & Optimization System" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Dates</label>
-                <input type="text" id="inpP2Dates" value="Oct 2024 – Nov 2024" oninput="updateResume()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Tech Stack Tags</label>
-              <input type="text" id="inpP2Tags" value="Python • Dynamic Dispatching • Optimization Algorithms • Systems Architecture" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Bullet 1</label>
-              <textarea id="inpP2B1" oninput="updateResume()">Engineered a multi-cabin dispatch algorithm incorporating physical mass constraints, dynamically optimizing routing and eliminating redundant stops under strict latency bounds.</textarea>
-            </div>
-            <div class="form-group">
-              <label>Bullet 2</label>
-              <textarea id="inpP2B2" oninput="updateResume()">Interfaced dispatching logic with hardware endpoint streams to validate algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026).</textarea>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Project 3 Title</label>
-                <input type="text" id="inpP3Title" value="Adaptive Sensor Stream Modeling via Physics-Informed Neural Networks" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Dates</label>
-                <input type="text" id="inpP3Dates" value="March 2026 – May 2026" oninput="updateResume()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Tech Stack Tags</label>
-              <input type="text" id="inpP3Tags" value="Python • Physics-Informed ML (PINNs) • Sensor Signal Modeling • Biometric Signal Modeling" oninput="updateResume()">
-            </div>
-            <div class="form-group">
-              <label>Bullet 1</label>
-              <textarea id="inpP3B1" oninput="updateResume()">Engineered a edge sensor streaming pipeline processing high-frequency, noisy biometric streams (inertial movement, skin temp, heart rate) captured from Garmin smart wearables.</textarea>
-            </div>
-            <div class="form-group">
-              <label>Bullet 2</label>
-              <textarea id="inpP3B2" oninput="updateResume()">Formulated Physics-Informed Neural Networks (PINNs) incorporating thermodynamic and mass-conservation differential equations, filtering sensor noise to model real-world physiological states.</textarea>
-            </div>
-          </div>
+        <div class="section-body">
+          <div class="items-container" id="projectsContainer"></div>
+          <button class="btn-add-item" onclick="addItem('projects')">+ Add Project</button>
         </div>
       </div>
 
       <!-- Research & Publications -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyPubs')">
+      <div class="section-card is-collapsed" id="cardPubs">
+        <div class="section-header" onclick="toggleSection('cardPubs')">
           <span>📚 Research & Publications</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyPubs">
-          <div id="pubsContainer" style="display: flex; flex-direction: column; gap: 0.5rem;">
-            <!-- Rendered by JS -->
-          </div>
-          <button class="btn-add-sm" onclick="addPublication()">+ Add Publication</button>
+        <div class="section-body">
+          <div class="items-container" id="pubsContainer"></div>
+          <button class="btn-add-item" onclick="addItem('publications')">+ Add Publication</button>
         </div>
       </div>
 
       <!-- Certifications -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodyCerts')">
+      <div class="section-card is-collapsed" id="cardCerts">
+        <div class="section-header" onclick="toggleSection('cardCerts')">
           <span>📜 Certifications</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodyCerts">
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Cert 1 Name</label>
-                <input type="text" id="inpC1Name" value="AWS Certified Cloud Practitioner" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Date & Issuer</label>
-                <input type="text" id="inpC1Date" value="May 2026 | AWS" oninput="updateResume()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Credential ID</label>
-              <input type="text" id="inpC1Id" value="Credentials: 1118bc1d19af4214a1d5da0f72b73039" oninput="updateResume()">
-            </div>
-          </div>
-
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Cert 2 Name</label>
-                <input type="text" id="inpC2Name" value="Introduction to Modern AI" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Date & Issuer</label>
-                <input type="text" id="inpC2Date" value="Cisco • 2026" oninput="updateResume()">
-              </div>
-            </div>
-          </div>
-
-          <div class="item-card">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Cert 3 Name</label>
-                <input type="text" id="inpC3Name" value="Project Management Foundations" oninput="updateResume()">
-              </div>
-              <div class="form-group">
-                <label>Date & Issuer</label>
-                <input type="text" id="inpC3Date" value="Oct 2024 | PMI & NASBA" oninput="updateResume()">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Credential ID</label>
-              <input type="text" id="inpC3Id" value="Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4" oninput="updateResume()">
-            </div>
-          </div>
+        <div class="section-body">
+          <div class="items-container" id="certsContainer"></div>
+          <button class="btn-add-item" onclick="addItem('certifications')">+ Add Certification</button>
         </div>
       </div>
 
       <!-- Skills & Interests -->
-      <div class="section-card">
-        <div class="section-header" onclick="toggleSection('bodySkills')">
+      <div class="section-card is-collapsed" id="cardSkills">
+        <div class="section-header" onclick="toggleSection('cardSkills')">
           <span>🛠️ Skills & Interests</span>
-          <span>▼</span>
+          <span class="chevron">▼</span>
         </div>
-        <div class="section-body" id="bodySkills">
-          <div class="form-group">
-            <label>Line 1 Category</label>
-            <input type="text" id="inpS1Cat" value="Languages & Core Technologies" oninput="updateResume()">
-            <label>Line 1 Items</label>
-            <input type="text" id="inpS1Items" value="Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI" oninput="updateResume()">
-          </div>
-          <div class="form-group">
-            <label>Line 2 Category</label>
-            <input type="text" id="inpS2Cat" value="AI & Systems Architecture" oninput="updateResume()">
-            <label>Line 2 Items</label>
-            <input type="text" id="inpS2Items" value="Deep Learning, Natural Language Processing (NLP), Physics-Informed ML, Computer Vision, AST Parsers" oninput="updateResume()">
-          </div>
-          <div class="form-group">
-            <label>Line 3 Category</label>
-            <input type="text" id="inpS3Cat" value="Frameworks & Libraries" oninput="updateResume()">
-            <label>Line 3 Items</label>
-            <input type="text" id="inpS3Items" value="PyTorch, Hugging Face, Transformers, Scikit-learn, NumPy, Pandas, vLLM, REST APIs" oninput="updateResume()">
-          </div>
+        <div class="section-body">
+          <div class="items-container" id="skillsContainer"></div>
+          <button class="btn-add-item" onclick="addItem('skills')">+ Add Skill Category</button>
         </div>
       </div>
 
@@ -885,199 +845,80 @@
 
       <!-- Resume Sheet Container -->
       <div class="resume-sheet" id="resumeSheet">
-        
-        <!-- Header -->
-        <header class="res-header">
-          <div class="res-name" id="viewName">Valluri Keerthi Ram</div>
-          <div class="res-contact" id="viewContact">
-            Bangalore, 560035 • <a href="mailto:keerthiramvalluri@gmail.com">keerthiramvalluri@gmail.com</a> • +91 8309247221 • <a href="https://vallurikeerthiram.github.io/" target="_blank">Portfolio</a>
-          </div>
-        </header>
-
-        <!-- Education -->
-        <section>
-          <div class="res-section-title">Education</div>
-          <table class="res-table">
-            <tr>
-              <td><span class="res-bold" id="viewUni">Amrita Vishwa Vidyapeetham</span></td>
-              <td class="res-text-right" id="viewCampus">ASEB, Bangalore</td>
-            </tr>
-            <tr>
-              <td><span id="viewDegree">BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934</span></td>
-              <td class="res-text-right" id="viewUniDates">2023–Present</td>
-            </tr>
-            <tr>
-              <td><span class="res-bold" id="viewBoard">Central Board of Secondary Education</span></td>
-              <td class="res-text-right"></td>
-            </tr>
-            <tr>
-              <td><span id="viewSchoolMarks">Class 12, Percentage: 72.6% | Class 10, Percentage: 84%</span></td>
-              <td class="res-text-right">2021–2023 | 2021</td>
-            </tr>
-          </table>
-        </section>
-
-        <!-- Experience -->
-        <section>
-          <div class="res-section-title">Experience</div>
-          <table class="res-table">
-            <tr>
-              <td><span class="res-bold" id="viewExpOrg">AlgoUniversity</span></td>
-              <td class="res-text-right" id="viewExpDates">June 2026 – July 2026</td>
-            </tr>
-            <tr>
-              <td colspan="2"><span id="viewExpRole">Software Engineering Intern (Systems & AI) – DB Orchestrator AI</span></td>
-            </tr>
-          </table>
-          <ul class="res-bullets" id="viewExpBullets">
-            <li id="viewExpB1">Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.</li>
-            <li id="viewExpB2">Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.</li>
-            <li id="viewExpB3">Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.</li>
-          </ul>
-        </section>
-
-        <!-- Projects -->
-        <section>
-          <div class="res-section-title">Projects</div>
-          
-          <!-- Project 1 -->
-          <div class="res-project-block">
-            <table class="res-table">
-              <tr>
-                <td><span class="res-bold" id="viewP1Title">Breaking the Continuum: Neural Word Segmentation for Scriptio Continua</span></td>
-                <td class="res-text-right" id="viewP1Dates">Jan 2026 – Present</td>
-              </tr>
-              <tr>
-                <td colspan="2"><span id="viewP1Tags">Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP</span></td>
-              </tr>
-            </table>
-            <ul class="res-bullets">
-              <li id="viewP1B1">Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to &lt;0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.</li>
-              <li id="viewP1B2">Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).</li>
-            </ul>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="res-project-block">
-            <table class="res-table">
-              <tr>
-                <td><span class="res-bold" id="viewP2Title">Weight-Aware Dynamic Dispatch & Optimization System</span></td>
-                <td class="res-text-right" id="viewP2Dates">Oct 2024 – Nov 2024</td>
-              </tr>
-              <tr>
-                <td colspan="2"><span id="viewP2Tags">Python • Dynamic Dispatching • Optimization Algorithms • Systems Architecture</span></td>
-              </tr>
-            </table>
-            <ul class="res-bullets">
-              <li id="viewP2B1">Engineered a multi-cabin dispatch algorithm incorporating physical mass constraints, dynamically optimizing routing and eliminating redundant stops under strict latency bounds.</li>
-              <li id="viewP2B2">Interfaced dispatching logic with hardware endpoint streams to validate algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026).</li>
-            </ul>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="res-project-block">
-            <table class="res-table">
-              <tr>
-                <td><span class="res-bold" id="viewP3Title">Adaptive Sensor Stream Modeling via Physics-Informed Neural Networks</span></td>
-                <td class="res-text-right" id="viewP3Dates">March 2026 – May 2026</td>
-              </tr>
-              <tr>
-                <td colspan="2"><span id="viewP3Tags">Python • Physics-Informed ML (PINNs) • Sensor Signal Modeling • Biometric Signal Modeling</span></td>
-              </tr>
-            </table>
-            <ul class="res-bullets">
-              <li id="viewP3B1">Engineered a edge sensor streaming pipeline processing high-frequency, noisy biometric streams (inertial movement, skin temp, heart rate) captured from Garmin smart wearables.</li>
-              <li id="viewP3B2">Formulated Physics-Informed Neural Networks (PINNs) incorporating thermodynamic and mass-conservation differential equations, filtering sensor noise to model real-world physiological states.</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Research & Publications -->
-        <section>
-          <div class="res-section-title">Research & Publications (First Authors)</div>
-          <ul class="res-pub-list" id="viewPubsList">
-            <!-- Rendered by JS -->
-          </ul>
-        </section>
-
-        <!-- Certifications -->
-        <section>
-          <div class="res-section-title">Certifications</div>
-          <table class="res-table">
-            <tr>
-              <td><span class="res-bold" id="viewC1Name">AWS Certified Cloud Practitioner</span></td>
-              <td class="res-text-right" id="viewC1Date">May 2026 | AWS</td>
-            </tr>
-            <tr>
-              <td colspan="2" id="viewC1Id">Credentials: 1118bc1d19af4214a1d5da0f72b73039</td>
-            </tr>
-            <tr>
-              <td><span class="res-bold" id="viewC2Name">Introduction to Modern AI</span></td>
-              <td class="res-text-right" id="viewC2Date">Cisco • 2026</td>
-            </tr>
-            <tr>
-              <td><span class="res-bold" id="viewC3Name">Project Management Foundations</span></td>
-              <td class="res-text-right" id="viewC3Date">Oct 2024 | PMI & NASBA</td>
-            </tr>
-            <tr>
-              <td colspan="2" id="viewC3Id">Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4</td>
-            </tr>
-          </table>
-        </section>
-
-        <!-- Skills & Interests -->
-        <section>
-          <div class="res-section-title">Skills & Interests</div>
-          <ul class="res-skills-list">
-            <li><span class="res-bold" id="viewS1Cat">Languages & Core Technologies: </span><span id="viewS1Items">Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI</span></li>
-            <li><span class="res-bold" id="viewS2Cat">AI & Systems Architecture: </span><span id="viewS2Items">Deep Learning, Natural Language Processing (NLP), Physics-Informed ML, Computer Vision, AST Parsers</span></li>
-            <li><span class="res-bold" id="viewS3Cat">Frameworks & Libraries: </span><span id="viewS3Items">PyTorch, Hugging Face, Transformers, Scikit-learn, NumPy, Pandas, vLLM, REST APIs</span></li>
-          </ul>
-        </section>
-
+        <!-- Rendered dynamically by updateResume() -->
       </div>
     </section>
 
   </main>
 
-  <!-- Script for Reactivity and Preset Data -->
+  <!-- Script for Dynamic Management, Drag-and-Drop, and Presets -->
   <script>
-    // Presets
+    // PRESETS DEFINITION
     const PRESETS = {
       toshiba: {
-        name: "Valluri Keerthi Ram",
-        location: "Bangalore, 560035",
-        phone: "+91 8309247221",
-        email: "keerthiramvalluri@gmail.com",
-        portfolio: "https://vallurikeerthiram.github.io/",
-        uni: "Amrita Vishwa Vidyapeetham",
-        campus: "ASEB, Bangalore",
-        uniDates: "2023–Present",
-        degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        board: "Central Board of Secondary Education",
-        schoolMarks: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        expOrg: "AlgoUniversity",
-        expDates: "June 2026 – July 2026",
-        expRole: "Software Engineering Intern (Systems & AI) – DB Orchestrator AI",
-        expB1: "Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.",
-        expB2: "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
-        expB3: "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.",
-        p1Title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
-        p1Dates: "Jan 2026 – Present",
-        p1Tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
-        p1B1: "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
-        p1B2: "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).",
-        p2Title: "Weight-Aware Dynamic Dispatch & Optimization System",
-        p2Dates: "Oct 2024 – Nov 2024",
-        p2Tags: "Python • Dynamic Dispatching • Optimization Algorithms • Systems Architecture",
-        p2B1: "Engineered a multi-cabin dispatch algorithm incorporating physical mass constraints, dynamically optimizing routing and eliminating redundant stops under strict latency bounds.",
-        p2B2: "Interfaced dispatching logic with hardware endpoint streams to validate algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026).",
-        p3Title: "Adaptive Sensor Stream Modeling via Physics-Informed Neural Networks",
-        p3Dates: "March 2026 – May 2026",
-        p3Tags: "Python • Physics-Informed ML (PINNs) • Sensor Signal Modeling • Biometric Signal Modeling",
-        p3B1: "Engineered a edge sensor streaming pipeline processing high-frequency, noisy biometric streams (inertial movement, skin temp, heart rate) captured from Garmin smart wearables.",
-        p3B2: "Formulated Physics-Informed Neural Networks (PINNs) incorporating thermodynamic and mass-conservation differential equations, filtering sensor noise to model real-world physiological states.",
-        pubs: [
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (Systems & AI) – DB Orchestrator AI",
+            bullets: [
+              "Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.",
+              "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
+              "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Weight-Aware Dynamic Dispatch & Optimization System",
+            dates: "Oct 2024 – Nov 2024",
+            tags: "Python • Optimization Algorithms • Dynamic Routing • Systems Architecture",
+            bullets: [
+              "Engineered a multi-cabin dispatch algorithm incorporating physical mass constraints, dynamically optimizing routing and eliminating redundant stops under strict latency bounds.",
+              "Interfaced dispatching logic with live hardware endpoints to validate algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026)."
+            ]
+          },
+          {
+            title: "Adaptive Sensor Stream Modeling via Physics-Informed Neural Networks",
+            dates: "March 2026 – May 2026",
+            tags: "Python • Physics-Informed ML (PINNs) • Sensor Data Streams • Biometric Signal Modeling",
+            bullets: [
+              "Engineered an edge sensor streaming pipeline processing high-frequency, noisy biometric streams (inertial movement, skin temp, heart rate) captured from Garmin smart wearables.",
+              "Formulated Physics-Informed Neural Networks (PINNs) incorporating thermodynamic and mass-conservation differential equations, filtering sensor noise to model real-world physiological states."
+            ]
+          }
+        ],
+        publications: [
           { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
           { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
           { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
@@ -1086,55 +927,103 @@
           { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
           { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
         ],
-        c1Name: "AWS Certified Cloud Practitioner",
-        c1Date: "May 2026 | AWS",
-        c1Id: "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
-        c2Name: "Introduction to Modern AI",
-        c2Date: "Cisco • 2026",
-        c3Name: "Project Management Foundations",
-        c3Date: "Oct 2024 | PMI & NASBA",
-        c3Id: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
-        s1Cat: "Languages & Core Technologies: ",
-        s1Items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI",
-        s2Cat: "AI & Systems Architecture: ",
-        s2Items: "Deep Learning, Natural Language Processing (NLP), Physics-Informed ML, Computer Vision, AST Parsers",
-        s3Cat: "Frameworks & Libraries: ",
-        s3Items: "PyTorch, Hugging Face, Transformers, Scikit-learn, NumPy, Pandas, vLLM, REST APIs"
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Technologies: ",
+            items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI"
+          },
+          {
+            category: "IoT & Systems Engineering: ",
+            items: "IoT Sensor Integration, Edge Data Processing, Microcontroller Interfacing, Hardware Endpoints, Signal Modeling"
+          },
+          {
+            category: "AI & Systems Architecture: ",
+            items: "Physics-Informed ML (PINNs), Deep Learning, Computer Vision, High-Availability Pipelines, REST APIs"
+          }
+        ]
       },
+
       aditya: {
-        name: "Valluri Keerthi Ram",
-        location: "Bangalore, 560035",
-        phone: "+91 8309247221",
-        email: "keerthiramvalluri@gmail.com",
-        portfolio: "https://vallurikeerthiram.github.io/",
-        uni: "Amrita Vishwa Vidyapeetham",
-        campus: "ASEB, Bangalore",
-        uniDates: "2023–Present",
-        degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        board: "Central Board of Secondary Education",
-        schoolMarks: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        expOrg: "AlgoUniversity",
-        expDates: "June 2026 – July 2026",
-        expRole: "Software Engineering Intern (AI/ML & Data Systems) – DB Orchestrator AI",
-        expB1: "Architected a secure, cloud VM-hosted NL-to-SQL orchestrator by fine-tuning open-weight LLMs for localized inference, guaranteeing sensitive enterprise schemas and data never leave private cloud environments.",
-        expB2: "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
-        expB3: "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.",
-        p1Title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
-        p1Dates: "Jan 2026 – Present",
-        p1Tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
-        p1B1: "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
-        p1B2: "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).",
-        p2Title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
-        p2Dates: "July 2026 – Present",
-        p2Tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
-        p2B1: "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
-        p2B2: "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026).",
-        p3Title: "Adaptive Physiological Signal Modeling via Physics-Informed Neural Networks",
-        p3Dates: "March 2026 – May 2026",
-        p3Tags: "Python • Deep Learning • Physics-Informed ML (PINNs) • Sensor Signal Modeling",
-        p3B1: "Engineered an adaptive hydration prediction pipeline trained on noisy, multi-modal biometric sensor streams (heart rate, skin temp, inertial movement) captured from Garmin smart wearables.",
-        p3B2: "Formulated Physics-Informed Neural Networks (PINNs) incorporating biological sweat-rate differential equations and mass-conservation constraints, filtering physical noise from real-world sensor streams.",
-        pubs: [
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (AI/ML & Data Systems) – DB Orchestrator AI",
+            bullets: [
+              "Architected a secure, cloud VM-hosted NL-to-SQL orchestrator by fine-tuning open-weight LLMs for localized inference, guaranteeing sensitive enterprise schemas and data never leave private cloud environments.",
+              "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
+              "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
+            bullets: [
+              "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
+              "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026)."
+            ]
+          },
+          {
+            title: "Adaptive Physiological Signal Modeling via Physics-Informed Neural Networks",
+            dates: "March 2026 – May 2026",
+            tags: "Python • Deep Learning • Physics-Informed ML (PINNs) • Sensor Signal Modeling",
+            bullets: [
+              "Engineered an adaptive hydration prediction pipeline trained on noisy, multi-modal biometric sensor streams (heart rate, skin temp, inertial movement) captured from Garmin smart wearables.",
+              "Formulated Physics-Informed Neural Networks (PINNs) incorporating biological sweat-rate differential equations and mass-conservation constraints, filtering physical noise from real-world sensor streams."
+            ]
+          }
+        ],
+        publications: [
           { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
           { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
           { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
@@ -1143,55 +1032,103 @@
           { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
           { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
         ],
-        c1Name: "AWS Certified Cloud Practitioner",
-        c1Date: "May 2026 | AWS",
-        c1Id: "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
-        c2Name: "Introduction to Modern AI",
-        c2Date: "Cisco • 2026",
-        c3Name: "Project Management Foundations",
-        c3Date: "Oct 2024 | PMI & NASBA",
-        c3Id: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
-        s1Cat: "Languages & Core Technologies: ",
-        s1Items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI",
-        s2Cat: "Data Engineering & Analytics: ",
-        s2Items: "Data Pipelines, Relational Schemas, SQL Optimization, Time-Series Analysis, Predictive Modeling, EDA",
-        s3Cat: "Machine Learning & AI: ",
-        s3Items: "PyTorch, Scikit-learn, XGBoost, NumPy, Pandas, Transformers, Hugging Face, LLMs/SLMs, PINNs"
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Technologies: ",
+            items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI"
+          },
+          {
+            category: "Data Engineering & Analytics: ",
+            items: "Data Pipelines, Relational Schemas, SQL Optimization, Time-Series Analysis, Predictive Modeling, EDA"
+          },
+          {
+            category: "Machine Learning & AI: ",
+            items: "PyTorch, Scikit-learn, XGBoost, NumPy, Pandas, Transformers, Hugging Face, LLMs/SLMs, PINNs"
+          }
+        ]
       },
+
       amazon: {
-        name: "Valluri Keerthi Ram",
-        location: "Bangalore, 560035",
-        phone: "+91 8309247221",
-        email: "keerthiramvalluri@gmail.com",
-        portfolio: "https://vallurikeerthiram.github.io/",
-        uni: "Amrita Vishwa Vidyapeetham",
-        campus: "ASEB, Bangalore",
-        uniDates: "2023–Present",
-        degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        board: "Central Board of Secondary Education",
-        schoolMarks: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        expOrg: "AlgoUniversity",
-        expDates: "June 2026 – July 2026",
-        expRole: "Software Engineering Intern (AI/ML) – DB Orchestrator AI",
-        expB1: "Architected a secure, cloud VM-hosted NL-to-SQL orchestrator by fine-tuning open-weight LLMs for localized inference, guaranteeing sensitive enterprise schemas and data never leave private cloud environments.",
-        expB2: "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
-        expB3: "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.",
-        p1Title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
-        p1Dates: "Jan 2026 – Present",
-        p1Tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
-        p1B1: "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
-        p1B2: "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).",
-        p2Title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
-        p2Dates: "July 2026 – Present",
-        p2Tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
-        p2B1: "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
-        p2B2: "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026).",
-        p3Title: "Adaptive Physiological Signal Modeling via Physics-Informed Neural Networks",
-        p3Dates: "March 2026 – May 2026",
-        p3Tags: "Python • Deep Learning • Physics-Informed ML (PINNs) • Sensor Signal Modeling",
-        p3B1: "Engineered an adaptive hydration prediction pipeline trained on noisy, multi-modal biometric sensor streams (heart rate, skin temp, inertial movement) captured from Garmin smart wearables.",
-        p3B2: "Formulated Physics-Informed Neural Networks (PINNs) incorporating biological sweat-rate differential equations and mass-conservation constraints, filtering physical noise from real-world sensor streams.",
-        pubs: [
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (AI/ML) – DB Orchestrator AI",
+            bullets: [
+              "Architected a secure, cloud VM-hosted NL-to-SQL orchestrator by fine-tuning open-weight LLMs for localized inference, guaranteeing sensitive enterprise schemas and data never leave private cloud environments.",
+              "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
+              "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
+            bullets: [
+              "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
+              "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026)."
+            ]
+          },
+          {
+            title: "Adaptive Physiological Signal Modeling via Physics-Informed Neural Networks",
+            dates: "March 2026 – May 2026",
+            tags: "Python • Deep Learning • Physics-Informed ML (PINNs) • Sensor Signal Modeling",
+            bullets: [
+              "Engineered an adaptive hydration prediction pipeline trained on noisy, multi-modal biometric sensor streams (heart rate, skin temp, inertial movement) captured from Garmin smart wearables.",
+              "Formulated Physics-Informed Neural Networks (PINNs) incorporating biological sweat-rate differential equations and mass-conservation constraints, filtering physical noise from real-world sensor streams."
+            ]
+          }
+        ],
+        publications: [
           { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
           { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
           { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
@@ -1200,55 +1137,103 @@
           { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
           { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
         ],
-        c1Name: "AWS Certified Cloud Practitioner",
-        c1Date: "May 2026 | AWS",
-        c1Id: "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
-        c2Name: "Introduction to Modern AI",
-        c2Date: "Cisco • 2026",
-        c3Name: "Project Management Foundations",
-        c3Date: "Oct 2024 | PMI & NASBA",
-        c3Id: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
-        s1Cat: "Languages & Core Technologies: ",
-        s1Items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI",
-        s2Cat: "Applied Science & Research: ",
-        s2Items: "Deep Learning, NLP, 3D Computer Vision, Physics-Informed ML (PINNs), LLMs/SLMs, Model Distillation",
-        s3Cat: "AI/ML Frameworks & Libraries: ",
-        s3Items: "PyTorch, Hugging Face, Transformers, Scikit-learn, NumPy, Pandas, Model Evaluation, vLLM"
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Technologies: ",
+            items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI"
+          },
+          {
+            category: "Applied Science & Research: ",
+            items: "Deep Learning, NLP, 3D Computer Vision, Physics-Informed ML (PINNs), LLMs/SLMs, Model Distillation"
+          },
+          {
+            category: "AI/ML Frameworks & Libraries: ",
+            items: "PyTorch, Hugging Face, Transformers, Scikit-learn, NumPy, Pandas, Model Evaluation, vLLM"
+          }
+        ]
       },
+
       myntra: {
-        name: "Valluri Keerthi Ram",
-        location: "Bangalore, 560035",
-        phone: "+91 8309247221",
-        email: "keerthiramvalluri@gmail.com",
-        portfolio: "https://vallurikeerthiram.github.io/",
-        uni: "Amrita Vishwa Vidyapeetham",
-        campus: "ASEB, Bangalore",
-        uniDates: "2023–Present",
-        degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        board: "Central Board of Secondary Education",
-        schoolMarks: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        expOrg: "AlgoUniversity",
-        expDates: "June 2026 – July 2026",
-        expRole: "Software Engineering Intern (AI/ML) – DB Orchestrator AI",
-        expB1: "Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.",
-        expB2: "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
-        expB3: "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution.",
-        p1Title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
-        p1Dates: "Jan 2026 – Present",
-        p1Tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
-        p1B1: "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
-        p1B2: "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027).",
-        p2Title: "Weight-Aware Dynamic Dispatch & Optimization System",
-        p2Dates: "Oct 2024 – Nov 2024",
-        p2Tags: "Python • Optimization Algorithms • Systems Architecture • Hardware Endpoints",
-        p2B1: "Designed a multi-cabin dispatch algorithm integrating real-time mass constraints to dynamically optimize routing and prevent unnecessary stops for at-capacity elevators under strict latency bounds.",
-        p2B2: "Engineered the system to interface with live hardware endpoints and validated algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026).",
-        p3Title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
-        p3Dates: "July 2026 – Present",
-        p3Tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
-        p3B1: "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
-        p3B2: "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026).",
-        pubs: [
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (AI/ML) – DB Orchestrator AI",
+            bullets: [
+              "Architected a high-availability multi-provider LLM fallback pipeline and dynamic schema router, drastically reducing AI inference costs and query latency.",
+              "Fortified enterprise data security by engineering an AST-level validation perimeter to enforce strict Role-Based Access Control (RBAC) and programmatically block unauthorized SQL mutations.",
+              "Eliminated heavy database snapshot overhead by developing a reverse-SQL rollback engine for instant row-level transactional recovery and an autonomous query repair loop for self-healing execution."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation for Scriptio Continua",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • Cross-Lingual NLP",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer to Telugu akshara/Unicode grapheme clusters (0.9308 test F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Weight-Aware Dynamic Dispatch & Optimization System",
+            dates: "Oct 2024 – Nov 2024",
+            tags: "Python • Optimization Algorithms • Systems Architecture • Hardware Endpoints",
+            bullets: [
+              "Designed a multi-cabin dispatch algorithm integrating real-time mass constraints to dynamically optimize routing and prevent unnecessary stops for at-capacity elevators under strict latency bounds.",
+              "Engineered the system to interface with live hardware endpoints and validated algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026)."
+            ]
+          },
+          {
+            title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Computer Vision • Cross-Modality Synthesis • Medical Imaging",
+            bullets: [
+              "Architecting a resource-efficient 3D computer vision pipeline for brain CT-to-MRI cross-modal synthesis, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks of volumetric generative models.",
+              "Formulating cross-modal volumetric translation to synthesize high-fidelity structural MRI slices from non-contrast CT scans, accelerating downstream clinical diagnostic workflows (FTNCT 2026)."
+            ]
+          }
+        ],
+        publications: [
           { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
           { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
           { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
@@ -1257,79 +1242,115 @@
           { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
           { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
         ],
-        c1Name: "AWS Certified Cloud Practitioner",
-        c1Date: "May 2026 | AWS",
-        c1Id: "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
-        c2Name: "Introduction to Modern AI",
-        c2Date: "Cisco • 2026",
-        c3Name: "Project Management Foundations",
-        c3Date: "Oct 2024 | PMI & NASBA",
-        c3Id: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
-        s1Cat: "Languages & Core Technologies: ",
-        s1Items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI",
-        s2Cat: "Systems & Software Engineering: ",
-        s2Items: "System Architecture, High-Availability Pipelines, Schema Routing, Microservices, REST APIs",
-        s3Cat: "Frameworks & Tools: ",
-        s3Items: "PyTorch, FastAPI, Scikit-learn, Docker, AWS Cloud, Agile / Scrum"
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Technologies: ",
+            items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, AWS Cloud, Docker, FastAPI"
+          },
+          {
+            category: "Systems & Software Engineering: ",
+            items: "System Architecture, High-Availability Pipelines, Schema Routing, Microservices, REST APIs"
+          },
+          {
+            category: "Frameworks & Tools: ",
+            items: "PyTorch, FastAPI, Scikit-learn, Docker, AWS Cloud, Agile / Scrum"
+          }
+        ]
       },
+
       custom: {
-        name: "Valluri Keerthi Ram",
-        location: "Bangalore, 560035",
-        phone: "+91 8309247221",
-        email: "keerthiramvalluri@gmail.com",
-        portfolio: "https://vallurikeerthiram.github.io/",
-        uni: "Amrita Vishwa Vidyapeetham",
-        campus: "ASEB, Bangalore",
-        uniDates: "2023–Present",
-        degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        board: "Central Board of Secondary Education",
-        schoolMarks: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        expOrg: "Organization Name",
-        expDates: "Dates",
-        expRole: "Role Title",
-        expB1: "Bullet 1 description...",
-        expB2: "Bullet 2 description...",
-        expB3: "Bullet 3 description...",
-        p1Title: "Project 1 Title",
-        p1Dates: "Dates",
-        p1Tags: "Python • Tags",
-        p1B1: "Project 1 Bullet 1...",
-        p1B2: "Project 1 Bullet 2...",
-        p2Title: "Project 2 Title",
-        p2Dates: "Dates",
-        p2Tags: "Python • Tags",
-        p2B1: "Project 2 Bullet 1...",
-        p2B2: "Project 2 Bullet 2...",
-        p3Title: "Project 3 Title",
-        p3Dates: "Dates",
-        p3Tags: "Python • Tags",
-        p3B1: "Project 3 Bullet 1...",
-        p3B2: "Project 3 Bullet 2...",
-        pubs: [
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          }
+        ],
+        experience: [
+          {
+            organization: "Organization Name",
+            dates: "Dates",
+            role: "Role Title",
+            bullets: [
+              "Bullet 1 description...",
+              "Bullet 2 description..."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Project 1 Title",
+            dates: "Dates",
+            tags: "Tech Stack Tags",
+            bullets: [
+              "Project Bullet 1 description...",
+              "Project Bullet 2 description..."
+            ]
+          }
+        ],
+        publications: [
           { prefix: "Conference 2026: ", title: "Paper Title (Under Publication)" }
         ],
-        c1Name: "AWS Certified Cloud Practitioner",
-        c1Date: "May 2026 | AWS",
-        c1Id: "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
-        c2Name: "Introduction to Modern AI",
-        c2Date: "Cisco • 2026",
-        c3Name: "Project Management Foundations",
-        c3Date: "Oct 2024 | PMI & NASBA",
-        c3Id: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
-        s1Cat: "Languages & Core Technologies: ",
-        s1Items: "Python, Java, SQL, Git, AWS Cloud, Docker",
-        s2Cat: "Domain Focus: ",
-        s2Items: "Machine Learning, Deep Learning, NLP",
-        s3Cat: "Tools & Libraries: ",
-        s3Items: "PyTorch, Scikit-learn, Pandas, NumPy"
+        certifications: [
+          {
+            name: "Certification Title",
+            date: "Date | Organization",
+            credentialId: "Credentials: ID"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Technologies: ",
+            items: "Python, Java, SQL, Git, AWS Cloud, Docker"
+          }
+        ]
       }
     };
 
-    let currentPubs = [];
+    // ACTIVE STATE
+    let resumeState = null;
+    let dragSource = null;
 
-    function toggleSection(bodyId) {
-      const el = document.getElementById(bodyId);
-      el.classList.toggle('collapsed');
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function toggleSection(cardId) {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.toggle('is-collapsed');
+      }
     }
 
     function switchMobileTab(tab) {
@@ -1348,189 +1369,568 @@
       }
     }
 
-    function renderPubsForm() {
-      const container = document.getElementById('pubsContainer');
-      container.innerHTML = '';
-      currentPubs.forEach((pub, idx) => {
-        const div = document.createElement('div');
-        div.className = 'item-card';
-        div.innerHTML = `
-          <div class="form-row">
-            <div class="form-group" style="flex: 1;">
-              <label>Venue Prefix (Bold)</label>
-              <input type="text" value="${pub.prefix}" oninput="currentPubs[${idx}].prefix = this.value; updateResume();">
+    // DRAG AND DROP HANDLERS
+    function handleDragStart(e, sectionKey, index) {
+      dragSource = { sectionKey, index };
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', `${sectionKey}:${index}`);
+      e.currentTarget.classList.add('dragging');
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      const targetCard = e.currentTarget;
+      if (!targetCard.classList.contains('dragging')) {
+        targetCard.classList.add('drag-over');
+      }
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove('drag-over');
+    }
+
+    function handleDrop(e, sectionKey, targetIndex) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.currentTarget.classList.remove('drag-over');
+
+      if (!dragSource || dragSource.sectionKey !== sectionKey) return;
+      const fromIndex = dragSource.index;
+      if (fromIndex === targetIndex) return;
+
+      const list = resumeState[sectionKey];
+      const item = list.splice(fromIndex, 1)[0];
+      list.splice(targetIndex, 0, item);
+
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    function handleDragEnd(e) {
+      e.currentTarget.classList.remove('dragging');
+      document.querySelectorAll('.item-card').forEach(c => c.classList.remove('drag-over', 'dragging'));
+      dragSource = null;
+    }
+
+    // ITEM ACTIONS (MOVE & DELETE)
+    function moveItem(sectionKey, index, direction) {
+      const targetIndex = index + direction;
+      const list = resumeState[sectionKey];
+      if (targetIndex < 0 || targetIndex >= list.length) return;
+
+      const item = list.splice(index, 1)[0];
+      list.splice(targetIndex, 0, item);
+
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    function deleteItem(sectionKey, index) {
+      const list = resumeState[sectionKey];
+      if (list.length <= 1) {
+        if (!confirm('Are you sure you want to delete the only item in this section?')) return;
+      }
+      list.splice(index, 1);
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    function addItem(sectionKey) {
+      if (sectionKey === 'education') {
+        resumeState.education.push({
+          institution: "New College / University",
+          location: "Location",
+          degree: "Degree, Major, GPA Details",
+          dates: "Duration"
+        });
+      } else if (sectionKey === 'experience') {
+        resumeState.experience.push({
+          organization: "New Organization",
+          dates: "Dates",
+          role: "Role & Subtitle",
+          bullets: [
+            "Engineered scalable solution delivering measurable efficiency improvements...",
+            "Architected critical system components adhering to high availability standards..."
+          ]
+        });
+      } else if (sectionKey === 'projects') {
+        resumeState.projects.push({
+          title: "New Technical Project",
+          dates: "Dates",
+          tags: "Python • Core Technologies",
+          bullets: [
+            "Engineered core algorithmic architecture optimizing computational latency and throughput...",
+            "Implemented end-to-end evaluation pipeline benchmarked on standard empirical metrics..."
+          ]
+        });
+      } else if (sectionKey === 'publications') {
+        resumeState.publications.push({
+          prefix: "Conference 2026: ",
+          title: "New Research Paper Title (Under Publication)"
+        });
+      } else if (sectionKey === 'certifications') {
+        resumeState.certifications.push({
+          name: "Certification Name",
+          date: "Date | Organization",
+          credentialId: "Credentials: ID"
+        });
+      } else if (sectionKey === 'skills') {
+        resumeState.skills.push({
+          category: "New Skill Category: ",
+          items: "Skill 1, Skill 2, Skill 3, Tool 4"
+        });
+      }
+
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    // BULLETS INSIDE EXPERIENCE & PROJECTS
+    function addBullet(sectionKey, itemIdx) {
+      resumeState[sectionKey][itemIdx].bullets.push("Engineered technical solution with measurable performance gains...");
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    function removeBullet(sectionKey, itemIdx, bulletIdx) {
+      resumeState[sectionKey][itemIdx].bullets.splice(bulletIdx, 1);
+      renderSectionForm(sectionKey);
+      updateResume();
+    }
+
+    // FORM RENDERERS
+    function renderSectionForm(sectionKey) {
+      if (sectionKey === 'education') {
+        const c = document.getElementById('eduContainer');
+        c.innerHTML = '';
+        resumeState.education.forEach((edu, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'education', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'education', idx);
+          div.ondragend = handleDragEnd;
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(edu.institution || `Education #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('education', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('education', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('education', ${idx})">🗑️</button>
+              </div>
             </div>
-            <button class="btn-danger-sm" onclick="removePublication(${idx})">Delete</button>
-          </div>
-          <div class="form-group">
-            <label>Paper Title & Status</label>
-            <input type="text" value="${pub.title}" oninput="currentPubs[${idx}].title = this.value; updateResume();">
-          </div>
-        `;
-        container.appendChild(div);
-      });
+            <div class="form-row">
+              <div class="form-group">
+                <label>Institution / University</label>
+                <input type="text" value="${escapeHtml(edu.institution)}" oninput="resumeState.education[${idx}].institution = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Location / Campus</label>
+                <input type="text" value="${escapeHtml(edu.location)}" oninput="resumeState.education[${idx}].location = this.value; updateResume();">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Degree & Details</label>
+                <input type="text" value="${escapeHtml(edu.degree)}" oninput="resumeState.education[${idx}].degree = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Duration / Dates</label>
+                <input type="text" value="${escapeHtml(edu.dates)}" oninput="resumeState.education[${idx}].dates = this.value; updateResume();">
+              </div>
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
+
+      else if (sectionKey === 'experience') {
+        const c = document.getElementById('expContainer');
+        c.innerHTML = '';
+        resumeState.experience.forEach((exp, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'experience', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'experience', idx);
+          div.ondragend = handleDragEnd;
+
+          let bulletsHtml = exp.bullets.map((b, bIdx) => `
+            <div class="bullet-row">
+              <textarea oninput="resumeState.experience[${idx}].bullets[${bIdx}] = this.value; updateResume();">${escapeHtml(b)}</textarea>
+              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('experience', ${idx}, ${bIdx})">×</button>
+            </div>
+          `).join('');
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(exp.organization || `Experience #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('experience', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('experience', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('experience', ${idx})">🗑️</button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Organization</label>
+                <input type="text" value="${escapeHtml(exp.organization)}" oninput="resumeState.experience[${idx}].organization = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Dates</label>
+                <input type="text" value="${escapeHtml(exp.dates)}" oninput="resumeState.experience[${idx}].dates = this.value; updateResume();">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Role & Subtitle</label>
+              <input type="text" value="${escapeHtml(exp.role)}" oninput="resumeState.experience[${idx}].role = this.value; updateResume();">
+            </div>
+            <div class="form-group">
+              <label>Bullet Points</label>
+              <div class="bullets-container">${bulletsHtml}</div>
+              <button type="button" class="btn-add-bullet" onclick="addBullet('experience', ${idx})">+ Add Bullet</button>
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
+
+      else if (sectionKey === 'projects') {
+        const c = document.getElementById('projectsContainer');
+        c.innerHTML = '';
+        resumeState.projects.forEach((proj, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'projects', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'projects', idx);
+          div.ondragend = handleDragEnd;
+
+          let bulletsHtml = proj.bullets.map((b, bIdx) => `
+            <div class="bullet-row">
+              <textarea oninput="resumeState.projects[${idx}].bullets[${bIdx}] = this.value; updateResume();">${escapeHtml(b)}</textarea>
+              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('projects', ${idx}, ${bIdx})">×</button>
+            </div>
+          `).join('');
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(proj.title || `Project #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('projects', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('projects', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('projects', ${idx})">🗑️</button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Project Title</label>
+                <input type="text" value="${escapeHtml(proj.title)}" oninput="resumeState.projects[${idx}].title = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Dates</label>
+                <input type="text" value="${escapeHtml(proj.dates)}" oninput="resumeState.projects[${idx}].dates = this.value; updateResume();">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tech Stack Tags</label>
+              <input type="text" value="${escapeHtml(proj.tags)}" oninput="resumeState.projects[${idx}].tags = this.value; updateResume();">
+            </div>
+            <div class="form-group">
+              <label>Bullet Points</label>
+              <div class="bullets-container">${bulletsHtml}</div>
+              <button type="button" class="btn-add-bullet" onclick="addBullet('projects', ${idx})">+ Add Bullet</button>
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
+
+      else if (sectionKey === 'publications') {
+        const c = document.getElementById('pubsContainer');
+        c.innerHTML = '';
+        resumeState.publications.forEach((pub, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'publications', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'publications', idx);
+          div.ondragend = handleDragEnd;
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(pub.prefix || `Publication #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('publications', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('publications', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('publications', ${idx})">🗑️</button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Venue Prefix (Bold)</label>
+                <input type="text" value="${escapeHtml(pub.prefix)}" oninput="resumeState.publications[${idx}].prefix = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Paper Title & Status</label>
+                <input type="text" value="${escapeHtml(pub.title)}" oninput="resumeState.publications[${idx}].title = this.value; updateResume();">
+              </div>
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
+
+      else if (sectionKey === 'certifications') {
+        const c = document.getElementById('certsContainer');
+        c.innerHTML = '';
+        resumeState.certifications.forEach((cert, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'certifications', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'certifications', idx);
+          div.ondragend = handleDragEnd;
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(cert.name || `Certification #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('certifications', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('certifications', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('certifications', ${idx})">🗑️</button>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Certification Name</label>
+                <input type="text" value="${escapeHtml(cert.name)}" oninput="resumeState.certifications[${idx}].name = this.value; updateResume();">
+              </div>
+              <div class="form-group">
+                <label>Date & Issuer</label>
+                <input type="text" value="${escapeHtml(cert.date)}" oninput="resumeState.certifications[${idx}].date = this.value; updateResume();">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Credential ID (Optional)</label>
+              <input type="text" value="${escapeHtml(cert.credentialId || '')}" oninput="resumeState.certifications[${idx}].credentialId = this.value; updateResume();">
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
+
+      else if (sectionKey === 'skills') {
+        const c = document.getElementById('skillsContainer');
+        c.innerHTML = '';
+        resumeState.skills.forEach((skill, idx) => {
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.draggable = true;
+          div.ondragstart = (e) => handleDragStart(e, 'skills', idx);
+          div.ondragover = handleDragOver;
+          div.ondragleave = handleDragLeave;
+          div.ondrop = (e) => handleDrop(e, 'skills', idx);
+          div.ondragend = handleDragEnd;
+
+          div.innerHTML = `
+            <div class="item-card-header">
+              <div class="drag-handle" title="Drag to reorder">
+                <span class="drag-icon">⋮⋮</span>
+                <span class="item-card-title">${escapeHtml(skill.category || `Category #${idx+1}`)}</span>
+              </div>
+              <div class="item-card-actions">
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('skills', ${idx}, -1)">▲</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('skills', ${idx}, 1)">▼</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('skills', ${idx})">🗑️</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Category Label</label>
+              <input type="text" value="${escapeHtml(skill.category)}" oninput="resumeState.skills[${idx}].category = this.value; updateResume();">
+            </div>
+            <div class="form-group">
+              <label>Technologies / Skills</label>
+              <input type="text" value="${escapeHtml(skill.items)}" oninput="resumeState.skills[${idx}].items = this.value; updateResume();">
+            </div>
+          `;
+          c.appendChild(div);
+        });
+      }
     }
 
-    function addPublication() {
-      currentPubs.push({ prefix: "New Venue: ", title: "Paper Title" });
-      renderPubsForm();
-      updateResume();
+    function renderAllForms() {
+      // Profile
+      document.getElementById('inpName').value = resumeState.profile.name || '';
+      document.getElementById('inpLocation').value = resumeState.profile.location || '';
+      document.getElementById('inpPhone').value = resumeState.profile.phone || '';
+      document.getElementById('inpEmail').value = resumeState.profile.email || '';
+      document.getElementById('inpPortfolio').value = resumeState.profile.portfolio || '';
+
+      renderSectionForm('education');
+      renderSectionForm('experience');
+      renderSectionForm('projects');
+      renderSectionForm('publications');
+      renderSectionForm('certifications');
+      renderSectionForm('skills');
     }
 
-    function removePublication(idx) {
-      currentPubs.splice(idx, 1);
-      renderPubsForm();
-      updateResume();
-    }
-
-    function loadPreset(key) {
-      const data = PRESETS[key] || PRESETS.toshiba;
-      
-      document.getElementById('inpName').value = data.name;
-      document.getElementById('inpLocation').value = data.location;
-      document.getElementById('inpPhone').value = data.phone;
-      document.getElementById('inpEmail').value = data.email;
-      document.getElementById('inpPortfolio').value = data.portfolio;
-
-      document.getElementById('inpUni').value = data.uni;
-      document.getElementById('inpCampus').value = data.campus;
-      document.getElementById('inpUniDates').value = data.uniDates;
-      document.getElementById('inpDegree').value = data.degree;
-      document.getElementById('inpBoard').value = data.board;
-      document.getElementById('inpSchoolMarks').value = data.schoolMarks;
-
-      document.getElementById('inpExpOrg').value = data.expOrg;
-      document.getElementById('inpExpDates').value = data.expDates;
-      document.getElementById('inpExpRole').value = data.expRole;
-      document.getElementById('inpExpB1').value = data.expB1;
-      document.getElementById('inpExpB2').value = data.expB2;
-      document.getElementById('inpExpB3').value = data.expB3;
-
-      document.getElementById('inpP1Title').value = data.p1Title;
-      document.getElementById('inpP1Dates').value = data.p1Dates;
-      document.getElementById('inpP1Tags').value = data.p1Tags;
-      document.getElementById('inpP1B1').value = data.p1B1;
-      document.getElementById('inpP1B2').value = data.p1B2;
-
-      document.getElementById('inpP2Title').value = data.p2Title;
-      document.getElementById('inpP2Dates').value = data.p2Dates;
-      document.getElementById('inpP2Tags').value = data.p2Tags;
-      document.getElementById('inpP2B1').value = data.p2B1;
-      document.getElementById('inpP2B2').value = data.p2B2;
-
-      document.getElementById('inpP3Title').value = data.p3Title;
-      document.getElementById('inpP3Dates').value = data.p3Dates;
-      document.getElementById('inpP3Tags').value = data.p3Tags;
-      document.getElementById('inpP3B1').value = data.p3B1;
-      document.getElementById('inpP3B2').value = data.p3B2;
-
-      currentPubs = JSON.parse(JSON.stringify(data.pubs));
-      renderPubsForm();
-
-      document.getElementById('inpC1Name').value = data.c1Name;
-      document.getElementById('inpC1Date').value = data.c1Date;
-      document.getElementById('inpC1Id').value = data.c1Id;
-      document.getElementById('inpC2Name').value = data.c2Name;
-      document.getElementById('inpC2Date').value = data.c2Date;
-      document.getElementById('inpC3Name').value = data.c3Name;
-      document.getElementById('inpC3Date').value = data.c3Date;
-      document.getElementById('inpC3Id').value = data.c3Id;
-
-      document.getElementById('inpS1Cat').value = data.s1Cat;
-      document.getElementById('inpS1Items').value = data.s1Items;
-      document.getElementById('inpS2Cat').value = data.s2Cat;
-      document.getElementById('inpS2Items').value = data.s2Items;
-      document.getElementById('inpS3Cat').value = data.s3Cat;
-      document.getElementById('inpS3Items').value = data.s3Items;
-
-      updateResume();
-    }
-
+    // UPDATE LIVE RESUME SHEET
     function updateResume() {
-      // Header
-      const name = document.getElementById('inpName').value;
-      const loc = document.getElementById('inpLocation').value;
-      const phone = document.getElementById('inpPhone').value;
-      const email = document.getElementById('inpEmail').value;
-      const port = document.getElementById('inpPortfolio').value;
+      const sheet = document.getElementById('resumeSheet');
+      if (!sheet || !resumeState) return;
 
-      document.getElementById('viewName').innerText = name;
-      document.getElementById('viewContact').innerHTML = `${loc} • <a href="mailto:${email}">${email}</a> • ${phone} • <a href="${port}" target="_blank">Portfolio</a>`;
+      const p = resumeState.profile;
+      let html = '';
+
+      // Header
+      html += `
+        <header class="res-header">
+          <div class="res-name">${escapeHtml(p.name)}</div>
+          <div class="res-contact">
+            ${escapeHtml(p.location)} • <a href="mailto:${escapeHtml(p.email)}">${escapeHtml(p.email)}</a> • ${escapeHtml(p.phone)} • <a href="${escapeHtml(p.portfolio)}" target="_blank">Portfolio</a>
+          </div>
+        </header>
+      `;
 
       // Education
-      document.getElementById('viewUni').innerText = document.getElementById('inpUni').value;
-      document.getElementById('viewCampus').innerText = document.getElementById('inpCampus').value;
-      document.getElementById('viewDegree').innerText = document.getElementById('inpDegree').value;
-      document.getElementById('viewUniDates').innerText = document.getElementById('inpUniDates').value;
-      document.getElementById('viewBoard').innerText = document.getElementById('inpBoard').value;
-      document.getElementById('viewSchoolMarks').innerText = document.getElementById('inpSchoolMarks').value;
+      if (resumeState.education && resumeState.education.length > 0) {
+        html += `<section><div class="res-section-title">Education</div><table class="res-table">`;
+        resumeState.education.forEach(edu => {
+          html += `
+            <tr>
+              <td><span class="res-bold">${escapeHtml(edu.institution)}</span></td>
+              <td class="res-text-right">${escapeHtml(edu.location)}</td>
+            </tr>
+            <tr>
+              <td><span>${escapeHtml(edu.degree)}</span></td>
+              <td class="res-text-right">${escapeHtml(edu.dates)}</td>
+            </tr>
+          `;
+        });
+        html += `</table></section>`;
+      }
 
       // Experience
-      document.getElementById('viewExpOrg').innerText = document.getElementById('inpExpOrg').value;
-      document.getElementById('viewExpDates').innerText = document.getElementById('inpExpDates').value;
-      document.getElementById('viewExpRole').innerText = document.getElementById('inpExpRole').value;
-      document.getElementById('viewExpB1').innerText = document.getElementById('inpExpB1').value;
-      document.getElementById('viewExpB2').innerText = document.getElementById('inpExpB2').value;
-      document.getElementById('viewExpB3').innerText = document.getElementById('inpExpB3').value;
+      if (resumeState.experience && resumeState.experience.length > 0) {
+        html += `<section><div class="res-section-title">Experience</div>`;
+        resumeState.experience.forEach(exp => {
+          html += `
+            <table class="res-table">
+              <tr>
+                <td><span class="res-bold">${escapeHtml(exp.organization)}</span></td>
+                <td class="res-text-right">${escapeHtml(exp.dates)}</td>
+              </tr>
+              <tr>
+                <td colspan="2"><span>${escapeHtml(exp.role)}</span></td>
+              </tr>
+            </table>
+            <ul class="res-bullets">
+              ${exp.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}
+            </ul>
+          `;
+        });
+        html += `</section>`;
+      }
 
       // Projects
-      document.getElementById('viewP1Title').innerText = document.getElementById('inpP1Title').value;
-      document.getElementById('viewP1Dates').innerText = document.getElementById('inpP1Dates').value;
-      document.getElementById('viewP1Tags').innerText = document.getElementById('inpP1Tags').value;
-      document.getElementById('viewP1B1').innerText = document.getElementById('inpP1B1').value;
-      document.getElementById('viewP1B2').innerText = document.getElementById('inpP1B2').value;
+      if (resumeState.projects && resumeState.projects.length > 0) {
+        html += `<section><div class="res-section-title">Projects</div>`;
+        resumeState.projects.forEach(proj => {
+          html += `
+            <div class="res-project-block">
+              <table class="res-table">
+                <tr>
+                  <td><span class="res-bold">${escapeHtml(proj.title)}</span></td>
+                  <td class="res-text-right">${escapeHtml(proj.dates)}</td>
+                </tr>
+                <tr>
+                  <td colspan="2"><span>${escapeHtml(proj.tags)}</span></td>
+                </tr>
+              </table>
+              <ul class="res-bullets">
+                ${proj.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        });
+        html += `</section>`;
+      }
 
-      document.getElementById('viewP2Title').innerText = document.getElementById('inpP2Title').value;
-      document.getElementById('viewP2Dates').innerText = document.getElementById('inpP2Dates').value;
-      document.getElementById('viewP2Tags').innerText = document.getElementById('inpP2Tags').value;
-      document.getElementById('viewP2B1').innerText = document.getElementById('inpP2B1').value;
-      document.getElementById('viewP2B2').innerText = document.getElementById('inpP2B2').value;
-
-      document.getElementById('viewP3Title').innerText = document.getElementById('inpP3Title').value;
-      document.getElementById('viewP3Dates').innerText = document.getElementById('inpP3Dates').value;
-      document.getElementById('viewP3Tags').innerText = document.getElementById('inpP3Tags').value;
-      document.getElementById('viewP3B1').innerText = document.getElementById('inpP3B1').value;
-      document.getElementById('viewP3B2').innerText = document.getElementById('inpP3B2').value;
-
-      // Publications
-      const pubListEl = document.getElementById('viewPubsList');
-      pubListEl.innerHTML = '';
-      currentPubs.forEach(pub => {
-        const li = document.createElement('li');
-        li.innerHTML = `<span class="res-bold">${pub.prefix}</span><span>${pub.title}</span>`;
-        pubListEl.appendChild(li);
-      });
+      // Research & Publications
+      if (resumeState.publications && resumeState.publications.length > 0) {
+        html += `<section><div class="res-section-title">Research & Publications (First Authors)</div><ul class="res-pub-list">`;
+        resumeState.publications.forEach(pub => {
+          html += `<li><span class="res-bold">${escapeHtml(pub.prefix)}</span><span>${escapeHtml(pub.title)}</span></li>`;
+        });
+        html += `</ul></section>`;
+      }
 
       // Certifications
-      document.getElementById('viewC1Name').innerText = document.getElementById('inpC1Name').value;
-      document.getElementById('viewC1Date').innerText = document.getElementById('inpC1Date').value;
-      document.getElementById('viewC1Id').innerText = document.getElementById('inpC1Id').value;
+      if (resumeState.certifications && resumeState.certifications.length > 0) {
+        html += `<section><div class="res-section-title">Certifications</div><table class="res-table">`;
+        resumeState.certifications.forEach(cert => {
+          html += `
+            <tr>
+              <td><span class="res-bold">${escapeHtml(cert.name)}</span></td>
+              <td class="res-text-right">${escapeHtml(cert.date)}</td>
+            </tr>
+          `;
+          if (cert.credentialId && cert.credentialId.trim()) {
+            html += `<tr><td colspan="2">${escapeHtml(cert.credentialId)}</td></tr>`;
+          }
+        });
+        html += `</table></section>`;
+      }
 
-      document.getElementById('viewC2Name').innerText = document.getElementById('inpC2Name').value;
-      document.getElementById('viewC2Date').innerText = document.getElementById('inpC2Date').value;
+      // Skills & Interests
+      if (resumeState.skills && resumeState.skills.length > 0) {
+        html += `<section><div class="res-section-title">Skills & Interests</div><ul class="res-skills-list">`;
+        resumeState.skills.forEach(s => {
+          let cat = s.category.trim();
+          if (!cat.endsWith(':')) cat += ':';
+          html += `<li><span class="res-bold">${escapeHtml(cat)} </span><span>${escapeHtml(s.items)}</span></li>`;
+        });
+        html += `</ul></section>`;
+      }
 
-      document.getElementById('viewC3Name').innerText = document.getElementById('inpC3Name').value;
-      document.getElementById('viewC3Date').innerText = document.getElementById('inpC3Date').value;
-      document.getElementById('viewC3Id').innerText = document.getElementById('inpC3Id').value;
-
-      // Skills
-      document.getElementById('viewS1Cat').innerText = document.getElementById('inpS1Cat').value.replace(/:\s*$/, '') + ': ';
-      document.getElementById('viewS1Items').innerText = document.getElementById('inpS1Items').value;
-
-      document.getElementById('viewS2Cat').innerText = document.getElementById('inpS2Cat').value.replace(/:\s*$/, '') + ': ';
-      document.getElementById('viewS2Items').innerText = document.getElementById('inpS2Items').value;
-
-      document.getElementById('viewS3Cat').innerText = document.getElementById('inpS3Cat').value.replace(/:\s*$/, '') + ': ';
-      document.getElementById('viewS3Items').innerText = document.getElementById('inpS3Items').value;
-
+      sheet.innerHTML = html;
       checkPageOverflow();
     }
 
     function checkPageOverflow() {
       const sheet = document.getElementById('resumeSheet');
       const badge = document.getElementById('pageFitBadge');
-      
-      // A4 is 297mm height, approximately 1122px at 96 DPI
+      if (!sheet || !badge) return;
+
+      // A4 is 297mm height, approx 1125px at 96 DPI
       const maxHeight = 1125;
       if (sheet.scrollHeight > maxHeight) {
         badge.className = 'badge-warning';
@@ -1541,58 +1941,17 @@
       }
     }
 
-    function exportJSON() {
-      const state = {
-        name: document.getElementById('inpName').value,
-        location: document.getElementById('inpLocation').value,
-        phone: document.getElementById('inpPhone').value,
-        email: document.getElementById('inpEmail').value,
-        portfolio: document.getElementById('inpPortfolio').value,
-        uni: document.getElementById('inpUni').value,
-        campus: document.getElementById('inpCampus').value,
-        uniDates: document.getElementById('inpUniDates').value,
-        degree: document.getElementById('inpDegree').value,
-        board: document.getElementById('inpBoard').value,
-        schoolMarks: document.getElementById('inpSchoolMarks').value,
-        expOrg: document.getElementById('inpExpOrg').value,
-        expDates: document.getElementById('inpExpDates').value,
-        expRole: document.getElementById('inpExpRole').value,
-        expB1: document.getElementById('inpExpB1').value,
-        expB2: document.getElementById('inpExpB2').value,
-        expB3: document.getElementById('inpExpB3').value,
-        p1Title: document.getElementById('inpP1Title').value,
-        p1Dates: document.getElementById('inpP1Dates').value,
-        p1Tags: document.getElementById('inpP1Tags').value,
-        p1B1: document.getElementById('inpP1B1').value,
-        p1B2: document.getElementById('inpP1B2').value,
-        p2Title: document.getElementById('inpP2Title').value,
-        p2Dates: document.getElementById('inpP2Dates').value,
-        p2Tags: document.getElementById('inpP2Tags').value,
-        p2B1: document.getElementById('inpP2B1').value,
-        p2B2: document.getElementById('inpP2B2').value,
-        p3Title: document.getElementById('inpP3Title').value,
-        p3Dates: document.getElementById('inpP3Dates').value,
-        p3Tags: document.getElementById('inpP3Tags').value,
-        p3B1: document.getElementById('inpP3B1').value,
-        p3B2: document.getElementById('inpP3B2').value,
-        pubs: currentPubs,
-        c1Name: document.getElementById('inpC1Name').value,
-        c1Date: document.getElementById('inpC1Date').value,
-        c1Id: document.getElementById('inpC1Id').value,
-        c2Name: document.getElementById('inpC2Name').value,
-        c2Date: document.getElementById('inpC2Date').value,
-        c3Name: document.getElementById('inpC3Name').value,
-        c3Date: document.getElementById('inpC3Date').value,
-        c3Id: document.getElementById('inpC3Id').value,
-        s1Cat: document.getElementById('inpS1Cat').value,
-        s1Items: document.getElementById('inpS1Items').value,
-        s2Cat: document.getElementById('inpS2Cat').value,
-        s2Items: document.getElementById('inpS2Items').value,
-        s3Cat: document.getElementById('inpS3Cat').value,
-        s3Items: document.getElementById('inpS3Items').value
-      };
+    // PRESET LOADING
+    function loadPreset(key) {
+      const data = PRESETS[key] || PRESETS.toshiba;
+      resumeState = JSON.parse(JSON.stringify(data));
+      renderAllForms();
+      updateResume();
+    }
 
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    // EXPORT & IMPORT
+    function exportJSON() {
+      const blob = new Blob([JSON.stringify(resumeState, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -1611,7 +1970,9 @@
           const data = JSON.parse(e.target.result);
           PRESETS['custom'] = data;
           document.getElementById('presetSelector').value = 'custom';
-          loadPreset('custom');
+          resumeState = JSON.parse(JSON.stringify(data));
+          renderAllForms();
+          updateResume();
           alert('Resume data loaded successfully!');
         } catch (err) {
           alert('Error reading JSON file: ' + err.message);
@@ -1627,7 +1988,7 @@
       setTimeout(() => { document.title = orig; }, 1000);
     }
 
-    // Initialize
+    // INITIALIZATION
     window.addEventListener('DOMContentLoaded', () => {
       loadPreset('toshiba');
     });

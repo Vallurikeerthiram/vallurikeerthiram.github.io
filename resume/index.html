@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume Studio – Valluri Keerthi Ram</title>
+  <meta name="author" content="Valluri Keerthi Ram">
+  <meta name="description" content="Resume of Valluri Keerthi Ram - BTech Computer Science & Engineering">
+  <meta name="keywords" content="Valluri Keerthi Ram, Resume, Computer Science, AI, Systems Engineer">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -550,7 +553,7 @@
         <option value="custom">✏️ Custom / Blank Draft</option>
       </select>
 
-      <button class="btn btn-primary" onclick="window.print()">
+      <button class="btn btn-primary" onclick="triggerPrint()">
         🖨️ Print / Save PDF
       </button>
 
@@ -1615,6 +1618,13 @@
         }
       };
       reader.readAsText(file);
+    }
+
+    function triggerPrint() {
+      const orig = document.title;
+      document.title = 'Valluri_Keerthi_Ram_Resume';
+      window.print();
+      setTimeout(() => { document.title = orig; }, 1000);
     }
 
     // Initialize

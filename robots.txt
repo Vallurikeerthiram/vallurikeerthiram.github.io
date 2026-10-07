@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /resume/
+Disallow: /resume/*
 Allow: /
 
 Sitemap: https://vallurikeerthiram.github.io/sitemap.xml

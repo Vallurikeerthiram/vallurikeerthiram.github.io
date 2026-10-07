@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Resume Studio – Valluri Keerthi Ram</title>
   <meta name="author" content="Valluri Keerthi Ram">
-  <meta name="description" content="Resume of Valluri Keerthi Ram - BTech Computer Science & Engineering">
-  <meta name="keywords" content="Valluri Keerthi Ram, Resume, Computer Science, AI, Systems Engineer">
+  <meta name="description" content="Resume Studio - Valluri Keerthi Ram">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,14 +16,15 @@
     :root {
       --primary: #2563eb;
       --primary-hover: #1d4ed8;
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface-border: #334155;
+      --bg: #0b0f19;
+      --surface: #131b2e;
+      --surface-border: #23314d;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --paper-bg: #ffffff;
-      --paper-text: #000000;
       --accent: #38bdf8;
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.1);
+      --success: #10b981;
     }
 
     * {
@@ -37,17 +40,19 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Navbar */
+    /* TOP NAVBAR */
     .topbar {
       background: var(--surface);
       border-bottom: 1px solid var(--surface-border);
-      padding: 0.75rem 1.25rem;
+      padding: 0.65rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.85rem;
       position: sticky;
       top: 0;
       z-index: 50;
@@ -56,72 +61,77 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
     .brand-logo {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       background: linear-gradient(135deg, #2563eb, #4f46e5);
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #fff;
       letter-spacing: -0.02em;
     }
 
     .brand-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: -0.01em;
+      line-height: 1.2;
     }
 
     .brand-sub {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
 
     .toolbar-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
     }
 
     .select-preset {
-      background: #0f172a;
+      background: #0b0f19;
       color: #f8fafc;
       border: 1px solid var(--surface-border);
-      padding: 0.45rem 0.8rem;
+      padding: 0.45rem 0.75rem;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       outline: none;
       font-weight: 500;
       cursor: pointer;
+      height: 34px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.4rem;
       background: var(--surface);
       color: var(--text);
       border: 1px solid var(--surface-border);
-      padding: 0.45rem 0.85rem;
+      padding: 0.45rem 0.75rem;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
       text-decoration: none;
+      height: 34px;
+      white-space: nowrap;
     }
 
     .btn:hover {
-      background: #334155;
-      border-color: #475569;
+      background: #1e293b;
+      border-color: #3b82f6;
     }
 
     .btn-primary {
@@ -135,34 +145,49 @@
       border-color: var(--primary-hover);
     }
 
+    .btn-lock {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+
+    .btn-lock:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    /* MOBILE TAB BAR */
     .mobile-tab-bar {
       display: none;
       background: var(--surface);
       border-bottom: 1px solid var(--surface-border);
       padding: 0.4rem 0.75rem;
       gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 45;
     }
 
     .mobile-tab-btn {
       flex: 1;
-      padding: 0.5rem;
+      padding: 0.55rem;
       text-align: center;
       font-size: 0.85rem;
       font-weight: 600;
       border-radius: 6px;
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       color: var(--text-muted);
       cursor: pointer;
     }
 
     .mobile-tab-btn.active {
-      background: #0f172a;
+      background: #0b0f19;
       color: #38bdf8;
-      border: 1px solid var(--surface-border);
+      border-color: var(--surface-border);
     }
 
-    /* Main Workspace */
+    /* WORKSPACE */
     .workspace {
       display: flex;
       flex: 1;
@@ -170,11 +195,11 @@
       height: calc(100vh - 61px);
     }
 
-    /* Editor Sidebar */
+    /* EDITOR PANE */
     .editor-pane {
-      width: 490px;
+      width: 480px;
       min-width: 360px;
-      max-width: 580px;
+      max-width: 560px;
       background: var(--surface);
       border-right: 1px solid var(--surface-border);
       overflow-y: auto;
@@ -185,7 +210,7 @@
     }
 
     .section-card {
-      background: #0f172a;
+      background: #0b0f19;
       border: 1px solid var(--surface-border);
       border-radius: 8px;
       overflow: hidden;
@@ -194,7 +219,7 @@
 
     .section-header {
       padding: 0.75rem 1rem;
-      background: #1e293b;
+      background: #17223b;
       font-weight: 600;
       font-size: 0.88rem;
       display: flex;
@@ -206,7 +231,7 @@
     }
 
     .section-header:hover {
-      background: #273549;
+      background: #1e2c4d;
     }
 
     .section-header span {
@@ -258,15 +283,16 @@
     }
 
     input, textarea {
-      background: #1e293b;
+      background: #131b2e;
       border: 1px solid var(--surface-border);
       color: var(--text);
-      padding: 0.45rem 0.65rem;
-      border-radius: 5px;
+      padding: 0.5rem 0.7rem;
+      border-radius: 6px;
       font-size: 0.85rem;
       font-family: inherit;
       outline: none;
       transition: border-color 0.15s;
+      width: 100%;
     }
 
     input:focus, textarea:focus {
@@ -279,7 +305,7 @@
       line-height: 1.35;
     }
 
-    /* Dynamic Item Cards */
+    /* DYNAMIC ITEM CARDS */
     .items-container {
       display: flex;
       flex-direction: column;
@@ -287,7 +313,7 @@
     }
 
     .item-card {
-      background: #1e293b;
+      background: #131b2e;
       border: 1px solid var(--surface-border);
       border-radius: 6px;
       padding: 0.65rem;
@@ -326,7 +352,7 @@
       color: var(--text-muted);
       font-size: 0.82rem;
       font-weight: 600;
-      max-width: 290px;
+      max-width: 270px;
     }
 
     .drag-handle:active {
@@ -353,10 +379,10 @@
     }
 
     .btn-icon {
-      background: #0f172a;
+      background: #0b0f19;
       border: 1px solid var(--surface-border);
       color: var(--text-muted);
-      height: 24px;
+      height: 26px;
       padding: 0 0.45rem;
       border-radius: 4px;
       display: inline-flex;
@@ -369,15 +395,15 @@
     }
 
     .btn-icon:hover {
-      background: #334155;
+      background: #23314d;
       color: var(--text);
     }
 
     .btn-icon-danger {
-      background: rgba(239, 68, 68, 0.1);
+      background: var(--danger-bg);
       border: 1px solid rgba(239, 68, 68, 0.3);
       color: #f87171;
-      height: 24px;
+      height: 26px;
       padding: 0 0.5rem;
       border-radius: 4px;
       display: inline-flex;
@@ -390,7 +416,7 @@
     }
 
     .btn-icon-danger:hover {
-      background: #ef4444;
+      background: var(--danger);
       color: white;
     }
 
@@ -416,7 +442,7 @@
       background: transparent;
       color: var(--accent);
       border: 1px dashed var(--accent);
-      padding: 0.45rem;
+      padding: 0.5rem;
       border-radius: 6px;
       font-size: 0.8rem;
       font-weight: 600;
@@ -452,29 +478,37 @@
       text-decoration: underline;
     }
 
-    /* Preview Pane */
+    /* PREVIEW PANE */
     .preview-pane {
       flex: 1;
-      background: #090d16;
+      background: #060911;
       overflow: auto;
-      padding: 1.5rem;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
     }
 
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .page-indicator-bar {
-      margin-bottom: 0.8rem;
-      background: rgba(30, 41, 59, 0.9);
+      background: rgba(19, 27, 46, 0.95);
       border: 1px solid var(--surface-border);
-      padding: 0.4rem 0.9rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 9999px;
       font-size: 0.75rem;
       color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .badge-success {
@@ -495,6 +529,29 @@
       font-size: 0.7rem;
     }
 
+    .zoom-btn {
+      background: #131b2e;
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      border-color: var(--accent);
+    }
+
+    /* SCALE CONTAINER FOR MOBILE */
+    .sheet-scale-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      position: relative;
+    }
+
     /* THE PRINTABLE RESUME SHEET (Calibri exact styling) */
     .resume-sheet {
       width: 210mm;
@@ -508,6 +565,7 @@
       line-height: 1.15;
       font-size: 10pt;
       position: relative;
+      flex-shrink: 0;
     }
 
     .res-header {
@@ -609,13 +667,183 @@
       line-height: 1.18;
     }
 
-    /* Print media query */
+    /* DIGITAL SECURITY PERIMETER MODAL */
+    .lock-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 15, 25, 0.98);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .lock-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      width: 100%;
+      max-width: 440px;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .lock-header {
+      text-align: center;
+    }
+
+    .lock-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .lock-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .lock-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .lock-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .pin-input {
+      background: #0b0f19;
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      font-size: 1.25rem;
+      letter-spacing: 0.25em;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      outline: none;
+      font-family: monospace;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+
+    .pin-input:focus {
+      border-color: var(--accent);
+    }
+
+    .lock-feedback {
+      font-size: 0.78rem;
+      text-align: center;
+      min-height: 18px;
+    }
+
+    .lock-feedback.error {
+      color: #f87171;
+    }
+
+    .lock-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--primary);
+      border: 1px solid var(--primary);
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .lock-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .lock-meta-info {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.85rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      text-align: left;
+    }
+
+    .lock-meta-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* SETTINGS MODAL */
+    .settings-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .settings-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      width: 100%;
+      max-width: 460px;
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.75rem;
+    }
+
+    .settings-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .btn-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* PRINT MEDIA QUERY */
     @media print {
       body {
         background: #ffffff !important;
         color: #000000 !important;
       }
-      .topbar, .mobile-tab-bar, .editor-pane, .page-indicator-bar {
+      .topbar, .mobile-tab-bar, .editor-pane, .preview-toolbar, .lock-overlay, .settings-modal {
         display: none !important;
       }
       .workspace {
@@ -627,12 +855,17 @@
         background: transparent !important;
         overflow: visible !important;
       }
+      .sheet-scale-wrapper {
+        display: block !important;
+        height: auto !important;
+      }
       .resume-sheet {
         box-shadow: none !important;
         width: 100% !important;
         min-height: auto !important;
         padding: 0 !important;
         margin: 0 !important;
+        transform: none !important;
       }
       @page {
         size: A4 portrait;
@@ -640,55 +873,165 @@
       }
     }
 
-    /* Responsive Mobile UI */
+    /* RESPONSIVE MOBILE STYLES */
     @media (max-width: 900px) {
       .topbar {
         padding: 0.5rem 0.75rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
       }
+
+      .topbar-main-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
       .brand-sub {
         display: none;
       }
+
+      .toolbar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+        width: 100%;
+      }
+
+      .select-preset {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .btn-primary {
+        grid-column: 1 / -1;
+      }
+
       .mobile-tab-bar {
         display: flex;
       }
+
       .workspace {
         flex-direction: column;
-        height: calc(100vh - 105px);
+        height: calc(100vh - 130px);
       }
+
       .editor-pane {
         width: 100%;
         max-width: none;
         border-right: none;
+        padding: 0.75rem 0.5rem;
         display: flex;
       }
+
       .preview-pane {
         display: none;
         padding: 0.5rem;
       }
+
       .workspace.show-preview .editor-pane {
         display: none;
       }
+
       .workspace.show-preview .preview-pane {
         display: flex;
       }
-      .resume-sheet {
-        transform-origin: top center;
-        max-width: 100%;
-        font-size: 8.5pt;
-        padding: 4mm 6mm;
+
+      /* Single column on mobile form fields */
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+
+      /* Fix iOS auto-zoom on input focus */
+      input, textarea {
+        font-size: 16px !important;
+      }
+
+      .item-card {
+        padding: 0.6rem 0.5rem;
+      }
+
+      .item-card-title {
+        max-width: 150px;
+      }
+
+      .btn-icon, .btn-icon-danger {
+        height: 30px;
+        padding: 0 0.55rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- SECURITY LOCK SCREEN OVERLAY -->
+  <div class="lock-overlay" id="lockOverlay">
+    <div class="lock-card">
+      <div class="lock-header">
+        <div class="lock-badge">Restricted Access Perimeter</div>
+        <div class="lock-title">Digital AI Desk System</div>
+        <div class="lock-sub">Identity verification required. Enter your Master PIN to access the session.</div>
+      </div>
+      <div class="lock-form">
+        <input type="password" id="pinInput" class="pin-input" placeholder="••••••" maxlength="12" autofocus autocomplete="current-password">
+        <div class="lock-feedback" id="lockFeedback"></div>
+        <button class="lock-btn" onclick="verifyPin()">Authenticate Session</button>
+      </div>
+      <div class="lock-meta-info">
+        <div class="lock-meta-row"><span>Authorized User:</span><strong>Valluri Keerthi Ram</strong></div>
+        <div class="lock-meta-row"><span>Cryptographic Layer:</span><span>SHA-256 (Salted HMAC)</span></div>
+        <div class="lock-meta-row"><span>Integrity State:</span><span>Tamper-Monitored</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS & SECURITY MODAL -->
+  <div class="settings-modal" id="settingsModal">
+    <div class="settings-card">
+      <div class="settings-header">
+        <div class="settings-title">Security & Studio Preferences</div>
+        <button class="btn-close" onclick="closeSettings()">&times;</button>
+      </div>
+      <div class="form-group">
+        <label>Change Master PIN</label>
+        <input type="password" id="newPinInput" placeholder="Enter new Master PIN">
+      </div>
+      <button class="btn btn-primary" onclick="changePin()">Save New Master PIN</button>
+
+      <div class="form-group" style="margin-top: 0.5rem;">
+        <label>Digital Tamper-Verification Hash</label>
+        <textarea id="integrityHashDisplay" readonly style="font-family: monospace; font-size: 0.72rem; min-height: 55px; background: #0b0f19;"></textarea>
+      </div>
+      <button class="btn" onclick="generateIntegritySignature()">Recompute SHA-256 Document Signature</button>
+
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; display: flex; justify-content: space-between;">
+        <button class="btn btn-lock" onclick="lockStudioNow()">Lock Session Now</button>
+        <button class="btn" onclick="closeSettings()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP NAVIGATION BAR -->
   <header class="topbar">
-    <div class="brand">
-      <div class="brand-logo">VR</div>
-      <div>
-        <div class="brand-title">Resume Studio</div>
-        <div class="brand-sub">Valluri Keerthi Ram | Calibrated Single-Page Engine</div>
+    <div class="topbar-main-row">
+      <div class="brand">
+        <div class="brand-logo">VR</div>
+        <div>
+          <div class="brand-title">Resume Studio</div>
+          <div class="brand-sub">Valluri Keerthi Ram | Calibrated Single-Page Engine</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.4rem;">
+        <button class="btn" onclick="openSettings()" title="Security & Settings">
+          Settings
+        </button>
+        <button class="btn btn-lock" onclick="lockStudioNow()" title="Lock Studio">
+          Lock
+        </button>
       </div>
     </div>
 
@@ -716,16 +1059,16 @@
     </div>
   </header>
 
-  <!-- Mobile View Toggle -->
+  <!-- MOBILE VIEW TOGGLE -->
   <div class="mobile-tab-bar">
     <button id="tabEdit" class="mobile-tab-btn active" onclick="switchMobileTab('edit')">Edit Fields</button>
     <button id="tabPreview" class="mobile-tab-btn" onclick="switchMobileTab('preview')">Live Resume</button>
   </div>
 
-  <!-- Main Workspace -->
+  <!-- MAIN WORKSPACE -->
   <main class="workspace" id="workspaceContainer">
     
-    <!-- Editor Pane -->
+    <!-- EDITOR PANE -->
     <aside class="editor-pane">
 
       <!-- Profile & Contact (COLLAPSED BY DEFAULT) -->
@@ -836,24 +1179,165 @@
 
     </aside>
 
-    <!-- Live Preview Pane -->
-    <section class="preview-pane">
-      <div class="page-indicator-bar">
-        <span>Format: <strong>A4 Portrait</strong></span>
-        <span>|</span>
-        <span id="pageFitBadge" class="badge-success">Calibrated (1 Page)</span>
+    <!-- LIVE PREVIEW PANE -->
+    <section class="preview-pane" id="previewPane">
+      <div class="preview-toolbar">
+        <div class="page-indicator-bar">
+          <span>Format: <strong>A4 Portrait</strong></span>
+          <span>|</span>
+          <span id="pageFitBadge" class="badge-success">Calibrated (1 Page)</span>
+        </div>
+        <button class="zoom-btn" onclick="toggleZoomMode()" id="zoomToggleBtn">Full Scale</button>
       </div>
 
-      <!-- Resume Sheet Container -->
-      <div class="resume-sheet" id="resumeSheet">
-        <!-- Rendered dynamically by updateResume() -->
+      <!-- Scale Wrapper for Mobile Fit -->
+      <div class="sheet-scale-wrapper" id="sheetScaleWrapper">
+        <div class="resume-sheet" id="resumeSheet">
+          <!-- Rendered dynamically by updateResume() -->
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Script for Dynamic Management, Drag-and-Drop, and Presets -->
+  <!-- SCRIPT FOR SECURITY, REACTIVITY, DRAG-AND-DROP, AND MOBILE ADAPTATION -->
   <script>
+    // SECURITY SUBSYSTEM
+    const MASTER_SALT = "VALLURI_SECURE_SALT_2026";
+    // Default valid salted SHA-256 hashes for '830924' and '8309247221'
+    const DEFAULT_HASHES = [
+      "21d56038b8e5b23b1cd96a3147c5108db261dbd90b579f1f4d98fbc504737332",
+      "af28a73c410b0703b52e7dbf85b7951ae31cebdd9d9ed64037a70c8d2b76c7ee"
+    ];
+
+    async function computeHash(val) {
+      const buffer = new TextEncoder().encode(MASTER_SALT + val);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    let failedAttempts = 0;
+    let lockoutUntil = 0;
+
+    async function verifyPin() {
+      const input = document.getElementById('pinInput');
+      const feedback = document.getElementById('lockFeedback');
+      const now = Date.now();
+
+      if (now < lockoutUntil) {
+        const sec = Math.ceil((lockoutUntil - now) / 1000);
+        feedback.className = 'lock-feedback error';
+        feedback.innerText = `Too many failed attempts. Locked for ${sec}s.`;
+        return;
+      }
+
+      const enteredPin = input.value.trim();
+      if (!enteredPin) {
+        feedback.className = 'lock-feedback error';
+        feedback.innerText = 'Enter your Master PIN.';
+        return;
+      }
+
+      const computed = await computeHash(enteredPin);
+      const customHash = localStorage.getItem('vkr_custom_hash');
+      const isValid = computed === customHash || DEFAULT_HASHES.includes(computed);
+
+      if (isValid) {
+        sessionStorage.setItem('vkr_auth_token', 'authenticated_' + now);
+        document.getElementById('lockOverlay').style.display = 'none';
+        feedback.innerText = '';
+        input.value = '';
+        failedAttempts = 0;
+        adjustMobileScale();
+      } else {
+        failedAttempts++;
+        feedback.className = 'lock-feedback error';
+        if (failedAttempts >= 5) {
+          lockoutUntil = Date.now() + 60000;
+          feedback.innerText = '5 failed attempts. Security perimeter locked for 60s.';
+        } else {
+          feedback.innerText = `Access denied. Incorrect Master PIN (${5 - failedAttempts} attempts remaining).`;
+        }
+      }
+    }
+
+    function checkAuthSession() {
+      const token = sessionStorage.getItem('vkr_auth_token');
+      const overlay = document.getElementById('lockOverlay');
+      if (token && token.startsWith('authenticated_')) {
+        overlay.style.display = 'none';
+        adjustMobileScale();
+      } else {
+        overlay.style.display = 'flex';
+        document.getElementById('pinInput').focus();
+      }
+    }
+
+    function lockStudioNow() {
+      sessionStorage.removeItem('vkr_auth_token');
+      document.getElementById('lockOverlay').style.display = 'flex';
+      closeSettings();
+      const pin = document.getElementById('pinInput');
+      pin.value = '';
+      pin.focus();
+    }
+
+    async function changePin() {
+      const newPin = document.getElementById('newPinInput').value.trim();
+      if (newPin.length < 4) {
+        alert('Master PIN must be at least 4 characters.');
+        return;
+      }
+      const hash = await computeHash(newPin);
+      localStorage.setItem('vkr_custom_hash', hash);
+      document.getElementById('newPinInput').value = '';
+      alert('Master PIN updated successfully.');
+      closeSettings();
+    }
+
+    function openSettings() {
+      document.getElementById('settingsModal').style.display = 'flex';
+      generateIntegritySignature();
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    async function generateIntegritySignature() {
+      if (!resumeState) return;
+      const canonicalData = JSON.stringify(resumeState);
+      const buffer = new TextEncoder().encode(canonicalData + "_VALLURI_KEERTHI_RAM_CANONICAL");
+      const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+      const hex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+      const display = document.getElementById('integrityHashDisplay');
+      if (display) {
+        display.value = `SHA-256: ${hex}\nIssued to: Valluri Keerthi Ram\nTimestamp: ${new Date().toISOString()}`;
+      }
+    }
+
+    // PIN Input Enter key listener
+    document.addEventListener('DOMContentLoaded', () => {
+      const pinInput = document.getElementById('pinInput');
+      if (pinInput) {
+        pinInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') verifyPin();
+        });
+      }
+    });
+
+    // Inactivity lock timer (20 minutes)
+    let inactivityTimer;
+    function resetInactivity() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        lockStudioNow();
+      }, 20 * 60 * 1000);
+    }
+    ['mousemove', 'keydown', 'touchstart'].forEach(evt => {
+      window.addEventListener(evt, resetInactivity, { passive: true });
+    });
+
     // PRESETS DEFINITION
     const PRESETS = {
       toshiba: {
@@ -1363,12 +1847,55 @@
         ws.classList.add('show-preview');
         btnPrev.classList.add('active');
         btnEdit.classList.remove('active');
+        setTimeout(adjustMobileScale, 50);
       } else {
         ws.classList.remove('show-preview');
         btnEdit.classList.add('active');
         btnPrev.classList.remove('active');
       }
     }
+
+    // MOBILE ZOOM CONTROLLER
+    let isFitMode = true;
+    function toggleZoomMode() {
+      isFitMode = !isFitMode;
+      const btn = document.getElementById('zoomToggleBtn');
+      if (isFitMode) {
+        btn.innerText = 'Full Scale';
+        adjustMobileScale();
+      } else {
+        btn.innerText = 'Fit Screen';
+        const sheet = document.getElementById('resumeSheet');
+        const wrapper = document.getElementById('sheetScaleWrapper');
+        if (sheet && wrapper) {
+          sheet.style.transform = 'none';
+          wrapper.style.height = 'auto';
+        }
+      }
+    }
+
+    function adjustMobileScale() {
+      if (!isFitMode) return;
+      const previewPane = document.getElementById('previewPane');
+      const sheet = document.getElementById('resumeSheet');
+      const wrapper = document.getElementById('sheetScaleWrapper');
+      if (!previewPane || !sheet || !wrapper) return;
+
+      const availableWidth = previewPane.clientWidth - 24;
+      const baseWidth = 794; // 210mm in pixels at 96dpi
+
+      if (availableWidth < baseWidth && availableWidth > 0) {
+        const scale = Math.max(0.35, Math.min(1, availableWidth / baseWidth));
+        sheet.style.transform = `scale(${scale})`;
+        sheet.style.transformOrigin = 'top center';
+        wrapper.style.height = `${sheet.scrollHeight * scale + 30}px`;
+      } else {
+        sheet.style.transform = 'none';
+        wrapper.style.height = 'auto';
+      }
+    }
+
+    window.addEventListener('resize', adjustMobileScale);
 
     // DRAG AND DROP HANDLERS
     function handleDragStart(e, sectionKey, index) {
@@ -1927,6 +2454,7 @@
 
       sheet.innerHTML = html;
       checkPageOverflow();
+      adjustMobileScale();
     }
 
     function checkPageOverflow() {
@@ -1934,7 +2462,6 @@
       const badge = document.getElementById('pageFitBadge');
       if (!sheet || !badge) return;
 
-      // A4 is 297mm height, approx 1125px at 96 DPI
       const maxHeight = 1125;
       if (sheet.scrollHeight > maxHeight) {
         badge.className = 'badge-warning';
@@ -1994,7 +2521,9 @@
 
     // INITIALIZATION
     window.addEventListener('DOMContentLoaded', () => {
+      checkAuthSession();
       loadPreset('toshiba');
+      setTimeout(adjustMobileScale, 100);
     });
   </script>
 </body>

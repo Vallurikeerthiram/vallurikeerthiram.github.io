@@ -62,14 +62,15 @@
     .brand-logo {
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #fff;
+      letter-spacing: -0.02em;
     }
 
     .brand-title {
@@ -195,7 +196,7 @@
       padding: 0.75rem 1rem;
       background: #1e293b;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -215,7 +216,8 @@
     }
 
     .section-header .chevron {
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
       color: var(--text-muted);
       transition: transform 0.2s ease;
     }
@@ -248,7 +250,7 @@
     }
 
     label {
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-weight: 600;
       text-transform: uppercase;
@@ -318,13 +320,13 @@
     .drag-handle {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       cursor: grab;
       user-select: none;
       color: var(--text-muted);
       font-size: 0.82rem;
       font-weight: 600;
-      max-width: 320px;
+      max-width: 290px;
     }
 
     .drag-handle:active {
@@ -332,9 +334,9 @@
     }
 
     .drag-icon {
-      font-size: 1.05rem;
-      line-height: 1;
-      opacity: 0.7;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.6;
     }
 
     .item-card-title {
@@ -347,22 +349,22 @@
     .item-card-actions {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.3rem;
     }
 
     .btn-icon {
       background: #0f172a;
       border: 1px solid var(--surface-border);
       color: var(--text-muted);
-      width: 24px;
       height: 24px;
+      padding: 0 0.45rem;
       border-radius: 4px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
+      font-weight: 500;
       cursor: pointer;
-      padding: 0;
       transition: background 0.15s, color 0.15s;
     }
 
@@ -375,15 +377,15 @@
       background: rgba(239, 68, 68, 0.1);
       border: 1px solid rgba(239, 68, 68, 0.3);
       color: #f87171;
-      width: 24px;
       height: 24px;
+      padding: 0 0.5rem;
       border-radius: 4px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.72rem;
+      font-weight: 500;
       cursor: pointer;
-      padding: 0;
       transition: background 0.15s, color 0.15s;
     }
 
@@ -392,7 +394,6 @@
       color: white;
     }
 
-    /* Sub-bullets list inside item card */
     .bullets-container {
       display: flex;
       flex-direction: column;
@@ -684,32 +685,32 @@
   <!-- Top Navigation Bar -->
   <header class="topbar">
     <div class="brand">
-      <div class="brand-logo">V</div>
+      <div class="brand-logo">VR</div>
       <div>
         <div class="brand-title">Resume Studio</div>
-        <div class="brand-sub">Valluri Keerthi Ram • 1-Page Calibrated</div>
+        <div class="brand-sub">Valluri Keerthi Ram | Calibrated Single-Page Engine</div>
       </div>
     </div>
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="toshiba">🏢 Toshiba Software GET (IoT & Systems)</option>
-        <option value="aditya">🏢 Aditya Birla Group (GDNA PRIME)</option>
-        <option value="amazon">🏢 Amazon Applied Scientist Intern</option>
-        <option value="myntra">🏢 Myntra SDE Intern</option>
-        <option value="custom">✏️ Custom / Blank Draft</option>
+        <option value="toshiba">Toshiba Software GET (IoT & Systems)</option>
+        <option value="aditya">Aditya Birla Group (GDNA PRIME)</option>
+        <option value="amazon">Amazon Applied Scientist Intern</option>
+        <option value="myntra">Myntra SDE Intern</option>
+        <option value="custom">Custom Draft</option>
       </select>
 
       <button class="btn btn-primary" onclick="triggerPrint()">
-        🖨️ Print / Save PDF
+        Print / Save PDF
       </button>
 
       <button class="btn" onclick="exportJSON()">
-        💾 Export
+        Export JSON
       </button>
 
       <button class="btn" onclick="document.getElementById('importFile').click()">
-        📂 Import
+        Import JSON
       </button>
       <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importJSON(event)">
     </div>
@@ -717,8 +718,8 @@
 
   <!-- Mobile View Toggle -->
   <div class="mobile-tab-bar">
-    <button id="tabEdit" class="mobile-tab-btn active" onclick="switchMobileTab('edit')">✏️ Edit Fields</button>
-    <button id="tabPreview" class="mobile-tab-btn" onclick="switchMobileTab('preview')">👁️ Live Resume</button>
+    <button id="tabEdit" class="mobile-tab-btn active" onclick="switchMobileTab('edit')">Edit Fields</button>
+    <button id="tabPreview" class="mobile-tab-btn" onclick="switchMobileTab('preview')">Live Resume</button>
   </div>
 
   <!-- Main Workspace -->
@@ -730,8 +731,8 @@
       <!-- Profile & Contact (COLLAPSED BY DEFAULT) -->
       <div class="section-card is-collapsed" id="cardProfile">
         <div class="section-header" onclick="toggleSection('cardProfile')">
-          <span>👤 Header & Contact Info</span>
-          <span class="chevron">▼</span>
+          <span>Header & Contact Information</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="form-group">
@@ -764,8 +765,8 @@
       <!-- Education (COLLAPSED BY DEFAULT) -->
       <div class="section-card is-collapsed" id="cardEdu">
         <div class="section-header" onclick="toggleSection('cardEdu')">
-          <span>🎓 Education</span>
-          <span class="chevron">▼</span>
+          <span>Education</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="eduContainer"></div>
@@ -776,8 +777,8 @@
       <!-- Experience (COLLAPSED BY DEFAULT) -->
       <div class="section-card is-collapsed" id="cardExp">
         <div class="section-header" onclick="toggleSection('cardExp')">
-          <span>💼 Experience</span>
-          <span class="chevron">▼</span>
+          <span>Experience</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="expContainer"></div>
@@ -788,8 +789,8 @@
       <!-- Projects (EXPANDED BY DEFAULT) -->
       <div class="section-card" id="cardProjects">
         <div class="section-header" onclick="toggleSection('cardProjects')">
-          <span>🚀 Projects</span>
-          <span class="chevron">▼</span>
+          <span>Projects</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="projectsContainer"></div>
@@ -800,8 +801,8 @@
       <!-- Research & Publications -->
       <div class="section-card is-collapsed" id="cardPubs">
         <div class="section-header" onclick="toggleSection('cardPubs')">
-          <span>📚 Research & Publications</span>
-          <span class="chevron">▼</span>
+          <span>Research & Publications</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="pubsContainer"></div>
@@ -812,8 +813,8 @@
       <!-- Certifications -->
       <div class="section-card is-collapsed" id="cardCerts">
         <div class="section-header" onclick="toggleSection('cardCerts')">
-          <span>📜 Certifications</span>
-          <span class="chevron">▼</span>
+          <span>Certifications</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="certsContainer"></div>
@@ -824,8 +825,8 @@
       <!-- Skills & Interests -->
       <div class="section-card is-collapsed" id="cardSkills">
         <div class="section-header" onclick="toggleSection('cardSkills')">
-          <span>🛠️ Skills & Interests</span>
-          <span class="chevron">▼</span>
+          <span>Skills & Interests</span>
+          <span class="chevron"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6l4 4 4-4"/></svg></span>
         </div>
         <div class="section-body">
           <div class="items-container" id="skillsContainer"></div>
@@ -838,9 +839,9 @@
     <!-- Live Preview Pane -->
     <section class="preview-pane">
       <div class="page-indicator-bar">
-        <span>📄 Sheet Size: <strong>A4 Portrait</strong></span>
-        <span>•</span>
-        <span id="pageFitBadge" class="badge-success">✓ 1-Page Calibrated</span>
+        <span>Format: <strong>A4 Portrait</strong></span>
+        <span>|</span>
+        <span id="pageFitBadge" class="badge-success">Calibrated (1 Page)</span>
       </div>
 
       <!-- Resume Sheet Container -->
@@ -1429,7 +1430,7 @@
     function deleteItem(sectionKey, index) {
       const list = resumeState[sectionKey];
       if (list.length <= 1) {
-        if (!confirm('Are you sure you want to delete the only item in this section?')) return;
+        if (!confirm('Are you sure you want to delete this item?')) return;
       }
       list.splice(index, 1);
       renderSectionForm(sectionKey);
@@ -1499,6 +1500,9 @@
       updateResume();
     }
 
+    // SVG Drag Handle Icon
+    const gripSvg = `<svg width="10" height="12" viewBox="0 0 10 16" fill="currentColor"><circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg>`;
+
     // FORM RENDERERS
     function renderSectionForm(sectionKey) {
       if (sectionKey === 'education') {
@@ -1517,13 +1521,13 @@
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(edu.institution || `Education #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('education', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('education', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('education', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('education', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('education', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('education', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-row">
@@ -1567,20 +1571,20 @@
           let bulletsHtml = exp.bullets.map((b, bIdx) => `
             <div class="bullet-row">
               <textarea oninput="resumeState.experience[${idx}].bullets[${bIdx}] = this.value; updateResume();">${escapeHtml(b)}</textarea>
-              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('experience', ${idx}, ${bIdx})">×</button>
+              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('experience', ${idx}, ${bIdx})">Delete</button>
             </div>
           `).join('');
 
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(exp.organization || `Experience #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('experience', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('experience', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('experience', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('experience', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('experience', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('experience', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-row">
@@ -1623,20 +1627,20 @@
           let bulletsHtml = proj.bullets.map((b, bIdx) => `
             <div class="bullet-row">
               <textarea oninput="resumeState.projects[${idx}].bullets[${bIdx}] = this.value; updateResume();">${escapeHtml(b)}</textarea>
-              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('projects', ${idx}, ${bIdx})">×</button>
+              <button type="button" class="btn-icon-danger" title="Delete bullet" onclick="removeBullet('projects', ${idx}, ${bIdx})">Delete</button>
             </div>
           `).join('');
 
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(proj.title || `Project #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('projects', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('projects', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('projects', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('projects', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('projects', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('projects', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-row">
@@ -1679,13 +1683,13 @@
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(pub.prefix || `Publication #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('publications', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('publications', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('publications', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('publications', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('publications', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('publications', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-row">
@@ -1719,13 +1723,13 @@
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(cert.name || `Certification #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('certifications', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('certifications', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('certifications', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('certifications', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('certifications', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('certifications', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-row">
@@ -1763,13 +1767,13 @@
           div.innerHTML = `
             <div class="item-card-header">
               <div class="drag-handle" title="Drag to reorder">
-                <span class="drag-icon">⋮⋮</span>
+                <span class="drag-icon">${gripSvg}</span>
                 <span class="item-card-title">${escapeHtml(skill.category || `Category #${idx+1}`)}</span>
               </div>
               <div class="item-card-actions">
-                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('skills', ${idx}, -1)">▲</button>
-                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('skills', ${idx}, 1)">▼</button>
-                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('skills', ${idx})">🗑️</button>
+                <button type="button" class="btn-icon" title="Move Up" onclick="moveItem('skills', ${idx}, -1)">Up</button>
+                <button type="button" class="btn-icon" title="Move Down" onclick="moveItem('skills', ${idx}, 1)">Down</button>
+                <button type="button" class="btn-icon-danger" title="Delete" onclick="deleteItem('skills', ${idx})">Delete</button>
               </div>
             </div>
             <div class="form-group">
@@ -1934,10 +1938,10 @@
       const maxHeight = 1125;
       if (sheet.scrollHeight > maxHeight) {
         badge.className = 'badge-warning';
-        badge.innerText = '⚠️ Content Exceeds 1 Page (Reduce text slightly)';
+        badge.innerText = 'Exceeds 1-Page Limit (Reduce content)';
       } else {
         badge.className = 'badge-success';
-        badge.innerText = '✓ 1-Page Calibrated';
+        badge.innerText = 'Calibrated (1 Page)';
       }
     }
 
@@ -1973,7 +1977,7 @@
           resumeState = JSON.parse(JSON.stringify(data));
           renderAllForms();
           updateResume();
-          alert('Resume data loaded successfully!');
+          alert('Resume data imported successfully.');
         } catch (err) {
           alert('Error reading JSON file: ' + err.message);
         }

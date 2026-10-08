@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="nhai" selected>NHAI Internship (Data Science & AI)</option>
+        <option value="hackerrank" selected>HackerRank SDE Intern</option>
+        <option value="nhai">NHAI Internship (Data Science & AI)</option>
         <option value="tower">Tower Research Capital AI/ML Intern</option>
         <option value="beyond">Beyond Technologies AI Engineer Intern</option>
         <option value="cred">CRED Software Engineering Intern</option>
@@ -1344,6 +1345,110 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      hackerrank: {
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (Backend & Systems) – DB Orchestrator AI",
+            bullets: [
+              "Architected a high-availability database orchestration pipeline and schema router, driving reliable structured data access under strict latency bounds.",
+              "Engineered an AST-level validation perimeter to enforce strict role-based access control (RBAC), programmatically verifying mutations and preventing unauthorized operations.",
+              "Constructed an automated evaluation harness and synthetic execution benchmark suite to stress-test data retrieval accuracy, integrating an autonomous error repair loop."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation & Sequence Modeling",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • LLM Benchmarking",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer (0.9308 F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Weight-Aware Dynamic Dispatch & Optimization System",
+            dates: "Oct 2024 – Nov 2024",
+            tags: "Python • Optimization Algorithms • Systems Architecture • Hardware Endpoints",
+            bullets: [
+              "Designed a multi-cabin dispatch algorithm integrating dynamic mass constraints to optimize routing and prevent unnecessary stops under strict latency bounds.",
+              "Engineered the system to interface with live hardware endpoints and validated algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026)."
+            ]
+          },
+          {
+            title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Deep Learning • Generative Modeling • Synthetic Data Generation",
+            bullets: [
+              "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks.",
+              "Formulated cross-modal generative models to synthesize high-fidelity structural volumes from non-contrast imaging, accelerating downstream diagnostic and automated evaluation workflows (FTNCT 2026)."
+            ]
+          }
+        ],
+        publications: [
+          { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
+          { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
+          { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
+          { prefix: "CICCS 2025: ", title: "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)" },
+          { prefix: "CINE 2026 (IEEE): ", title: "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis" },
+          { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
+          { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
+        ],
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Tools: ",
+            items: "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, Docker, FastAPI, REST APIs, Microservices"
+          },
+          {
+            category: "Systems & Developer Infrastructure: ",
+            items: "AST Code Parsers, Validation Perimeters, Database Orchestration, Algorithmic Optimization, CI/CD, Cloud Systems"
+          },
+          {
+            category: "AI & Machine Learning Frameworks: ",
+            items: "PyTorch, Hugging Face, Transformers, Scikit-learn, LLM Tooling, Evaluation Harnesses, vLLM, NumPy, Pandas"
+          }
+        ]
+      },
       nhai: {
         profile: {
           name: "Valluri Keerthi Ram",
@@ -2895,7 +3000,7 @@
 
     // PRESET LOADING
     function loadPreset(key) {
-      const data = PRESETS[key] || PRESETS.nhai;
+      const data = PRESETS[key] || PRESETS.hackerrank;
       resumeState = JSON.parse(JSON.stringify(data));
       renderAllForms();
       updateResume();
@@ -2943,7 +3048,7 @@
     // INITIALIZATION
     window.addEventListener('DOMContentLoaded', () => {
       checkAuthSession();
-      loadPreset('nhai');
+      loadPreset('hackerrank');
       setTimeout(adjustMobileScale, 100);
     });
   </script>

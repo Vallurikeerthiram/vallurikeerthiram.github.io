@@ -19,19 +19,19 @@
     const dismiss = () => {
       screen.classList.add('loaded');
       document.body.style.overflow = '';
-      setTimeout(heroEntrance, 500);
+      heroEntrance();
     };
 
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => setTimeout(dismiss, 1800));
+      document.fonts.ready.then(() => setTimeout(dismiss, 1300));
     } else {
-      setTimeout(dismiss, 2400);
+      setTimeout(dismiss, 1500);
     }
   }
 
   function heroEntrance() {
-    const els = ['.hero-overline', '.hero-name', '.hero-divider', '.hero-meta', '.scroll-indicator'];
     if (prefersReduced || typeof gsap === 'undefined') {
+      const els = ['.hero-overline', '.hero-name', '.hero-divider', '.hero-meta', '.scroll-indicator'];
       els.forEach(s => {
         const el = document.querySelector(s);
         if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
@@ -39,11 +39,11 @@
       return;
     }
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.to('.hero-overline', { opacity: 1, y: 0, duration: 1 })
-      .to('.hero-name', { opacity: 1, y: 0, duration: 1.2 }, '-=0.6')
-      .to('.hero-divider', { opacity: 1, scaleX: 1, duration: 0.8 }, '-=0.5')
-      .to('.hero-meta', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
-      .to('.scroll-indicator', { opacity: 1, duration: 1 }, '-=0.3');
+    tl.fromTo('.hero-overline', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, delay: 0.15 })
+      .fromTo('.hero-name', { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 1.2 }, '-=0.7')
+      .fromTo('.hero-divider', { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.8 }, '-=0.6')
+      .fromTo('.hero-meta', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
+      .fromTo('.scroll-indicator', { opacity: 0 }, { opacity: 1, duration: 1.0 }, '-=0.4');
   }
 
   // ─────────────────────────────────────────────
@@ -392,7 +392,7 @@
 
     document.querySelectorAll('.interactive-card').forEach(addHoverTarget);
     addHoverTarget(document.getElementById('view-all-btn'));
-    addHoverTarget(document.getElementById('view-all-certs-btn'));
+    addHoverTarget(document.getElementById('view-all-pubs-btn'));
   }
 
   // ─────────────────────────────────────────────
@@ -425,6 +425,7 @@
     const countSpan = btn.querySelector('#view-all-count') || btn.querySelector('.btn-count');
     const textSpan = btn.querySelector('.btn-text');
     let expanded = false;
+    let isCollapsing = false;
     const projectCards = Array.from(grid.querySelectorAll('.project-card'));
     
     function updateProjectVisibility() {
@@ -455,11 +456,12 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (!expanded) updateProjectVisibility();
+        if (!expanded && !isCollapsing) updateProjectVisibility();
       }, 150);
     }, { passive: true });
 
     btn.addEventListener('click', () => {
+      if (isCollapsing) return;
       expanded = !expanded;
       if (expanded) {
         grid.classList.add('projects-expanded');
@@ -468,42 +470,50 @@
         if (countSpan) countSpan.textContent = '';
         grid.querySelectorAll('.hidden-project').forEach(card => card.classList.add('visible'));
       } else {
+        isCollapsing = true;
+        btn.classList.remove('expanded');
+        if (textSpan) textSpan.textContent = 'View All Projects';
+        grid.classList.add('projects-collapsing');
+
         const gridTop = grid.getBoundingClientRect().top + window.scrollY - 80;
         if (window.scrollY > gridTop + 150) {
           window.scrollTo({ top: gridTop, behavior: 'smooth' });
         }
-        grid.classList.remove('projects-expanded');
-        btn.classList.remove('expanded');
-        if (textSpan) textSpan.textContent = 'View All Projects';
-        updateProjectVisibility();
+
+        setTimeout(() => {
+          grid.classList.remove('projects-expanded');
+          grid.classList.remove('projects-collapsing');
+          updateProjectVisibility();
+          isCollapsing = false;
+        }, 350);
       }
     });
   }
 
-  function initViewAllCerts() {
-    const btn = document.getElementById('view-all-certs-btn');
-    const list = document.getElementById('cert-list');
+  function initViewAllPubs() {
+    const btn = document.getElementById('view-all-pubs-btn');
+    const list = document.getElementById('pub-list');
     if (!btn || !list) return;
 
-    const countSpan = btn.querySelector('#view-all-certs-count') || btn.querySelector('.btn-count');
+    const countSpan = btn.querySelector('#view-all-pubs-count') || btn.querySelector('.btn-count');
     const textSpan = btn.querySelector('.btn-text');
     let expanded = false;
-    const certRows = Array.from(list.querySelectorAll('.cert-row'));
+    let isCollapsing = false;
+    const pubRows = Array.from(list.querySelectorAll('.pub-row'));
 
-    function updateCertVisibility() {
+    function updatePubVisibility() {
       if (expanded) return;
-
       const visibleCount = 3;
 
-      certRows.forEach((row, index) => {
+      pubRows.forEach((row, index) => {
         if (index < visibleCount) {
-          row.classList.remove('hidden-cert');
+          row.classList.remove('hidden-pub');
         } else {
-          row.classList.add('hidden-cert');
+          row.classList.add('hidden-pub');
         }
       });
 
-      const hiddenCount = certRows.length - visibleCount;
+      const hiddenCount = pubRows.length - visibleCount;
       if (hiddenCount > 0) {
         btn.style.display = 'inline-flex';
         if (countSpan) countSpan.textContent = `(${hiddenCount} more)`;
@@ -512,32 +522,41 @@
       }
     }
 
-    updateCertVisibility();
+    updatePubVisibility();
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (!expanded) updateCertVisibility();
+        if (!expanded && !isCollapsing) updatePubVisibility();
       }, 150);
     }, { passive: true });
 
     btn.addEventListener('click', () => {
+      if (isCollapsing) return;
       expanded = !expanded;
       if (expanded) {
-        list.classList.add('certs-expanded');
+        list.classList.add('pubs-expanded');
         btn.classList.add('expanded');
         if (textSpan) textSpan.textContent = 'Show Less';
         if (countSpan) countSpan.textContent = '';
-        list.querySelectorAll('.hidden-cert').forEach(row => row.classList.add('visible'));
+        list.querySelectorAll('.hidden-pub').forEach(row => row.classList.add('visible'));
       } else {
+        isCollapsing = true;
+        btn.classList.remove('expanded');
+        if (textSpan) textSpan.textContent = 'View All Publications';
+        list.classList.add('pubs-collapsing');
+
         const listTop = list.getBoundingClientRect().top + window.scrollY - 80;
         if (window.scrollY > listTop + 100) {
           window.scrollTo({ top: listTop, behavior: 'smooth' });
         }
-        list.classList.remove('certs-expanded');
-        btn.classList.remove('expanded');
-        if (textSpan) textSpan.textContent = 'View All Certifications';
-        updateCertVisibility();
+
+        setTimeout(() => {
+          list.classList.remove('pubs-expanded');
+          list.classList.remove('pubs-collapsing');
+          updatePubVisibility();
+          isCollapsing = false;
+        }, 350);
       }
     });
   }
@@ -565,7 +584,7 @@
     initHoverEffects();
     initScrollReveal();
     initViewAll();
-    initViewAllCerts();
+    initViewAllPubs();
     initContactForm();
   }
 

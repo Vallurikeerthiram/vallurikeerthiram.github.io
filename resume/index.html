@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="beyond" selected>Beyond Technologies AI Engineer Intern</option>
+        <option value="tower" selected>Tower Research Capital AI/ML Intern</option>
+        <option value="beyond">Beyond Technologies AI Engineer Intern</option>
         <option value="cred">CRED Software Engineering Intern</option>
         <option value="toshiba">Toshiba Software GET (IoT & Systems)</option>
         <option value="aditya">Aditya Birla Group (GDNA PRIME)</option>
@@ -1342,6 +1343,110 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      tower: {
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (AI Agent Systems) – DB Orchestrator AI",
+            bullets: [
+              "Architected multi-agent orchestration pipelines with Model Context Protocol (MCP) tool integration and schema routing, driving high-reliability tool-calling and structured execution under strict latency bounds.",
+              "Engineered deterministic AST verification guardrails to validate agent code generation and transactional queries, preventing catastrophic mutations and enforcing rigorous policy and risk constraints.",
+              "Constructed an automated evaluation harness and synthetic benchmark suite to stress-test agent tool-calling, integrating an autonomous self-healing error repair loop."
+            ]
+          }
+        ],
+        projects: [
+          {
+            title: "Quantitative Systematic Trading Platform: Probabilistic Scalping & Compounding",
+            dates: "Jan 2025 – May 2025",
+            tags: "Python • Statistical Modeling • Probability Algorithms • Financial Data • Risk Controls",
+            bullets: [
+              "Engineered an automated quantitative trading platform applying probabilistic models and statistical distribution analysis to execute high-velocity scalping strategies across live digital asset markets.",
+              "Formulated dynamic position-sizing and compounding algorithms with automated risk controls and draw-down caps, publishing empirical findings under ICCTWC 2026."
+            ]
+          },
+          {
+            title: "Breaking the Continuum: Neural Word Segmentation & Sequence Modeling",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • LLM Benchmarking",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer (0.9308 F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Deep Learning • Generative Modeling • Synthetic Data Generation",
+            bullets: [
+              "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks.",
+              "Formulated cross-modal generative models to synthesize high-fidelity structural volumes from non-contrast imaging, accelerating downstream diagnostic and automated evaluation workflows (FTNCT 2026)."
+            ]
+          }
+        ],
+        publications: [
+          { prefix: "IITCEE 2027: ", title: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
+          { prefix: "FTNCT 2026: ", title: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
+          { prefix: "ICKECS 2026 (IEEE): ", title: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
+          { prefix: "CICCS 2025: ", title: "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)" },
+          { prefix: "CINE 2026 (IEEE): ", title: "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis" },
+          { prefix: "ICCTWC 2026: ", title: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
+          { prefix: "Journal of Engineering Design and Analysis (2026): ", title: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
+        ],
+        certifications: [
+          {
+            name: "AWS Certified Cloud Practitioner",
+            date: "May 2026 | AWS",
+            credentialId: "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
+          },
+          {
+            name: "Introduction to Modern AI",
+            date: "Cisco • 2026",
+            credentialId: ""
+          },
+          {
+            name: "Project Management Foundations",
+            date: "Oct 2024 | PMI & NASBA",
+            credentialId: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
+          }
+        ],
+        skills: [
+          {
+            category: "Languages & Core Tools: ",
+            items: "Python, SQL (PostgreSQL, MySQL), Git & GitHub, Docker, FastAPI, REST APIs, Microservices, CI/CD"
+          },
+          {
+            category: "Agentic AI & LLM Tooling: ",
+            items: "Multi-Agent Orchestration, Model Context Protocol (MCP), Claude Code, Agent Skills, Tool-Calling, AST Verification"
+          },
+          {
+            category: "Machine Learning & Quantitative ML: ",
+            items: "PyTorch, TensorFlow, Scikit-learn, Statistical Modeling, MLOps, Model Optimization, vLLM, NumPy, Pandas"
+          }
+        ]
+      },
       beyond: {
         profile: {
           name: "Valluri Keerthi Ram",
@@ -2685,7 +2790,7 @@
 
     // PRESET LOADING
     function loadPreset(key) {
-      const data = PRESETS[key] || PRESETS.beyond;
+      const data = PRESETS[key] || PRESETS.tower;
       resumeState = JSON.parse(JSON.stringify(data));
       renderAllForms();
       updateResume();
@@ -2733,7 +2838,7 @@
     // INITIALIZATION
     window.addEventListener('DOMContentLoaded', () => {
       checkAuthSession();
-      loadPreset('beyond');
+      loadPreset('tower');
       setTimeout(adjustMobileScale, 100);
     });
   </script>

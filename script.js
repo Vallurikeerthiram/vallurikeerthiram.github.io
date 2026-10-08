@@ -154,12 +154,11 @@
           float elevation = getElevation(pos, uTime);
           pos.y += elevation;
           
-          // GROUND DIPS ON HOVER: Makes hover effect extremely obvious and physical
+          // GROUND DIPS ON HOVER: Subtle, natural sand contour
           float dist = distance(pos.xz, uMouse.xz);
-          if (uHover > 0.0 && dist < 14.0) {
-            float force = (1.0 - (dist / 14.0)) * uHover;
-            // Sink the mesh down slightly to create a crater/depression
-            pos.y -= force * 2.5; 
+          if (uHover > 0.0 && dist < 16.0) {
+            float force = smoothstep(16.0, 0.0, dist) * uHover;
+            pos.y -= force * 1.5; 
           }
           
           vPos = pos;
@@ -231,13 +230,13 @@
           float elevation = getElevation(pos, uTime);
           pos.y += elevation;
           
-          // PARTICLES FLY UP ON HOVER: Contrasts with the ground dipping
+          // PARTICLES LIFT ON HOVER: Smooth kinetic dune flutter
           float dist = distance(pos.xz, uMouse.xz);
-          if (uHover > 0.0 && dist < 14.0) {
-            float force = (1.0 - (dist / 14.0)) * uHover;
-            pos.y += force * 10.0 * aRandom; // Fly up high
-            float angle = atan(pos.z - uMouse.z, pos.x - uMouse.x) + (force * 3.0); 
-            float currentRadius = dist + (force * 2.0);
+          if (uHover > 0.0 && dist < 16.0) {
+            float force = smoothstep(16.0, 0.0, dist) * uHover;
+            pos.y += force * 4.0 * (aRandom + 0.5);
+            float angle = atan(pos.z - uMouse.z, pos.x - uMouse.x) + (force * 1.5); 
+            float currentRadius = dist + (force * 1.2);
             pos.x = uMouse.x + cos(angle) * currentRadius;
             pos.z = uMouse.z + sin(angle) * currentRadius;
           }
@@ -316,8 +315,8 @@
     }, { passive: true });
 
     // ── Scroll Sync ──
-    let scrollY = 0;
-    let targetScrollY = 0;
+    let scrollY = window.scrollY;
+    let targetScrollY = window.scrollY;
     window.addEventListener('scroll', () => { targetScrollY = window.scrollY; }, { passive: true });
 
     // ── Animation Loop ──
@@ -329,26 +328,32 @@
       
       const timeScale = prefersReduced ? 0.15 : 1.0;
       uniforms.uTime.value = elapsedTime * timeScale;
-      uniforms.uHover.value = lerp(uniforms.uHover.value, uHoverIntensity, 0.1);
+      uniforms.uHover.value = lerp(uniforms.uHover.value, uHoverIntensity, 0.08);
       
-      // Update raycaster every frame because camera moves during scroll!
-      raycaster.setFromCamera(mouse, camera);
-      raycaster.ray.intersectPlane(hitPlane, uMouse3D);
-      uniforms.uMouse.value.copy(uMouse3D);
+      // Update raycaster smoothly when mouse is inside viewport
+      if (mouse.x > -2 && mouse.x < 2 && mouse.y > -2 && mouse.y < 2) {
+        raycaster.setFromCamera(mouse, camera);
+        const hit = raycaster.ray.intersectPlane(hitPlane, uMouse3D);
+        if (hit) {
+          uniforms.uMouse.value.lerp(uMouse3D, 0.12);
+        }
+      }
 
-      scrollY = lerp(scrollY, targetScrollY, 0.05);
-      const scrollRatio = scrollY / (document.body.scrollHeight - window.innerHeight || 1);
+      scrollY = lerp(scrollY, targetScrollY, 0.08);
+      const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+      const scrollRatio = Math.min(Math.max(scrollY / maxScroll, 0), 1);
       
       if (!prefersReduced) {
-        // Dynamic camera travel for full visual experience
-        camera.position.z = initialCamZ - (scrollRatio * (isMobile ? 35 : 45));
-        camera.position.y = initialCamY - (scrollRatio * 3) + Math.sin(scrollRatio * Math.PI * 4) * 2.0;
-        camera.lookAt(0, camera.position.y - 7, camera.position.z - 20);
+        // Serene, majestic camera glide across dunes without pitch rocking
+        const travelZ = isMobile ? 32 : 42;
+        camera.position.z = initialCamZ - (scrollRatio * travelZ);
+        camera.position.y = initialCamY - (scrollRatio * 3.5);
+        camera.lookAt(0, camera.position.y - 6.5, camera.position.z - 22);
       } else {
-        // Gentle, non-disorienting camera adjustment for reduced-motion users
+        // Gentle, non-disorienting adjustment for reduced-motion users
         camera.position.z = initialCamZ - (scrollRatio * 15);
         camera.position.y = initialCamY - (scrollRatio * 1.5);
-        camera.lookAt(0, camera.position.y - 7, camera.position.z - 20);
+        camera.lookAt(0, camera.position.y - 6.5, camera.position.z - 22);
       }
 
       renderer.render(scene, camera);
@@ -379,22 +384,15 @@
   function initHoverEffects() {
     if (prefersReduced) return;
     
-    document.querySelectorAll('.interactive-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        uHoverIntensity = 1.0;
-        card.style.borderColor = 'var(--accent-light)';
-      });
-      card.addEventListener('mouseleave', () => {
-        uHoverIntensity = 0.0;
-        card.style.borderColor = '';
-      });
-    });
-    
-    const btn = document.getElementById('view-all-btn');
-    if (btn) {
-      btn.addEventListener('mouseenter', () => uHoverIntensity = 1.0);
-      btn.addEventListener('mouseleave', () => uHoverIntensity = 0.0);
-    }
+    const addHoverTarget = (el) => {
+      if (!el) return;
+      el.addEventListener('mouseenter', () => { uHoverIntensity = 0.6; }, { passive: true });
+      el.addEventListener('mouseleave', () => { uHoverIntensity = 0.0; }, { passive: true });
+    };
+
+    document.querySelectorAll('.interactive-card').forEach(addHoverTarget);
+    addHoverTarget(document.getElementById('view-all-btn'));
+    addHoverTarget(document.getElementById('view-all-certs-btn'));
   }
 
   // ─────────────────────────────────────────────
@@ -422,14 +420,15 @@
   function initViewAll() {
     const btn = document.getElementById('view-all-btn');
     const grid = document.getElementById('projects-grid');
-    const countSpan = document.getElementById('view-all-count');
     if (!btn || !grid) return;
     
+    const countSpan = btn.querySelector('#view-all-count') || btn.querySelector('.btn-count');
+    const textSpan = btn.querySelector('.btn-text');
     let expanded = false;
     const projectCards = Array.from(grid.querySelectorAll('.project-card'));
     
     function updateProjectVisibility() {
-      if (expanded) return; // If expanded, everything is visible
+      if (expanded) return;
       
       const isMobile = window.innerWidth < 768;
       const visibleCount = isMobile ? 3 : 6;
@@ -444,31 +443,39 @@
       
       const hiddenCount = projectCards.length - visibleCount;
       if (hiddenCount > 0) {
-        btn.style.display = 'flex';
+        btn.style.display = 'inline-flex';
         if (countSpan) countSpan.textContent = `(${hiddenCount} more)`;
       } else {
-        btn.style.display = 'none'; // hide button if no hidden projects
+        btn.style.display = 'none';
       }
     }
     
-    // Initial setup
     updateProjectVisibility();
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      if (!expanded) updateProjectVisibility();
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!expanded) updateProjectVisibility();
+      }, 150);
+    }, { passive: true });
 
     btn.addEventListener('click', () => {
       expanded = !expanded;
-      grid.classList.toggle('projects-expanded', expanded);
       if (expanded) {
-        btn.innerHTML = 'Show Less <span class="arrow">↑</span>';
+        grid.classList.add('projects-expanded');
+        btn.classList.add('expanded');
+        if (textSpan) textSpan.textContent = 'Show Less';
+        if (countSpan) countSpan.textContent = '';
         grid.querySelectorAll('.hidden-project').forEach(card => card.classList.add('visible'));
       } else {
-        btn.innerHTML = 'View All Projects <span style="color:var(--text-3); font-size:0.8em;" id="view-all-count"></span> <span class="arrow">↓</span>';
+        const gridTop = grid.getBoundingClientRect().top + window.scrollY - 80;
+        if (window.scrollY > gridTop + 150) {
+          window.scrollTo({ top: gridTop, behavior: 'smooth' });
+        }
+        grid.classList.remove('projects-expanded');
+        btn.classList.remove('expanded');
+        if (textSpan) textSpan.textContent = 'View All Projects';
         updateProjectVisibility();
-        // Scroll back up to the projects section slightly
-        const y = grid.getBoundingClientRect().top + window.scrollY - 100;
-        window.scrollTo({top: y, behavior: 'smooth'});
       }
     });
   }
@@ -476,9 +483,10 @@
   function initViewAllCerts() {
     const btn = document.getElementById('view-all-certs-btn');
     const list = document.getElementById('cert-list');
-    const countSpan = document.getElementById('view-all-certs-count');
     if (!btn || !list) return;
 
+    const countSpan = btn.querySelector('#view-all-certs-count') || btn.querySelector('.btn-count');
+    const textSpan = btn.querySelector('.btn-text');
     let expanded = false;
     const certRows = Array.from(list.querySelectorAll('.cert-row'));
 
@@ -497,7 +505,7 @@
 
       const hiddenCount = certRows.length - visibleCount;
       if (hiddenCount > 0) {
-        btn.style.display = 'flex';
+        btn.style.display = 'inline-flex';
         if (countSpan) countSpan.textContent = `(${hiddenCount} more)`;
       } else {
         btn.style.display = 'none';
@@ -505,21 +513,31 @@
     }
 
     updateCertVisibility();
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      if (!expanded) updateCertVisibility();
-    });
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!expanded) updateCertVisibility();
+      }, 150);
+    }, { passive: true });
 
     btn.addEventListener('click', () => {
       expanded = !expanded;
-      list.classList.toggle('certs-expanded', expanded);
       if (expanded) {
-        btn.innerHTML = 'Show Less <span class="arrow">↑</span>';
+        list.classList.add('certs-expanded');
+        btn.classList.add('expanded');
+        if (textSpan) textSpan.textContent = 'Show Less';
+        if (countSpan) countSpan.textContent = '';
         list.querySelectorAll('.hidden-cert').forEach(row => row.classList.add('visible'));
       } else {
-        btn.innerHTML = 'View All Certifications <span style="color:var(--text-3); font-size:0.8em;" id="view-all-certs-count"></span> <span class="arrow">↓</span>';
+        const listTop = list.getBoundingClientRect().top + window.scrollY - 80;
+        if (window.scrollY > listTop + 100) {
+          window.scrollTo({ top: listTop, behavior: 'smooth' });
+        }
+        list.classList.remove('certs-expanded');
+        btn.classList.remove('expanded');
+        if (textSpan) textSpan.textContent = 'View All Certifications';
         updateCertVisibility();
-        const y = list.getBoundingClientRect().top + window.scrollY - 100;
-        window.scrollTo({top: y, behavior: 'smooth'});
       }
     });
   }

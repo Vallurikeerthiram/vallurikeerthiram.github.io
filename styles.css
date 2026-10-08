@@ -109,7 +109,7 @@ main{position:relative;z-index:1}
 .card-tags{display:flex;flex-wrap:wrap;gap:.5rem}
 .tag{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.05em;padding:6px 12px;border:1px solid var(--text-2);color:var(--text-1)}
 
-.view-all-btn{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:4rem auto 0;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-0);padding:16px 36px;border:1px solid var(--text-0);transition:all .3s var(--ease-out)}
+.view-all-btn{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:4rem auto 0;font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-0);padding:16px 36px;border:1px solid var(--text-0);transition:all .3s var(--ease-out);cursor:pointer;background:transparent}
 .view-all-btn:hover{background:var(--text-0);color:#f7f2ea}
 .view-all-btn .arrow{transition:transform .3s ease}
 
@@ -135,6 +135,8 @@ main{position:relative;z-index:1}
 .cert-name{font-family:var(--f-display);font-size:1.4rem;font-weight:400;color:var(--text-0);transition:color .3s ease}
 .cert-row:hover .cert-name{color:var(--accent)}
 .cert-issuer{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.cert-row.hidden-cert{display:none}
+.certs-expanded .cert-row.hidden-cert{display:flex;animation:cardReveal .6s var(--ease-out) forwards;animation-delay:var(--d,0s)}
 
 /* ── 11. CONTACT (Massive Links & Form) ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;align-items:end}

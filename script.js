@@ -473,6 +473,57 @@
     });
   }
 
+  function initViewAllCerts() {
+    const btn = document.getElementById('view-all-certs-btn');
+    const list = document.getElementById('cert-list');
+    const countSpan = document.getElementById('view-all-certs-count');
+    if (!btn || !list) return;
+
+    let expanded = false;
+    const certRows = Array.from(list.querySelectorAll('.cert-row'));
+
+    function updateCertVisibility() {
+      if (expanded) return;
+
+      const visibleCount = 3;
+
+      certRows.forEach((row, index) => {
+        if (index < visibleCount) {
+          row.classList.remove('hidden-cert');
+        } else {
+          row.classList.add('hidden-cert');
+        }
+      });
+
+      const hiddenCount = certRows.length - visibleCount;
+      if (hiddenCount > 0) {
+        btn.style.display = 'flex';
+        if (countSpan) countSpan.textContent = `(${hiddenCount} more)`;
+      } else {
+        btn.style.display = 'none';
+      }
+    }
+
+    updateCertVisibility();
+    window.addEventListener('resize', () => {
+      if (!expanded) updateCertVisibility();
+    });
+
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
+      list.classList.toggle('certs-expanded', expanded);
+      if (expanded) {
+        btn.innerHTML = 'Show Less <span class="arrow">↑</span>';
+        list.querySelectorAll('.hidden-cert').forEach(row => row.classList.add('visible'));
+      } else {
+        btn.innerHTML = 'View All Certifications <span style="color:var(--text-3); font-size:0.8em;" id="view-all-certs-count"></span> <span class="arrow">↓</span>';
+        updateCertVisibility();
+        const y = list.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({top: y, behavior: 'smooth'});
+      }
+    });
+  }
+
   function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
@@ -496,6 +547,7 @@
     initHoverEffects();
     initScrollReveal();
     initViewAll();
+    initViewAllCerts();
     initContactForm();
   }
 

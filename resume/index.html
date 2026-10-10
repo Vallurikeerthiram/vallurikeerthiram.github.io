@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="rubrik" selected>Rubrik Software Engineer - Winter Intern</option>
+        <option value="qentelli" selected>Qentelli AI / ML & Agentic AI Engineer</option>
+        <option value="rubrik">Rubrik Software Engineer - Winter Intern</option>
         <option value="hashedin">HashedIn by Deloitte SDE Intern</option>
         <option value="ea">EA AI Software Engineer Intern</option>
         <option value="qualcomm">Qualcomm Interim Patent Intern</option>
@@ -1351,6 +1352,90 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      qentelli: {
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (Data & AI Platforms) – DB Orchestrator AI",
+            bullets: [
+              "Architected a cloud-native database orchestration platform and dynamic schema router executing multi-table SQL queries, filtering, and aggregations under strict latency bounds.",
+              "Engineered an AST-level validation perimeter to enforce data governance, zero-trust access control, and structural verification of mutations and permission rules.",
+              "Constructed an automated evaluation harness and synthetic execution benchmark suite to stress-test data retrieval fidelity, integrating an autonomous error repair loop."
+            ]
+          }
+        ],
+        projects: [
+          {
+            name: "Breaking the Continuum: Neural Word Segmentation & Sequence Modeling",
+            dates: "Jan 2026 – Present",
+            tags: "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • LLM Benchmarking",
+            bullets: [
+              "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer (0.9308 F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
+            ]
+          },
+          {
+            name: "Multilingual Transformer Emotion & Sentiment Detection (IEEE ICKECS)",
+            dates: "Aug 2025 – Nov 2025",
+            tags: "Python • PyTorch • Multilingual Transformers • Data Augmentation • NLP",
+            bullets: [
+              "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and sentiment detection over low-resource Dravidian text.",
+              "Mitigated severe corpus class imbalance through contextual translation and back-translation pipelines, achieving a macro F1-score of 0.784 and publishing findings in IEEE ICKECS (2026)."
+            ]
+          },
+          {
+            name: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Deep Learning • Generative Modeling • Synthetic Data Generation",
+            bullets: [
+              "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks.",
+              "Formulated cross-modal generative models to synthesize high-fidelity structural volumes from non-contrast imaging, accelerating downstream diagnostic and automated evaluation workflows (FTNCT 2026)."
+            ]
+          }
+        ],
+        publications: [
+          { prefix: "IITCEE 2027:", text: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
+          { prefix: "FTNCT 2026:", text: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
+          { prefix: "ICKECS 2026 (IEEE):", text: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
+          { prefix: "CICCS 2025:", text: "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)" },
+          { prefix: "CINE 2026 (IEEE):", text: "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis" },
+          { prefix: "ICCTWC 2026:", text: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
+          { prefix: "Journal of Engineering Design and Analysis (2026):", text: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
+        ],
+        certifications: [
+          { name: "AWS Certified Cloud Practitioner", dates: "May 2026", details: "Credentials: 1118bc1d19af4214a1d5da0f72b73039", authority: "AWS" },
+          { name: "Introduction to Modern AI", dates: "", details: "", authority: "Cisco" },
+          { name: "Project Management Foundations", dates: "Oct 2024", details: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4", authority: "PMI & NASBA" }
+        ],
+        skills: [
+          { label: "AI, GenAI & Modeling", text: "PyTorch, Transformers, Agentic AI, RAG Architectures, Scikit-learn, LLM Benchmarking" },
+          { label: "Languages & Cloud", text: "Python, Java, SQL (PostgreSQL, MySQL), AWS Cloud Practitioner, Docker, REST APIs" },
+          { label: "Systems & Architecture", text: "AST Validation, Schema Routing, Object-Oriented Design, Git & GitHub, CI/CD, SDLC" }
+        ]
+      },
+
       rubrik: {
         profile: {
           name: "Valluri Keerthi Ram",

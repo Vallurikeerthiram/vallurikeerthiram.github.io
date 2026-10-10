@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="airbus" selected>Airbus India GenAI Intern (JR10446597)</option>
+        <option value="amazon" selected>Amazon SDE I Intern 6-Month 2027 (Job ID: 10541345)</option>
+        <option value="airbus">Airbus India GenAI Intern (JR10446597)</option>
         <option value="qentelli">Qentelli AI / ML & Agentic AI Engineer</option>
         <option value="rubrik">Rubrik Software Engineer - Winter Intern</option>
         <option value="hashedin">HashedIn by Deloitte SDE Intern</option>
@@ -1353,6 +1354,90 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      amazon: {
+        profile: {
+          name: "Valluri Keerthi Ram",
+          location: "Bangalore, 560035",
+          phone: "+91 8309247221",
+          email: "keerthiramvalluri@gmail.com",
+          portfolio: "https://vallurikeerthiram.github.io/"
+        },
+        education: [
+          {
+            institution: "Amrita Vishwa Vidyapeetham",
+            location: "ASEB, Bangalore",
+            degree: "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+            dates: "2023–Present"
+          },
+          {
+            institution: "Central Board of Secondary Education",
+            location: "",
+            degree: "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+            dates: "2021–2023 | 2021"
+          }
+        ],
+        experience: [
+          {
+            organization: "AlgoUniversity",
+            dates: "June 2026 – July 2026",
+            role: "Software Engineering Intern (Distributed Systems & AI) – DB Orchestrator",
+            bullets: [
+              "Architected an AST-validated query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), processing analytical and transactional queries under sub-second SLA bounds.",
+              "Engineered zero-trust access control boundaries and structural schema verification, preventing unauthorized mutations and ensuring ACID compliance across distributed multi-tenant workflows.",
+              "Constructed an automated execution benchmark suite and synthetic test harness with an autonomous self-repair loop, elevating retrieval accuracy from 72% to 94% across ambiguous, enterprise-scale schemas."
+            ]
+          }
+        ],
+        projects: [
+          {
+            name: "Breaking the Continuum: High-Throughput Sequence Modeling & Viterbi Optimization",
+            dates: "Jan 2026 – Present",
+            tags: "Python • Algorithms & Complexity • Linear-Chain CRF • Dynamic Programming • PyTorch",
+            bullets: [
+              "Designed a character-first sequence tagging architecture combining BiLSTM feature extractors with a Linear-Chain CRF decoder and dynamic programming Viterbi decoding, achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+              "Devised a 4-line Rolling Context buffer across 50-character slices to prevent boundary truncation; suppressed invalid transitions to <0.02% and reduced inference compute footprint by 85% compared to large LLMs (IITCEE 2027)."
+            ]
+          },
+          {
+            name: "Real-World Constrained Optimization Engine: Weight-Aware Dynamic Scheduling",
+            dates: "Jan 2026 – Mar 2026",
+            tags: "Python • Optimization Mathematics • Linear/Nonlinear Programming • Queuing Theory",
+            bullets: [
+              "Formulated a discrete optimization and dynamic scheduling algorithm handling multi-passenger weight constraints and spatial distribution, minimizing peak dispatch latency and energy consumption.",
+              "Benchmarked against classical SCAN and LOOK heuristics across synthetic traffic distributions, achieving a 28% reduction in passenger wait times under saturated real-world loads (Journal of EDA, 2026)."
+            ]
+          },
+          {
+            name: "Cross-Modality 3D Generative Synthesis & High-Dimensional Vision Pipeline",
+            dates: "July 2026 – Present",
+            tags: "Python • 3D Deep Learning • Distributed Data Pipelines • Scalable Architecture",
+            bullets: [
+              "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation (CT-to-MRI), optimizing latent representations and spatial consistency to bypass severe GPU bottlenecks.",
+              "Designed scalable preprocessing and volumetric augmentation pipelines over multi-gigabyte medical imaging sets, accelerating automated evaluation and diagnostic workflows (FTNCT 2026)."
+            ]
+          }
+        ],
+        publications: [
+          { prefix: "IITCEE 2027:", text: "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)" },
+          { prefix: "FTNCT 2026:", text: "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)" },
+          { prefix: "ICKECS 2026 (IEEE):", text: "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models" },
+          { prefix: "CICCS 2025:", text: "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)" },
+          { prefix: "CINE 2026 (IEEE):", text: "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis" },
+          { prefix: "ICCTWC 2026:", text: "Crypto Trading Platform Using Probability for Scalping and Compounding" },
+          { prefix: "Journal of Engineering Design and Analysis (2026):", text: "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm" }
+        ],
+        certifications: [
+          { name: "AWS Certified Cloud Practitioner", dates: "May 2026", details: "Credentials: 1118bc1d19af4214a1d5da0f72b73039", authority: "AWS" },
+          { name: "Introduction to Modern AI", dates: "", details: "", authority: "Cisco" },
+          { name: "Project Management Foundations", dates: "Oct 2024", details: "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4", authority: "PMI & NASBA" }
+        ],
+        skills: [
+          { label: "Languages & Core CS", text: "Java, Python, C++, C, SQL, Object-Oriented Design (OOD), Data Structures & Algorithms, OS" },
+          { label: "Cloud, Systems & DBs", text: "AWS (EC2, S3, IAM, Lambda), Relational Databases (Postgres, MySQL), Redis, Docker, Git, REST APIs" },
+          { label: "Algorithms & Modeling", text: "Optimization Math, Linear Programming, Distributed Query Engines, PyTorch, AST Analysis" }
+        ]
+      },
+
       airbus: {
         profile: {
           name: "Valluri Keerthi Ram",

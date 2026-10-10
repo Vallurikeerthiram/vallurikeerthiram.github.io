@@ -135,6 +135,145 @@
       color: inherit;
       padding: 0;
     }
+    /* Editorial System Architecture Diagram */
+    .system-diagram {
+      margin: 2.5rem 0;
+      padding: 2.5rem 1.8rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .diagram-node.operator-node {
+      text-align: center;
+      padding: 1.2rem 2.2rem;
+      background: rgba(255, 253, 248, 0.95);
+      border: 1px solid var(--card-border-h);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(42, 31, 20, 0.04);
+      max-width: 340px;
+      width: 100%;
+    }
+    .node-pill {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+    .operator-node h3 {
+      font-family: var(--f-serif, serif);
+      font-size: 1.35rem;
+      color: var(--text-0);
+      margin: 0 0 0.2rem;
+    }
+    .operator-node p {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      margin: 0;
+    }
+    .diagram-connector {
+      width: 2px;
+      height: 22px;
+      background: var(--sand-mid);
+    }
+    .diagram-branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    @media(max-width: 720px) {
+      .diagram-branches { grid-template-columns: 1fr; }
+    }
+    .diagram-card {
+      background: rgba(255, 253, 248, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .diagram-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-h);
+    }
+    .diagram-card.proxy-card { border-top: 3px solid var(--sand-dark); }
+    .diagram-card.companion-card { border-top: 3px solid var(--accent); }
+    .card-kicker {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-bottom: 0.3rem;
+    }
+    .diagram-card h4 {
+      font-family: var(--f-serif, serif);
+      font-size: 1.3rem;
+      color: var(--text-0);
+      margin: 0 0 0.2rem;
+    }
+    .card-sub {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .diagram-features {
+      list-style: none !important;
+      margin: 0 0 1.5rem 0 !important;
+      padding: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .diagram-features li {
+      font-size: 0.88rem;
+      color: var(--text-1);
+      line-height: 1.5;
+      padding-left: 1.2rem;
+      position: relative;
+      margin: 0;
+    }
+    .diagram-features li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .diagram-dest {
+      padding-top: 1rem;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .dest-badge {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-2);
+    }
+    .dest-quote {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--text-0);
+      font-weight: 500;
+      margin: 0;
+    }
     .cta-box {
       margin-top: 4rem;
       padding: 2.2rem;
@@ -194,25 +333,53 @@
       <h2>2. The Dual-Persona Framework</h2>
       <p>Instead of forcing people to match erratic schedules, Project Echo deploys localized digital twins operating in two synchronized modes:</p>
 
-      <pre><code>                          ┌──────────────────────────┐
-                          │     HUMAN OPERATOR       │
-                          └─────────────┬────────────┘
-                                        │
-                 ┌──────────────────────┴──────────────────────┐
-                 ▼                                             ▼
-  ┌──────────────────────────────┐              ┌──────────────────────────────┐
-  │         THE PROXY            │              │        THE COMPANION         │
-  │        (Autopilot)           │              │        (Synthesizer)         │
-  ├──────────────────────────────┤              ├──────────────────────────────┤
-  │ • Frontline communicator     │              │ • Zero-latency sounding board│
-  │ • Mimics user tone & style   │              │ • Simulates peer dynamics    │
-  │ • Routine chatter absorbed   │              │ • Consequence-free space     │
-  │ • Quiet handoff for nuance   │              │ • Instant emotional release  │
-  └──────────────┬───────────────┘              └──────────────┬───────────────┘
-                 │                                             │
-                 ▼                                             ▼
-        [External Contacts]                           [Personal Workspace]
-     "Absorbs Social Saturation"                   "Eliminates Social Starvation"</code></pre>
+      <div class="system-diagram">
+        <div class="diagram-node operator-node">
+          <span class="node-pill">Consciousness & Intent</span>
+          <h3>Human Operator</h3>
+          <p>Core Agency & Real-World Presence</p>
+        </div>
+
+        <div class="diagram-connector"></div>
+
+        <div class="diagram-branches">
+          <!-- The Proxy -->
+          <div class="diagram-card proxy-card">
+            <div>
+              <span class="card-kicker">Autopilot Channel</span>
+              <h4>The Proxy</h4>
+              <div class="card-sub">Frontline Digital Twin</div>
+              <ul class="diagram-features">
+                <li><strong>Tone Calibration:</strong> Matches personal lexicon, humor & cadence</li>
+                <li><strong>Chatter Absorption:</strong> Handles coordination & routine banter</li>
+                <li><strong>Quiet Handoff Gate:</strong> Alerts human operator on high-stakes nuance</li>
+              </ul>
+            </div>
+            <div class="diagram-dest">
+              <span class="dest-badge">External Contacts</span>
+              <p class="dest-quote">“Absorbs Social Saturation”</p>
+            </div>
+          </div>
+
+          <!-- The Companion -->
+          <div class="diagram-card companion-card">
+            <div>
+              <span class="card-kicker">Synthesizer Channel</span>
+              <h4>The Companion</h4>
+              <div class="card-sub">Zero-Latency Sounding Board</div>
+              <ul class="diagram-features">
+                <li><strong>&lt;200ms Reflex:</strong> Catches thoughts before the spark fades</li>
+                <li><strong>Peer Simulation:</strong> Emulates analytical or empathetic confidants</li>
+                <li><strong>Safe Sandbox:</strong> Consequence-free brainstorming & venting</li>
+              </ul>
+            </div>
+            <div class="diagram-dest">
+              <span class="dest-badge">Personal Workspace</span>
+              <p class="dest-quote">“Eliminates Social Starvation”</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <h3>2.1 The Proxy (Autopilot Mode)</h3>
       <p>Designed for busy moments. The Proxy acts as your frontline digital representative:</p>

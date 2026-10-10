@@ -133,6 +133,119 @@
       color: inherit;
       padding: 0;
     }
+    /* Editorial Pipeline Comparison */
+    .pipeline-comparison {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .pipeline-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: border-color 0.3s ease;
+    }
+    .pipeline-card.legacy-card {
+      border-left: 4px solid var(--sand-dark);
+    }
+    .pipeline-card.modern-card {
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 253, 248, 0.7);
+    }
+    .pipeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .pipeline-tag {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .pipeline-tag.warning-tag {
+      background: rgba(166, 139, 91, 0.15);
+      color: var(--sand-dark);
+    }
+    .pipeline-tag.success-tag {
+      background: rgba(122, 75, 42, 0.15);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .pipeline-title {
+      font-family: var(--f-serif, serif);
+      font-size: 1.25rem;
+      color: var(--text-0);
+      margin: 0;
+    }
+    .pipeline-steps {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      padding: 0.9rem;
+      background: rgba(42, 31, 20, 0.03);
+      border-radius: 8px;
+    }
+    .step-pill {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: var(--text-0);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .step-pill.highlight {
+      background: var(--text-0);
+      color: #f7f2ea;
+      border-color: var(--text-0);
+    }
+    .step-arrow {
+      color: var(--sand-dark);
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    .pipeline-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--card-border);
+    }
+    @media(max-width: 650px) {
+      .pipeline-metrics { grid-template-columns: 1fr; }
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .metric-label {
+      font-family: var(--f-mono, monospace);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-2);
+    }
+    .metric-val {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-0);
+    }
+    .metric-val.warning { color: #8a6428; }
+    .metric-val.success { color: var(--accent); font-weight: 600; }
     .cta-box {
       margin-top: 4rem;
       padding: 2rem;
@@ -187,13 +300,69 @@
       <p>By removing the legacy burden of human-facing UI rendering, app bloat, and ad-tech tracking, we can build a <strong>single-purpose autonomous Concierge Device</strong> powered by an efficient mid-range chipset (Snapdragon 7s Gen 3/4), an ultra-efficient high-refresh monochrome E-Ink / RLCD display, and an on-device multi-agent fleet. It replaces 95% of everyday smartphone usage, lasts a week on a single charge, and can be manufactured at a Bill of Materials (BOM) cost of <strong>under $120</strong>.</p>
 
       <h2>1. The Core Realization: The Post-GUI Fallacy</h2>
-      <pre><code>The Legacy Illusion (Rabbit r1, Screen-Agent Browsers):
-[User Intent] ──> [LLM] ──> [Simulate Screen/Browser] ──> [Render Buttons] ──> [Simulate Tap]
-Latency: 15–30s | Network: Heavy Video/Pixels | Fragility: 100% (breaks on layout shift)
+      <div class="pipeline-comparison">
+        <!-- Legacy Pipeline -->
+        <div class="pipeline-card legacy-card">
+          <div class="pipeline-header">
+            <h4 class="pipeline-title">The Legacy Screen-Scraping Illusion</h4>
+            <span class="pipeline-tag warning-tag">Rabbit r1 & Virtual Browsers</span>
+          </div>
+          <div class="pipeline-steps">
+            <span class="step-pill">User Intent</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill">Cloud LLM</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill">Render Virtual DOM</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill">Simulate Tap</span>
+          </div>
+          <div class="pipeline-metrics">
+            <div class="metric-item">
+              <span class="metric-label">End-to-End Latency</span>
+              <span class="metric-val warning">15 – 30 seconds</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Bandwidth Overhead</span>
+              <span class="metric-val warning">Heavy Video & Pixels</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Failure Mode</span>
+              <span class="metric-val warning">Breaks on Layout Shifts</span>
+            </div>
+          </div>
+        </div>
 
-The Post-GUI Reality (Concierge OS):
-[User Intent] ──> [Local SLM Router] ──> [MCP / ONDC Structured JSON RPC] ──> [Instant Result]
-Latency: <400ms | Network: Few Kilobytes | Fragility: 0% (Protocol-level contract)</code></pre>
+        <!-- Post-GUI Pipeline -->
+        <div class="pipeline-card modern-card">
+          <div class="pipeline-header">
+            <h4 class="pipeline-title">The Post-GUI Protocol Reality</h4>
+            <span class="pipeline-tag success-tag">Concierge OS · Pure Data</span>
+          </div>
+          <div class="pipeline-steps">
+            <span class="step-pill highlight">User Intent</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill highlight">Local SLM Router</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill highlight">ONDC / MCP JSON-RPC</span>
+            <span class="step-arrow">→</span>
+            <span class="step-pill highlight">Instant Result</span>
+          </div>
+          <div class="pipeline-metrics">
+            <div class="metric-item">
+              <span class="metric-label">End-to-End Latency</span>
+              <span class="metric-val success">&lt;400 milliseconds</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Bandwidth Overhead</span>
+              <span class="metric-val success">Few Kilobytes (Zero Pixels)</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Reliability</span>
+              <span class="metric-val success">Deterministic Contract</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <p>Every digital service in the world (food delivery, quick-commerce, cab hailing, train booking, music streaming) is fundamentally a database wrapping an API. If the operating system gives agents direct access to <strong>Model Context Protocol (MCP)</strong> endpoints and open standards like <strong>ONDC (Beckn Protocol)</strong>, the need for an app interface completely vanishes.</p>
 

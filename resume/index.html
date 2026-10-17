@@ -1037,7 +1037,12 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-        <option value="wex" selected>WEX Software Development Engineer 1 (Job R22827 - Bangalore)</option>
+                <option value="te_connectivity" selected>TE Connectivity Data Scientist I (Req 160586 - Bangalore)</option>
+        <option value="volvo">Volvo Group Graduate Apprentice Trainee – C# Test Automation (Req 36072)</option>
+        <option value="qualcomm">Qualcomm Associate Engineer – Software Engineering (Job 3096185)</option>
+        <option value="ascendion">Ascendion AI/ML/Gen AI Engineer (Bangalore)</option>
+        <option value="healthplans">Healthplans.ai Analytics & AI Intern (Campus Drive 2027)</option>
+        <option value="wex">WEX Software Development Engineer 1 (Job R22827 - Bangalore)</option>
         <option value="akamai">Akamai Software Engineer (Job 4073 - Bengaluru/Remote)</option>
         <option value="dbs">DBS Bank Associate Application Developer (Req WD88793 - Hyderabad)</option>
         <option value="wex">WEX Software Development Engineer 1 (Job R22827 - Bangalore)</option>
@@ -1361,6 +1366,647 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      te_connectivity: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (ML & Data Platforms) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an AST-validated query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), processing analytical queries under sub-second latency bounds.",
+                                "Engineered zero-trust access boundaries and structural validation rules enforcing data governance, eliminating unauthorized schema mutations with 100% policy enforcement.",
+                                "Constructed an automated execution test harness and synthetic benchmark suite with high branch coverage and autonomous repair loops, elevating retrieval fidelity from 72% to 94% across ambiguous schemas."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Groundwater Level & Environmental Time Series Prediction (IEEE CINE 2026)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Time Series \u2022 Machine Learning \u2022 Regression \u2022 Feature Engineering",
+                        "bullets": [
+                                "Engineered predictive regression and lag-based time series forecasting pipelines across multi-source hydrogeological and meteorological datasets, handling seasonal variance and missing sensor telemetry.",
+                                "Achieved R\u00b2 = 0.98 utilizing ExtraTrees ensemble regression, outperforming baseline models; published findings in IEEE CINE (2026)."
+                        ]
+                },
+                {
+                        "name": "Document AI & Neural Sequence Tagging Architecture (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "Python \u2022 NLP \u2022 PyTorch \u2022 Linear-Chain CRF \u2022 LLM Benchmarking",
+                        "bullets": [
+                                "Engineered a character-level sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder to extract structured text from unspaced strings, achieving 0.9622 BERTScore F1.",
+                                "Benchmarked directly against open-weight LLMs (Gemma, Qwen, DeepSeek R1) with 85% reduced compute overhead (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Real-World Constrained Optimization Engine: Weight-Aware Scheduling",
+                        "dates": "Jan 2026 \u2013 Mar 2026",
+                        "tags": "Python \u2022 Optimization Math \u2022 Hypothesis Testing \u2022 Statistical Modeling",
+                        "bullets": [
+                                "Formulated a discrete optimization and load-balancing scheduling algorithm handling multi-passenger weight constraints and spatial distribution, minimizing peak dispatch latency and energy consumption.",
+                                "Benchmarked against classical SCAN and LOOK heuristics across synthetic traffic distributions with rigorous test assertions, achieving a 28% latency reduction under saturated loads (Journal of EDA, 2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Machine Learning & Modeling",
+                        "text": "Python (pandas, scikit-learn, numpy), Time Series, Regression, Classification, Clustering, PyTorch"
+                },
+                {
+                        "label": "Analytics & Visualization",
+                        "text": "SQL (PostgreSQL, MySQL), Power BI, Tableau, Matplotlib, Statistics, Probability, Hypothesis Testing"
+                },
+                {
+                        "label": "Cloud & Engineering",
+                        "text": "Generative AI, LLMs, AWS Cloud Practitioner, Docker, Git, CI/CD, REST APIs, Linux"
+                }
+        ]
+},
+      volvo: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (Systems & Test Automation) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an AST-validated query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), processing complex transactional queries under sub-second latency bounds.",
+                                "Engineered zero-trust access boundaries and structural mutation verification enforcing idempotency and data governance, eliminating unauthorized schema mutations with 100% policy enforcement.",
+                                "Constructed an automated execution test harness and synthetic benchmark suite with high branch coverage and autonomous repair loops, elevating retrieval fidelity from 72% to 94% across ambiguous schemas."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Real-World Constrained Optimization Engine: Weight-Aware Dynamic Scheduling",
+                        "dates": "Jan 2026 \u2013 Mar 2026",
+                        "tags": "C# \u2022 Python \u2022 Embedded Systems Logic \u2022 Simulation \u2022 Test Automation",
+                        "bullets": [
+                                "Formulated a discrete optimization and load-balancing scheduling algorithm handling multi-passenger weight constraints and spatial distribution, minimizing peak dispatch latency and power consumption.",
+                                "Simulated complex hardware sensor constraints and communication queues with automated test assertions, achieving a 28% latency reduction over classical heuristics under saturated loads (Journal of EDA, 2026)."
+                        ]
+                },
+                {
+                        "name": "High-Throughput Sequence Tagging & Neural Architecture (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "C# \u2022 Python \u2022 Algorithms & Complexity \u2022 Dynamic Programming \u2022 Unit/Integration Testing",
+                        "bullets": [
+                                "Designed a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder and dynamic programming Viterbi decoding, achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+                                "Devised a 4-line Rolling Context buffer across 50-character chunks to eliminate boundary truncation; suppressed invalid transitions to <0.02% while reducing compute footprint by 85% compared to multi-billion parameter LLMs (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Automated Threat Intelligence & Incident Log Telemetry Pipeline (CICCS 2025)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Log Telemetry \u2022 System Communication \u2022 Embedded Security \u2022 NLP",
+                        "bullets": [
+                                "Engineered an unsupervised threat intelligence pipeline using Latent Dirichlet Allocation (LDA) to classify unstructured network incident logs, telemetry streams, and vulnerability reports.",
+                                "Extracted latent threat vectors across enterprise telemetry datasets, accelerating automated incident triage and anomaly detection in distributed infrastructure (CICCS 2025)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Programming & Design",
+                        "text": "C#, Python, C/C++, Java, OOP, SOLID Principles, Data Structures & Algorithms, Clean Architecture"
+                },
+                {
+                        "label": "Testing & Embedded",
+                        "text": "Unit & Integration Testing, TDD, Embedded Systems Fundamentals, HIL Test Automation Concepts"
+                },
+                {
+                        "label": "Protocols & Tools",
+                        "text": "CAN & LIN Protocol Basics, Agile/Scrum, Git, CI/CD, Linux, Test Automation Frameworks"
+                }
+        ]
+},
+      qualcomm: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (Systems & Platforms) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an AST-validated query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), processing complex transactional queries under sub-second latency bounds.",
+                                "Engineered zero-trust access boundaries and structural mutation verification enforcing idempotency and data governance, eliminating unauthorized schema mutations with 100% policy enforcement.",
+                                "Constructed an automated execution test harness and synthetic benchmark suite with high branch coverage and autonomous repair loops, elevating retrieval fidelity from 72% to 94% across ambiguous schemas."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "High-Throughput Sequence Tagging & Neural Architecture (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "C++ \u2022 Python \u2022 Algorithms & Complexity \u2022 Linear-Chain CRF \u2022 Edge Performance",
+                        "bullets": [
+                                "Designed a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder and dynamic programming Viterbi decoding, achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+                                "Devised a 4-line Rolling Context buffer across 50-character chunks to eliminate boundary truncation; suppressed invalid transitions to <0.02% while reducing compute footprint by 85% compared to multi-billion parameter LLMs (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Real-World Constrained Optimization Engine: Weight-Aware Dynamic Scheduling",
+                        "dates": "Jan 2026 \u2013 Mar 2026",
+                        "tags": "C++ \u2022 Python \u2022 System-Level Software \u2022 Queuing Theory \u2022 Performance Optimization",
+                        "bullets": [
+                                "Formulated a discrete optimization and load-balancing scheduling algorithm handling multi-passenger weight constraints and spatial distribution, minimizing peak dispatch latency and energy consumption.",
+                                "Benchmarked against classical SCAN and LOOK heuristics across synthetic traffic distributions with rigorous test assertions, achieving a 28% latency reduction under saturated loads (Journal of EDA, 2026)."
+                        ]
+                },
+                {
+                        "name": "Cross-Modality 3D Generative Synthesis & High-Dimensional Vision Pipeline",
+                        "dates": "July 2026 \u2013 Present",
+                        "tags": "Python \u2022 3D Deep Learning \u2022 Memory Optimization \u2022 Cloud Edge Systems \u2022 PyTorch",
+                        "bullets": [
+                                "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation (CT-to-MRI), optimizing latent representations and spatial consistency to eliminate GPU memory bottlenecks.",
+                                "Engineered automated volumetric preprocessing and multi-scale feature alignment pipelines with strict validation assertions, accelerating evaluation workflows (FTNCT 2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Languages & Core CS",
+                        "text": "C/C++, Python, Java, Data Structures & Algorithms, Operating Systems, Object-Oriented Design (OOD)"
+                },
+                {
+                        "label": "Systems & Edge Software",
+                        "text": "System-Level Software Solutions, Embedded & Cloud Edge Architecture, Linux/Unix, Memory Optimization, Interfaces"
+                },
+                {
+                        "label": "Engineering & Tools",
+                        "text": "Git, Docker, CI/CD, Unit/System Testing, AWS Cloud Practitioner, Computer Architecture & Telemetry"
+                }
+        ]
+},
+      ascendion: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (GenAI & Agentic Systems) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an LLM-driven database orchestration platform and schema router executing multi-table SQL queries, filtering, and aggregations under strict sub-second latency bounds.",
+                                "Engineered an AST-level validation perimeter to enforce data governance, zero-trust access control, and structural verification of mutations and permission rules.",
+                                "Constructed an automated evaluation harness and synthetic execution benchmark suite to stress-test data retrieval fidelity, integrating an autonomous error repair loop."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Neural Word Segmentation & Local LLM Benchmarking (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "Python \u2022 GenAI \u2022 PyTorch \u2022 Linear-Chain CRF \u2022 SLM/LLM Evaluation",
+                        "bullets": [
+                                "Engineered a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder, achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+                                "Benchmarked directly against open-weight LLMs (Gemma, Qwen, DeepSeek R1 32B), achieving competitive tokenization accuracy at an 85% compute reduction (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Multilingual Transformer Emotion & Sentiment Models (IEEE ICKECS 2026)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Multilingual Transformers \u2022 IndicBERT \u2022 Data Augmentation \u2022 NLP",
+                        "bullets": [
+                                "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and sentiment detection over low-resource Dravidian text.",
+                                "Mitigated severe corpus class imbalance through contextual translation and back-translation pipelines, achieving a macro F1-score of 0.784 and publishing findings in IEEE ICKECS (2026)."
+                        ]
+                },
+                {
+                        "name": "Cross-Modality 3D Generative Synthesis & Deep Learning Pipeline",
+                        "dates": "July 2026 \u2013 Present",
+                        "tags": "Python \u2022 Generative AI \u2022 3D Deep Learning \u2022 PyTorch \u2022 Synthetic Data",
+                        "bullets": [
+                                "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation (CT-to-MRI), optimizing latent representations and spatial consistency to bypass severe GPU bottlenecks.",
+                                "Formulated cross-modal generative models to synthesize high-fidelity structural volumes, accelerating downstream evaluation and synthetic data generation workflows (FTNCT 2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "GenAI & Agentic Systems",
+                        "text": "Agentic AI Workflows, RAG, LLMs, LangChain, Transformers, Prompt Engineering, Evaluation Metrics"
+                },
+                {
+                        "label": "ML Frameworks & Modeling",
+                        "text": "PyTorch, Python (pandas, scikit-learn, numpy), Tokenizers, Vector Embeddings, Fine-Tuning"
+                },
+                {
+                        "label": "Engineering & Cloud",
+                        "text": "REST APIs, FastAPI, Docker, Git, CI/CD, Test Harnesses, AWS Certified Cloud Practitioner"
+                }
+        ]
+},
+      healthplans: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (Data Platforms & Analytics) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an AST-validated query orchestrator and schema router profiling multi-tiered relational databases (PostgreSQL, MySQL), processing complex queries and automated data-quality checks under sub-second latency.",
+                                "Engineered zero-trust access boundaries and structural validation rules enforcing data governance, eliminating unauthorized mutations and ensuring strict ACID transaction and schema integrity.",
+                                "Constructed an automated execution test harness and synthetic benchmark suite with high branch coverage and autonomous repair loops, elevating retrieval fidelity from 72% to 94% across ambiguous schemas."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Document AI & Unstructured Text Structuring Engine (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "Python \u2022 Document AI \u2022 NLP \u2022 Information Extraction \u2022 Linear-Chain CRF",
+                        "bullets": [
+                                "Engineered a character-level sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder to extract structured entities from unspaced text, achieving 0.9622 BERTScore F1.",
+                                "Implemented rolling-window context parsing to eliminate boundary truncation; suppressed invalid structural transitions to <0.02% while reducing compute latency by 85% compared to multi-billion parameter LLMs (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Healthcare Cross-Modality Synthesis & Volumetric Data Pipeline (FTNCT 2026)",
+                        "dates": "July 2026 \u2013 Present",
+                        "tags": "Python \u2022 Healthcare AI \u2022 Deep Learning \u2022 Data Quality Profiling \u2022 PyTorch",
+                        "bullets": [
+                                "Architected a 3D deep generative synthesis pipeline for cross-modality medical records (CT-to-MRI), optimizing latent representations and spatial consistency to resolve high-dimensional imaging bottlenecks.",
+                                "Engineered automated ingestion and normalization pipelines with rigorous data validation assertions, accelerating evaluation workflows across multi-gigabyte clinical imaging records (FTNCT 2026)."
+                        ]
+                },
+                {
+                        "name": "Unsupervised Anomaly & Outlier Detection from Incident Streams (CICCS 2025)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 NLP \u2022 Anomaly Detection \u2022 Outlier Profiling \u2022 Scikit-learn",
+                        "bullets": [
+                                "Developed an unsupervised topic modeling and outlier detection pipeline using Latent Dirichlet Allocation (LDA) to classify and stratify unstructured incident logs and correspondence streams.",
+                                "Extracted latent risk clusters and anomaly vectors across enterprise telemetry datasets, accelerating automated triage and triage scoring for anomalous operational events (CICCS 2025)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Analytics & ML",
+                        "text": "Python (pandas, scikit-learn, numpy), Statistics, Anomaly & Outlier Detection, Classification, PyTorch"
+                },
+                {
+                        "label": "NLP & Document AI",
+                        "text": "Document AI, Text Parsing, Information Extraction, Transformers, Power BI, Tableau, SQL (Postgres, MySQL)"
+                },
+                {
+                        "label": "Systems & Quality",
+                        "text": "Data Quality Checks, Reusable Profiling Pipelines, Process Discovery, AWS Cloud, Git, Docker, REST APIs"
+                }
+        ]
+},
+
       dbs: {
         profile: {
           name: "Valluri Keerthi Ram",

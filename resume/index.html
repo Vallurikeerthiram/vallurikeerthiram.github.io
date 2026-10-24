@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-                <option value="te_connectivity" selected>TE Connectivity Data Scientist I (Req 160586 - Bangalore)</option>
+                        <option value="nasdaq" selected>Nasdaq Campus Program – 2027 (Req R0027122 - Bangalore)</option>
+<option value="te_connectivity">TE Connectivity Data Scientist I (Req 160586 - Bangalore)</option>
         <option value="volvo">Volvo Group Graduate Apprentice Trainee – C# Test Automation (Req 36072)</option>
         <option value="qualcomm">Qualcomm Associate Engineer – Software Engineering (Job 3096185)</option>
         <option value="ascendion">Ascendion AI/ML/Gen AI Engineer (Bangalore)</option>
@@ -1366,6 +1367,135 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      nasdaq: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (Distributed Data Platforms) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an AST-validated query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), processing complex transactional queries under sub-second latency bounds.",
+                                "Engineered zero-trust access boundaries and structural validation rules enforcing data governance, eliminating unauthorized schema mutations with 100% policy enforcement.",
+                                "Constructed an automated execution test harness and synthetic benchmark suite with high branch coverage and autonomous repair loops, elevating retrieval fidelity from 72% to 94% across ambiguous schemas."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Algorithmic Trading & High-Frequency Probability Execution Platform",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Java \u2022 Python \u2022 Financial Engineering \u2022 Probabilistic Modeling \u2022 Risk Execution",
+                        "bullets": [
+                                "Architected an algorithmic quantitative trading execution platform leveraging mathematical probability models and real-time order book telemetry for micro-scalping and compounding capital growth.",
+                                "Formulated dynamic position sizing algorithms, transaction cost analytics (TCA), and automated slippage controls to safeguard capital under severe market volatility (IEEE ICCTWC 2026)."
+                        ]
+                },
+                {
+                        "name": "High-Throughput Sequence Tagging & Neural Architecture (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "C++ \u2022 Python \u2022 Algorithms & Complexity \u2022 Linear-Chain CRF \u2022 LLM Benchmarking",
+                        "bullets": [
+                                "Designed a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder and dynamic programming Viterbi decoding, achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
+                                "Devised a 4-line Rolling Context buffer across 50-character chunks to eliminate boundary truncation; suppressed invalid transitions to <0.02% while reducing compute footprint by 85% compared to multi-billion parameter LLMs (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Real-World Constrained Optimization Engine: Weight-Aware Scheduling",
+                        "dates": "Jan 2026 \u2013 Mar 2026",
+                        "tags": "Java \u2022 Python \u2022 Discrete Optimization \u2022 Queuing Theory \u2022 Systems Engineering",
+                        "bullets": [
+                                "Formulated a discrete optimization and load-balancing scheduling algorithm handling multi-variable capacity constraints and spatial distribution, minimizing peak dispatch latency and resource consumption.",
+                                "Benchmarked against classical SCAN and LOOK heuristics across synthetic traffic distributions with rigorous test assertions, achieving a 28% latency reduction under saturated loads (Journal of EDA, 2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Languages & Core CS",
+                        "text": "Java, Python, C/C++, SQL (PostgreSQL, MySQL), Data Structures & Algorithms, OOP, SOLID"
+                },
+                {
+                        "label": "Financial Tech & Data",
+                        "text": "Trading Platform Logic, Risk Modeling, Latency Optimization, Relational DBs, Linux"
+                },
+                {
+                        "label": "AI/ML & Cloud Tools",
+                        "text": "Machine Learning, LLMs, PyTorch, AWS Cloud Practitioner, Docker, Git, CI/CD, Unit Testing"
+                }
+        ]
+},
+
       te_connectivity: {
         "profile": {
                 "name": "Valluri Keerthi Ram",

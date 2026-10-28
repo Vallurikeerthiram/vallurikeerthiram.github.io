@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-                                <option value="honeywell" selected>Honeywell Intern Bachelors Software Eng (Job 160476 - Bangalore)</option>
+                                        <option value="bakertilly" selected>Baker Tilly One India Intern – Applied AI Platforms (Campus 2027)</option>
+<option value="honeywell">Honeywell Intern Bachelors Software Eng (Job 160476 - Bangalore)</option>
 <option value="nasdaq">Nasdaq Campus Program – 2027 (Req R0027122 - Bangalore)</option>
 <option value="te_connectivity">TE Connectivity Data Scientist I (Req 160586 - Bangalore)</option>
         <option value="volvo">Volvo Group Graduate Apprentice Trainee – C# Test Automation (Req 36072)</option>
@@ -1368,6 +1369,135 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      bakertilly: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (AI Platforms & Product Systems) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an LLM-driven query orchestrator and schema router across multi-tiered relational databases (PostgreSQL, MySQL), translating natural language business requests into sub-second analytical queries.",
+                                "Engineered zero-trust access perimeters and structural verification rules enforcing Responsible AI governance, preventing unauthorized schema mutations with 100% policy compliance.",
+                                "Constructed an automated evaluation test harness and synthetic benchmark suite with autonomous repair loops, elevating retrieval fidelity and user query success from 72% to 94%."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Document AI & Local LLM Benchmarking Architecture (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "Python \u2022 Generative AI \u2022 LLM Evaluation \u2022 UAT Testing \u2022 PyTorch",
+                        "bullets": [
+                                "Designed an end-to-end evaluation harness benchmarking open-weight LLMs (Gemma, Qwen, DeepSeek R1 32B) across structured information extraction and sequence parsing use cases.",
+                                "Formulated standardized test scenarios and quantitative metrics (BERTScore F1, accuracy, latency), proving a hybrid neural tagger matched LLM fidelity at an 85% compute overhead reduction."
+                        ]
+                },
+                {
+                        "name": "Multilingual Transformer Emotion & Sentiment Models (IEEE ICKECS 2026)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 NLP \u2022 Transformers \u2022 Data Augmentation \u2022 Product Analytics",
+                        "bullets": [
+                                "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and sentiment detection over low-resource vernacular text.",
+                                "Mitigated severe class imbalance through contextual translation and back-translation data pipelines, achieving a macro F1-score of 0.784 and documenting actionable product insights (IEEE ICKECS 2026)."
+                        ]
+                },
+                {
+                        "name": "Predictive Sensor Telemetry & Analytical Forecasting (IEEE CINE 2026)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Machine Learning \u2022 Time Series \u2022 SQL \u2022 Feature Engineering",
+                        "bullets": [
+                                "Engineered predictive regression and lag-based time series forecasting pipelines across multi-source telemetry datasets, handling missing sensor records, data cleaning, and statistical validation.",
+                                "Achieved R\u00b2 = 0.98 utilizing ExtraTrees ensemble regression, outperforming baseline models; published findings in IEEE CINE (2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "Applied AI & LLMs",
+                        "text": "Generative AI, LLMs (ChatGPT, Claude, Copilot), Prompt Engineering, Model Benchmarking, Evaluation Harnesses"
+                },
+                {
+                        "label": "Product & Analytics",
+                        "text": "Product Discovery, Use-Case Mapping, UAT Testing, SQL (PostgreSQL), Power BI, Tableau, Excel"
+                },
+                {
+                        "label": "Cloud & Engineering",
+                        "text": "Python, PyTorch, AWS Cloud Practitioner, Docker, Git, CI/CD, REST APIs, Responsible AI Governance"
+                }
+        ]
+},
+
       honeywell: {
         "profile": {
                 "name": "Valluri Keerthi Ram",

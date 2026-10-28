@@ -1037,7 +1037,8 @@
 
     <div class="toolbar-actions">
       <select id="presetSelector" class="select-preset" onchange="loadPreset(this.value)">
-                                        <option value="bakertilly" selected>Baker Tilly One India Intern – Applied AI Platforms (Campus 2027)</option>
+                                        <option value="techmahindra" selected>Tech Mahindra Digital Catalyst – AI Engineer (TechM Catalyst 2027)</option>
+                                        <option value="bakertilly">Baker Tilly One India Intern – Applied AI Platforms (Campus 2027)</option>
                                         <option value="bakertilly_devops">Baker Tilly One India Intern – DevOps Engineering (Campus 2027)</option>
                                         <option value="bakertilly_ops">Baker Tilly One India Intern – Operations & Agile Delivery (Campus 2027)</option>
 <option value="honeywell">Honeywell Intern Bachelors Software Eng (Job 160476 - Bangalore)</option>
@@ -1371,6 +1372,135 @@
 
     // PRESETS DEFINITION
     const PRESETS = {
+      
+      techmahindra: {
+        "profile": {
+                "name": "Valluri Keerthi Ram",
+                "location": "Bangalore, 560035",
+                "phone": "+91 8309247221",
+                "email": "keerthiramvalluri@gmail.com",
+                "portfolio": "https://vallurikeerthiram.github.io/"
+        },
+        "education": [
+                {
+                        "institution": "Amrita Vishwa Vidyapeetham",
+                        "location": "ASEB, Bangalore",
+                        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 \u2022 AEEE rank: 934",
+                        "dates": "2023\u2013Present"
+                },
+                {
+                        "institution": "Central Board of Secondary Education",
+                        "location": "",
+                        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
+                        "dates": "2021\u20132023 | 2021"
+                }
+        ],
+        "experience": [
+                {
+                        "organization": "AlgoUniversity",
+                        "dates": "June 2026 \u2013 July 2026",
+                        "role": "Software Engineering Intern (AI Solutions & Model Integration) \u2013 DB Orchestrator",
+                        "bullets": [
+                                "Architected an LLM-driven query orchestrator and schema router across relational databases (PostgreSQL, MySQL), converting natural language prompts into optimized sub-second SQL queries via REST APIs.",
+                                "Engineered zero-trust access perimeters and AST structural validation rules enforcing Responsible AI governance, preventing unauthorized schema mutations with 100% compliance.",
+                                "Constructed an automated evaluation test harness and synthetic benchmark suite with autonomous repair loops, elevating model retrieval fidelity and execution accuracy from 72% to 94%."
+                        ]
+                }
+        ],
+        "projects": [
+                {
+                        "name": "Word and Sentence Segmentation of Scriptio Continua (IITCEE 2027)",
+                        "dates": "Jan 2026 \u2013 Present",
+                        "tags": "Python \u2022 PyTorch \u2022 Deep Learning \u2022 vLLM \u2022 Model Optimization \u2022 Benchmarking",
+                        "bullets": [
+                                "Engineered a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder for word and sentence segmentation of scriptio continua text, achieving 0.9622 BERTScore F1.",
+                                "Benchmarked directly against open-weight LLMs (Gemma, Qwen, DeepSeek R1 32B) and vLLM inference runtimes, achieving competitive tokenization accuracy with an 85% reduction in compute overhead (IITCEE 2027)."
+                        ]
+                },
+                {
+                        "name": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformers",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Multilingual Transformers \u2022 PyTorch \u2022 IndicBERT \u2022 Data Preprocessing",
+                        "bullets": [
+                                "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and sentiment detection over low-resource Dravidian text.",
+                                "Mitigated severe corpus class imbalance through contextual data preprocessing and back-translation feature pipelines, achieving a macro F1-score of 0.784 (IEEE ICKECS 2026)."
+                        ]
+                },
+                {
+                        "name": "Prediction of Groundwater Level Using Rainfall Telemetry Data (IEEE CINE 2026)",
+                        "dates": "Aug 2025 \u2013 Nov 2025",
+                        "tags": "Python \u2022 Scikit-learn \u2022 Time Series \u2022 Predictive Modeling \u2022 Feature Engineering",
+                        "bullets": [
+                                "Engineered predictive regression and lag-based time series forecasting pipelines across multi-source hydrogeological telemetry datasets, handling seasonal variance and missing sensor telemetry.",
+                                "Achieved R\u00b2 = 0.98 utilizing ExtraTrees ensemble regression, outperforming baseline models; published findings in IEEE CINE (2026)."
+                        ]
+                }
+        ],
+        "publications": [
+                {
+                        "prefix": "IITCEE 2027:",
+                        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
+                },
+                {
+                        "prefix": "FTNCT 2026:",
+                        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
+                },
+                {
+                        "prefix": "ICKECS 2026 (IEEE):",
+                        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
+                },
+                {
+                        "prefix": "CICCS 2025:",
+                        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
+                },
+                {
+                        "prefix": "CINE 2026 (IEEE):",
+                        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
+                },
+                {
+                        "prefix": "ICCTWC 2026:",
+                        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding"
+                },
+                {
+                        "prefix": "Journal of Engineering Design and Analysis (2026):",
+                        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
+                }
+        ],
+        "certifications": [
+                {
+                        "name": "AWS Certified Cloud Practitioner",
+                        "dates": "May 2026",
+                        "details": "Credentials: 1118bc1d19af4214a1d5da0f72b73039",
+                        "authority": "AWS"
+                },
+                {
+                        "name": "Introduction to Modern AI",
+                        "dates": "",
+                        "details": "",
+                        "authority": "Cisco"
+                },
+                {
+                        "name": "Project Management Foundations",
+                        "dates": "Oct 2024",
+                        "details": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4",
+                        "authority": "PMI & NASBA"
+                }
+        ],
+        "skills": [
+                {
+                        "label": "AI & Machine Learning",
+                        "text": "PyTorch, Scikit-learn, NumPy, Pandas, Transformers, Deep Learning, LLMs, vLLM, Model Optimization"
+                },
+                {
+                        "label": "Software Engineering",
+                        "text": "Python, SQL (PostgreSQL, MySQL), REST APIs, Data Structures, Algorithms, OOP, DBMS Fundamentals"
+                },
+                {
+                        "label": "Cloud & Deployment",
+                        "text": "AWS Certified Cloud Practitioner, Docker, Git, CI/CD Pipelines, Linux, Model Integration, Telemetry"
+                }
+        ]
+},
       bakertilly: {
         "profile": {
                 "name": "Valluri Keerthi Ram",

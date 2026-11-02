@@ -1435,7 +1435,7 @@
                         "dates": "Jan 2026 \u2013 Present",
                         "tags": "Python \u2022 Deep Learning \u2022 vLLM \u2022 Data Engineering \u2022 Model Benchmarking",
                         "bullets": [
-                                "Engineered a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder for word and sentence segmentation of scriptio continua text, achieving 0.9622 BERTScore F1.",
+                                "Engineered a character-first sequence tagging architecture combining 1D-CNN and BiLSTM feature extractors with a Linear-Chain CRF decoder for unstructured data processing and segmentation of scriptio continua text, achieving 0.9622 BERTScore F1.",
                                 "Benchmarked directly against open-weight LLMs (Gemma, Qwen, DeepSeek R1 32B) and vLLM inference runtimes, achieving competitive tokenization accuracy with an 85% reduction in compute overhead (IITCEE 2027)."
                         ]
                 }
@@ -1749,11 +1749,11 @@
         "skills": [
                 {
                         "label": "Generative AI & LLMs",
-                        "text": "Large Language Models (LLMs), Prompt Engineering, vLLM, Fine-Tuning, Model Benchmarking"
+                        "text": "Large Language Models (LLMs), Prompt Engineering, Google OKF, vLLM, Fine-Tuning"
                 },
                 {
                         "label": "ML, Deep Learning & NLP",
-                        "text": "Natural Language Processing (NLP), PyTorch, Transformers, Deep Learning, Scikit-learn"
+                        "text": "Natural Language Processing (NLP), PyTorch, Transformers, Scikit-learn, Pandas, NumPy"
                 },
                 {
                         "label": "Cloud & Engineering",
@@ -6137,19 +6137,14 @@
 
       // Certifications
       if (resumeState.certifications && resumeState.certifications.length > 0) {
-        html += `<section><div class="res-section-title">Certifications</div><table class="res-table">`;
+        html += `<section><div class="res-section-title">Certifications</div><ul class="res-pub-list">`;
         resumeState.certifications.forEach(cert => {
-          html += `
-            <tr>
-              <td><span class="res-bold">${escapeHtml(cert.name)}</span></td>
-              <td class="res-text-right">${escapeHtml(cert.date)}</td>
-            </tr>
-          `;
-          if (cert.credentialId && cert.credentialId.trim()) {
-            html += `<tr><td colspan="2">${escapeHtml(cert.credentialId)}</td></tr>`;
-          }
+          let dateStr = cert.date ? ` – ${escapeHtml(cert.date)}` : (cert.authority ? ` – ${escapeHtml(cert.authority)}${cert.dates ? ` (${escapeHtml(cert.dates)})` : ''}` : '');
+          let credId = cert.credentialId || cert.details || '';
+          let credStr = credId && credId.trim() ? ` | ${escapeHtml(credId)}` : '';
+          html += `<li><span class="res-bold">${escapeHtml(cert.name)}</span><span>${dateStr}${credStr}</span></li>`;
         });
-        html += `</table></section>`;
+        html += `</ul></section>`;
       }
 
       // Skills & Interests

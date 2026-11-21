@@ -1121,7 +1121,7 @@
         <option value="qualcomm">Qualcomm Interim Patent Intern</option>
         <option value="lam">Lam Research Engineering Intern 1</option>
         <option value="lseg">LSEG Business Graduate Associate (Data & Analytics)</option>
-        <option value="hackerrank">HackerRank SDE Intern</option>
+        <option value="hackerrank">HackerRank Forward Deployed Engineer (FDE)</option>
         <option value="nhai">NHAI Internship (Data Science & AI)</option>
         <option value="tower">Tower Research Capital AI/ML Intern</option>
         <option value="beyond">Beyond Technologies AI Engineer Intern</option>
@@ -9043,129 +9043,112 @@
   },
   "hackerrank": {
     "profile": {
-      "name": "Valluri Keerthi Ram",
-      "location": "Bangalore, 560035",
-      "phone": "+91 8309247221",
-      "email": "keerthiramvalluri@gmail.com",
-      "portfolio": "https://vallurikeerthiram.github.io/"
+        "name": "Valluri Keerthi Ram",
+        "location": "Bangalore, 560035",
+        "phone": "+91 8309247221",
+        "email": "keerthiramvalluri@gmail.com",
+        "portfolio": "https://vallurikeerthiram.github.io/"
     },
     "education": [
-      {
-        "institution": "Amrita Vishwa Vidyapeetham",
-        "location": "ASEB, Bangalore",
-        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
-        "dates": "2023–Present"
-      },
-      {
-        "institution": "Central Board of Secondary Education",
-        "location": "",
-        "degree": "Class 12, Percentage: 72.6% | Class 10, Percentage: 84%",
-        "dates": "2021–2023 | 2021"
-      }
+        {
+            "institution": "Amrita Vishwa Vidyapeetham",
+            "location": "ASEB, Bangalore",
+            "degree": "BTech in Computer Science and Engineering, CGPA: 8.74",
+            "dates": "2023\u2013Present"
+        }
     ],
     "experience": [
-      {
-        "organization": "AlgoUniversity",
-        "dates": "June 2026 – July 2026",
-        "role": "Software Engineering Intern (Backend & Systems) – DB Orchestrator AI",
-        "bullets": [
-          "Architected a high-availability database orchestration pipeline and schema router, driving reliable structured data access under strict latency bounds.",
-          "Engineered an AST-level validation perimeter to enforce strict role-based access control (RBAC), programmatically verifying mutations and preventing unauthorized operations.",
-          "Constructed an automated evaluation harness and synthetic execution benchmark suite to stress-test data retrieval accuracy, integrating an autonomous error repair loop."
-        ]
-      }
+        {
+            "organization": "AlgoUniversity",
+            "dates": "June 2026 \u2013 July 2026",
+            "role": "Software Engineering Intern (Backend & Systems) \u2013 Core Systems Orchestrator",
+            "bullets": [
+                "Built an AST-based SQL validation and schema-routing layer for PostgreSQL and MySQL, supporting permission-aware database operations and eliminating unauthorized mutations across production services.",
+                "Developed an automated evaluation framework with 500+ synthetic test cases and multi-turn error recovery mechanisms, improving complex task execution success from 72% to 94%.",
+                "Implemented database access controls, CI/CD validation pipelines, and structured telemetry to ensure execution safety, deterministic debugging, and 99.9% runtime uptime."
+            ]
+        }
     ],
     "projects": [
-      {
-        "title": "Breaking the Continuum: Neural Word Segmentation & Sequence Modeling",
-        "dates": "Jan 2026 – Present",
-        "tags": "Python • PyTorch • Sequence Tagging • Linear-Chain CRF • LLM Benchmarking",
-        "bullets": [
-          "Engineered a character-first sequence tagging architecture (BiLSTM, BiGRU, 1D-CNN) with 64-d trainable embeddings, 4-state BIES labeling, and a Linear-Chain CRF decoder with transition penalties, suppressing invalid transitions to <0.02% and achieving 0.9524 accuracy / 0.9622 BERTScore F1.",
-          "Devised a 4-line Rolling Context History buffer across 50-char line slices to eliminate boundary truncation; validated cross-lingual transfer (0.9308 F1) and benchmarked against open-weight LLMs (Gemma, Qwen) with orders-of-magnitude lower compute (IITCEE 2027)."
-        ]
-      },
-      {
-        "title": "Weight-Aware Dynamic Dispatch & Optimization System",
-        "dates": "Oct 2024 – Nov 2024",
-        "tags": "Python • Optimization Algorithms • Systems Architecture • Hardware Endpoints",
-        "bullets": [
-          "Designed a multi-cabin dispatch algorithm integrating dynamic mass constraints to optimize routing and prevent unnecessary stops under strict latency bounds.",
-          "Engineered the system to interface with live hardware endpoints and validated algorithmic efficiency, leading to a first-author publication in the Journal of Engineering Design and Analysis (2026)."
-        ]
-      },
-      {
-        "title": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis",
-        "dates": "July 2026 – Present",
-        "tags": "Python • 3D Deep Learning • Generative Modeling • Synthetic Data Generation",
-        "bullets": [
-          "Architected a resource-efficient 3D deep generative synthesis pipeline for cross-modality volumetric translation, optimizing latent representations and spatial consistency to bypass severe GPU compute bottlenecks.",
-          "Formulated cross-modal generative models to synthesize high-fidelity structural volumes from non-contrast imaging, accelerating downstream diagnostic and automated evaluation workflows (FTNCT 2026)."
-        ]
-      }
+        {
+            "title": "Breaking the Continuum: Word and Sentence Segmentation of Scriptio Continua",
+            "dates": "Jan 2026 \u2013 Present",
+            "tags": "Python \u2022 PyTorch \u2022 BiGRU \u2022 BiLSTM \u2022 CRF \u2022 RoBERTa \u2022 DeBERTa-v3 \u2022 NLP",
+            "bullets": [
+                "Designed a character-level English segmentation pipeline using four-state BIES labeling and BiGRU+CRF, achieving 0.9454 word-boundary F1 and 0.8495 BLEU through autoregressive sliding-window inference.",
+                "Developed a two-stage word and sentence restoration architecture integrating BiGRU+CRF with RoBERTa, achieving 0.8858 sentence-boundary F1 and just 2.11% paragraph-break count error.",
+                "Extended segmentation to Telugu using multi-vottu Akshara decomposition, evaluating 14,480 sentences across multiple sequence-labeling architectures (IITCEE 2027)."
+            ]
+        },
+        {
+            "title": "Deep Computer Vision for Brain CT-to-MR Image Synthesis",
+            "dates": "July 2026 \u2013 Present",
+            "tags": "Python \u2022 PyTorch \u2022 ResUNet \u2022 DICOM \u2022 Computer Vision \u2022 AdamW \u2022 SSIM/PSNR",
+            "bullets": [
+                "Developed a 2D ResUNet architecture with residual convolutional blocks and skip connections to synthesize MRI T1-weighted scans from non-contrast head CT slices.",
+                "Engineered a windowed HU normalization and DICOM preprocessing pipeline for paired 2D slices, incorporating 256x256 spatial resampling and artifact filtering.",
+                "Trained using AdamW and a composite L1-SSIM loss function, achieving 0.8267 SSIM and 26.83 dB PSNR across 1,200 multi-slice test volumes (FTNCT 2026)."
+            ]
+        }
     ],
     "publications": [
-      {
-        "prefix": "IITCEE 2027: ",
-        "title": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Publication)"
-      },
-      {
-        "prefix": "FTNCT 2026: ",
-        "title": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Publication)"
-      },
-      {
-        "prefix": "ICKECS 2026 (IEEE): ",
-        "title": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models"
-      },
-      {
-        "prefix": "CICCS 2025: ",
-        "title": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)"
-      },
-      {
-        "prefix": "CINE 2026 (IEEE): ",
-        "title": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis"
-      },
-      {
-        "prefix": "ICCTWC 2026: ",
-        "title": "Crypto Trading Platform Using Probability for Scalping and Compounding"
-      },
-      {
-        "prefix": "Journal of Engineering Design and Analysis (2026): ",
-        "title": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm"
-      }
+        {
+            "prefix": "CICCS 2025: ",
+            "title": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA) (DOI: 10.1109/CICCS68051.2025.11186717)"
+        },
+        {
+            "prefix": "IITCEE 2027: ",
+            "title": "Breaking the Continuum: Word and Sentence Segmentation of Scriptio Continua (Under Publication)"
+        },
+        {
+            "prefix": "FTNCT 2026: ",
+            "title": "Deep Computer Vision for Brain CT-to-MR Image Synthesis (Under Publication)"
+        },
+        {
+            "prefix": "ICKECS 2026: ",
+            "title": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models (Under Publication)"
+        },
+        {
+            "prefix": "Journal of Engineering Design and Analysis (2026): ",
+            "title": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm (Under Publication)"
+        }
     ],
     "certifications": [
-      {
-        "name": "AWS Certified Cloud Practitioner",
-        "date": "May 2026 | AWS",
-        "credentialId": "Credentials: 1118bc1d19af4214a1d5da0f72b73039"
-      },
-      {
-        "name": "Introduction to Modern AI",
-        "date": "Sept 2026 | Cisco",
-        "credentialId": "Badge: f3ba8382-8ffb-4820-b862-711e600ad46e"
-      },
-      {
-        "name": "Project Management Foundations",
-        "date": "Oct 2024 | PMI & NASBA",
-        "credentialId": "Credentials: 6c22df1ec90364652f3ff5e3aaacbf889196fac08c5d03a9b495b575aa3f54f4"
-      }
+        {
+            "name": "AWS Certified Cloud Practitioner",
+            "date": "May 2026 | Amazon Web Services",
+            "credentialId": "Certificate: https://drive.google.com/file/d/1ghGL05xuVF1CzLiD7iYBmULExGZpTLGu/view?usp=sharing"
+        },
+        {
+            "name": "Introduction to Modern AI",
+            "date": "Sept 2026 | Cisco Networking Academy",
+            "credentialId": "Badge: f3ba8382-8ffb-4820-b862-711e600ad46e"
+        },
+        {
+            "name": "Project Management Foundations",
+            "date": "Oct 2024 | PMI & NASBA",
+            "credentialId": "Certificate: Validated Foundation"
+        }
     ],
     "skills": [
-      {
-        "category": "Languages & Core Tools: ",
-        "items": "Python, Java, SQL (PostgreSQL, MySQL), Git & GitHub, Docker, FastAPI, REST APIs, Microservices"
-      },
-      {
-        "category": "Systems & Developer Infrastructure: ",
-        "items": "AST Code Parsers, Validation Perimeters, Database Orchestration, Algorithmic Optimization, CI/CD, Cloud Systems"
-      },
-      {
-        "category": "AI & Machine Learning Frameworks: ",
-        "items": "PyTorch, Hugging Face, Transformers, Scikit-learn, LLM Tooling, Evaluation Harnesses, vLLM, NumPy, Pandas"
-      }
+        {
+            "category": "Languages & Scripting: ",
+            "items": "Python, Java, SQL (PostgreSQL, MySQL), Bash / Shell, JavaScript / TypeScript"
+        },
+        {
+            "category": "APIs & Systems Integration: ",
+            "items": "REST APIs, Webhooks, FastAPI, Microservices Architecture, Docker, Git & GitHub"
+        },
+        {
+            "category": "Developer Tools & Evaluation: ",
+            "items": "AST Code Parsers, Schema Routing, Evaluation Harnesses, Benchmark Test Suites, CI/CD"
+        },
+        {
+            "category": "Machine Learning & Frameworks: ",
+            "items": "PyTorch, Hugging Face Transformers, RoBERTa, Scikit-learn, Vector Retrieval, LLM Tooling"
+        }
     ]
-  },
+},
   "nhai": {
     "profile": {
       "name": "Valluri Keerthi Ram",

@@ -9604,9 +9604,8 @@
             "dates": "Jan 2026 \u2013 Present",
             "tags": "Python \u2022 PyTorch \u2022 BiGRU \u2022 BiLSTM \u2022 CRF \u2022 RoBERTa \u2022 DeBERTa-v3 \u2022 NLP",
             "bullets": [
-                "Designed a character-level English segmentation pipeline using four-state BIES labeling and BiGRU+CRF, achieving 0.9454 word-boundary F1 and 0.8495 BLEU through autoregressive sliding-window inference.",
-                "Developed a two-stage word and sentence restoration architecture integrating BiGRU+CRF with RoBERTa, achieving 0.8858 sentence-boundary F1 and just 2.11% paragraph-break count error.",
-                "Extended segmentation to Telugu using multi-vottu Akshara decomposition, evaluating 14,480 sentences across multiple sequence-labeling architectures."
+                "Designed an English character-level segmentation pipeline using 4-state BIES labeling and BiGRU+CRF, achieving 0.9454 word-boundary F1 and 0.8495 BLEU score through autoregressive sliding-window inference.",
+                "Developed a two-stage restoration architecture integrating BiGRU+CRF with RoBERTa (0.8858 sentence F1, 2.11% break error) and extended to Telugu using multi-vottu Akshara decomposition across 14,480 sentences."
             ]
         },
         {
@@ -9614,9 +9613,17 @@
             "dates": "July 2026 \u2013 Present",
             "tags": "Python \u2022 PyTorch \u2022 ResUNet \u2022 DICOM \u2022 Computer Vision \u2022 AdamW \u2022 SSIM/PSNR",
             "bullets": [
-                "Developed a supervised CT-to-T1 MRI synthesis pipeline using paired patient DICOM scans, implementing a reproducible patient-wise dataset split (12 training, 3 validation, 3 testing patients) to prevent data leakage.",
-                "Architected a 2D Deep Residual U-Net (ResUNet) with a six-block residual bottleneck, multi-scale skip connections and composite L1, MSE, SSIM and edge-preservation losses for cross-modality image translation.",
-                "Optimized model training using AdamW, cosine annealing and PyTorch Automatic Mixed Precision (AMP); benchmarked against 2D/3D U-Nets, CycleGAN and diffusion models, achieving 20.6024 dB PSNR, 0.7601 SSIM and 0.0484 MAE on the held-out test cohort."
+                "Formulated a supervised CT-to-T1 MRI synthesis pipeline using paired patient DICOM scans with a patient-wise split (12 training, 3 validation, 3 testing patients) to prevent cross-patient data leakage.",
+                "Architected a 2D Deep ResUNet with 6-block bottleneck, PyTorch AMP, and composite L1, MSE, SSIM and edge-preservation losses, achieving 20.6024 dB PSNR, 0.7601 SSIM and 0.0484 MAE on the held-out test cohort."
+            ]
+        },
+        {
+            "title": "Multilingual Transformers for Emotion & Sentiment Detection (ICKECS 2026)",
+            "dates": "Aug 2025 \u2013 Nov 2025",
+            "tags": "Python \u2022 PyTorch \u2022 IndicBERT \u2022 XLM-RoBERTa \u2022 Hugging Face \u2022 Transformers \u2022 NLP",
+            "bullets": [
+                "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and sentiment analysis over low-resource Dravidian text.",
+                "Mitigated severe corpus class imbalance through contextual augmentation pipelines, analyzing cross-lingual representation alignment and achieving 0.784 weighted F1 (IEEE ICKECS 2026)."
             ]
         }
     ],
@@ -9640,13 +9647,21 @@
         {
             "prefix": "Journal of Engineering Design and Analysis (2026): ",
             "title": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm (DOI: 10.24321/2582.5607.202603)"
+        },
+        {
+            "prefix": "CINE 2026 (IEEE): ",
+            "title": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis (DOI: 10.1109/CINE68769.2026.11502929)"
+        },
+        {
+            "prefix": "ICCTWC 2026: ",
+            "title": "Crypto Trading Platform Using Probability for Scalping and Compounding (DOI: 10.1109/ICCTWC68241.2026.11583560)"
         }
     ],
     "certifications": [
         {
             "name": "AWS Certified Cloud Practitioner",
             "date": "May 2026 | Amazon Web Services (AWS)",
-            "credentialId": "Certificate: https://drive.google.com/file/d/1ghGL05xuVF1CzLiD7iYBmULExGZpTLGu/view?usp=sharing"
+            "credentialId": "Validation: 315c0393-d440-4c8b-8488-74f01da90757"
         },
         {
             "name": "Generative AI Fundamentals",
@@ -9661,16 +9676,16 @@
     ],
     "skills": [
         {
-            "category": "Languages & Core Runtimes: ",
-            "items": "Java, Python, C/C++, SQL (PostgreSQL, MSSQL, MySQL), Bash / Shell, JavaScript / ReactJS"
+            "category": "Languages & Databases: ",
+            "items": "Java, Python, SQL (PostgreSQL, MySQL), FastAPI, AWS"
         },
         {
-            "category": "Distributed Systems & Data: ",
-            "items": "RESTful APIs, Microservices, Kafka, Distributed Caching, AST Parsers, Schema Routing, Scalable Architecture"
+            "category": "Deep Learning & Neural Systems: ",
+            "items": "Neural Networks, Deep Learning (DL), PyTorch, Computer Vision (ResUNet)"
         },
         {
-            "category": "Engineering Tools & DevOps: ",
-            "items": "Docker, Git & GitHub, CI/CD Pipelines, TDD, Structured Telemetry, PyTorch, Linux / POSIX"
+            "category": "NLP & Modern AI: ",
+            "items": "NLP, Transformers, LLMs, vLLM, SLMs, Git & GitHub"
         }
     ]
 },

@@ -2222,7 +2222,7 @@
       {
         "institution": "Amrita Vishwa Vidyapeetham",
         "location": "ASEB, Bangalore",
-        "degree": "BTech, Computer Science and Engineering, CGPA: 8.74 • AEEE rank: 934",
+        "degree": "BTech in Computer Science and Engineering, CGPA: 8.74",
         "dates": "2023 – Expected 2027"
       }
     ],
@@ -2231,117 +2231,113 @@
         "organization": "AlgoUniversity",
         "dates": "June 2026 – July 2026",
         "role": "Software Engineering Intern (AI Platforms & Distributed Systems) – Core Systems Orchestrator",
-        "certificate_url": "https://drive.google.com/file/d/1ghGL05xuVF1CzLiD7iYBmULExGZpTLGu/view?usp=sharing",
         "bullets": [
-          "Architected an AST-validated query runtime and schema router across distributed relational databases (PostgreSQL, MySQL), processing transactional workflows under strict latency bounds.",
-          "Constructed an automated model evaluation harness and synthetic benchmark suite with closed-loop self-repair, diagnosing failure modes and elevating task execution fidelity from 72% to 94%.",
-          "Implemented zero-trust security perimeters, automated CI/CD validation, and structured telemetry, ensuring ACID compliance and zero unauthorized mutations across production services."
+          "Independently owned the design and implementation of an AST-based SQL parsing and dynamic schema-routing layer in Python, PostgreSQL, and MySQL, validating transactional query semantics and eliminating unauthorized schema mutations across production services.",
+          "Architected an automated synthetic evaluation framework with 500+ generated test suites and closed-loop self-repair, identifying edge-case execution bottlenecks and elevating data platform reliability from 72% to 94%.",
+          "Engineered and deployed automated CI/CD validation pipelines with pre-merge schema linting, structured telemetry, and sub-second distributed tracing, maintaining 99.9% pipeline availability across continuous integration runs."
         ]
       }
     ],
     "projects": [
       {
-        "name": "Emotion and Sentiment Detection in Telugu Language (ICKECS 2026)",
-        "dates": "Aug 2025 – Nov 2025",
-        "tags": "Python • Multilingual Transformers • IndicBERT • XLM-RoBERTa • PyTorch • NLP • HuggingFace",
-        "url": "https://ieeexplore.ieee.org/document/11527911",
-        "bullets": [
-          "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and semantic sentiment analysis over low-resource Dravidian text.",
-          "Mitigated severe corpus class imbalance through contextual augmentation pipelines, analyzing cross-lingual representation alignment and achieving a macro F1 of 0.784 (IEEE ICKECS 2026)."
-        ]
-      },
-      {
-        "name": "Word and Sentence Segmentation of Scriptio Continua (IITCEE 2027)",
+        "title": "Breaking the Continuum: Word and Sentence Segmentation of Scriptio Continua (IITCEE 2027)",
+        "name": "Breaking the Continuum: Word and Sentence Segmentation of Scriptio Continua (IITCEE 2027)",
         "dates": "Jan 2026 – Present",
-        "tags": "Python • Foundation Models • Gemma • vLLM • PyTorch • CRF • Compute Efficiency",
-        "url": "https://github.com/Vallurikeerthiram/ScriptioContinua",
+        "tags": "Python • PyTorch • BiGRU • BiLSTM • CRF • RoBERTa • DeBERTa-v3 • NLP",
         "bullets": [
-          "Investigated tokenization failure modes and quadratic compute scaling in open-weight LLMs (Gemma, Qwen, DeepSeek R1 32B), engineering a hybrid 1D-CNN + BiLSTM + CRF model achieving 0.9622 BERTScore F1.",
-          "Benchmarked directly against open-weight LLMs and vLLM inference runtimes, demonstrating competitive segmentation accuracy with an 85% compute overhead reduction for continuous language streams (IITCEE 2027)."
+          "Designed a character-level English segmentation pipeline using four-state BIES labeling and BiGRU+CRF, achieving 0.9454 word-boundary F1 and 0.8495 BLEU through autoregressive sliding-window inference.",
+          "Developed a two-stage word and sentence restoration architecture integrating BiGRU+CRF with RoBERTa, achieving 0.8858 sentence-boundary F1 and just 2.11% paragraph-break count error.",
+          "Extended segmentation to Telugu using multi-vottu Akshara decomposition, evaluating 14,480 sentences across multiple sequence-labeling architectures."
         ]
       },
       {
+        "title": "Deep Computer Vision for Brain CT-to-MR Image Synthesis (FTNCT 2026)",
         "name": "Deep Computer Vision for Brain CT-to-MR Image Synthesis (FTNCT 2026)",
         "dates": "July 2026 – Present",
-        "tags": "Python • Supervised ResUNet • Medical Image Synthesis • PyTorch • SSIM/PSNR Benchmark",
+        "tags": "Python • PyTorch • ResUNet • DICOM • Computer Vision • AdamW • SSIM/PSNR",
         "bullets": [
-          "Architected a supervised Deep Residual U-Net (ResUNet) framework synthesizing diagnostic-quality T1-weighted MRI volumes from non-contrast head CT scans, resolving cross-modality volumetric translation bottlenecks.",
-          "Scaled network capacity (B=64) with Cosine Annealing and composite multi-term losses (L1, MSE, SSIM, Edge), outperforming baseline U-Net benchmarks by +3.86 dB PSNR and +0.1445 SSIM across patient cohorts (FTNCT 2026)."
+          "Developed a supervised CT-to-T1 MRI synthesis pipeline using paired patient DICOM scans, implementing a reproducible patient-wise dataset split (12 training, 3 validation, 3 testing patients) to prevent data leakage.",
+          "Architected a 2D Deep Residual U-Net (ResUNet) with a six-block residual bottleneck, multi-scale skip connections and composite L1, MSE, SSIM and edge-preservation losses for cross-modality image translation.",
+          "Optimized model training using AdamW, cosine annealing and PyTorch Automatic Mixed Precision (AMP); benchmarked against 2D/3D U-Nets, CycleGAN and diffusion models, achieving 20.6024 dB PSNR, 0.7601 SSIM and 0.0484 MAE on the held-out test cohort."
+        ]
+      },
+      {
+        "title": "Multilingual Transformers for Emotion & Sentiment Detection (ICKECS 2026)",
+        "name": "Multilingual Transformers for Emotion & Sentiment Detection (ICKECS 2026)",
+        "dates": "Aug 2025 – Nov 2025",
+        "tags": "Python • PyTorch • IndicBERT • XLM-RoBERTa • Hugging Face Transformers • RAG • NLP",
+        "bullets": [
+          "Fine-tuned multilingual transformer models (XLM-RoBERTa, IndicBERT) to concurrently perform multi-task emotion classification and semantic sentiment analysis over low-resource Dravidian text.",
+          "Mitigated severe corpus class imbalance through contextual augmentation pipelines, analyzing cross-lingual representation alignment and achieving a macro F1 of 0.784 (IEEE ICKECS 2026).",
+          "Evaluated cross-lingual transfer across low-resource Telugu corpora, benchmarking inference latency and tokenization efficiency against baseline transformer encoders."
         ]
       }
     ],
     "publications": [
       {
-        "prefix": "IITCEE 2027:",
-        "text": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Press)"
+        "prefix": "CICCS 2025: ",
+        "title": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA) (DOI: 10.1109/CICCS66437.2025.11280282)"
       },
       {
-        "prefix": "FTNCT 2026:",
-        "text": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Press)"
+        "prefix": "IITCEE 2027: ",
+        "title": "Breaking the Continuum: Automatic Word Segmentation for Scriptio Continua Languages (Under Press)"
       },
       {
-        "prefix": "ICKECS 2026 (IEEE):",
-        "text": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models",
-        "doi": "10.1109/ICKECS70176.2026.11527911",
-        "url": "https://ieeexplore.ieee.org/document/11527911"
+        "prefix": "FTNCT 2026: ",
+        "title": "Deep Computer Vision Approaches for Brain CT-to-MR Image Synthesis in Cross-Modality Medical Imaging (Under Press)"
       },
       {
-        "prefix": "CICCS 2025:",
-        "text": "Enhancing Cyber Threat Intelligence Using Latent Dirichlet Allocation (LDA)",
-        "doi": "10.1109/CICCS66437.2025.11280282",
-        "url": "https://ieeexplore.ieee.org/document/11280282"
+        "prefix": "ICKECS 2026 (IEEE): ",
+        "title": "Emotion and Sentiment Detection in Telugu Text Using Multilingual Transformer Models (DOI: 10.1109/ICKECS70176.2026.11527911)"
       },
       {
-        "prefix": "CINE 2026 (IEEE):",
-        "text": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis",
-        "doi": "10.1109/CINE68769.2026.11502929",
-        "url": "https://ieeexplore.ieee.org/document/11502929"
+        "prefix": "Journal of Engineering Design and Analysis (2026): ",
+        "title": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm (DOI: 10.24321/2582.5607.202603)"
       },
       {
-        "prefix": "ICCTWC 2026:",
-        "text": "Crypto Trading Platform Using Probability for Scalping and Compounding",
-        "doi": "10.1109/ICCTWC68241.2026.11583560",
-        "url": "https://ieeexplore.ieee.org/document/11583560"
+        "prefix": "CINE 2026 (IEEE): ",
+        "title": "Prediction of Groundwater Level for Semi-Arid North-Western India Using Rainfall Data: A Comparative Analysis (DOI: 10.1109/CINE68769.2026.11502929)"
       },
       {
-        "prefix": "Journal of Engineering Design and Analysis (2026):",
-        "text": "Elevator Optimization With Real-World Constraint: Weight-Aware Algorithm",
-        "doi": "10.24321/2582.5607.202603",
-        "url": "https://doi.org/10.24321/2582.5607.202603"
+        "prefix": "ICCTWC 2026: ",
+        "title": "Crypto Trading Platform Using Probability for Scalping and Compounding (DOI: 10.1109/ICCTWC68241.2026.11583560)"
       }
     ],
     "certifications": [
       {
         "name": "AWS Certified Cloud Practitioner",
-        "dates": "May 2026",
-        "authority": "Amazon Web Services (AWS)",
-        "url": "https://www.credly.com/badges/315c0393-d440-4c8b-8488-74f01da90757/linked_in_profile"
+        "date": "Issued Oct 2024 - Expires Oct 2027",
+        "credentialId": "Validation: 97897dcb2c114ea0bf75aa2d5ba2600d"
       },
       {
         "name": "Generative AI Fundamentals",
-        "dates": "July 2026",
-        "authority": "Databricks Academy",
-        "url": "https://credentials.databricks.com/1a4c825b-2284-4901-b121-f33587a0ae46#acc.Dv26zYS4"
+        "date": "Issued Oct 2024",
+        "credentialId": "Databricks | Credential ID: 117277649"
       },
       {
         "name": "Introduction to Modern AI",
-        "dates": "September 2026",
-        "authority": "Cisco Networking Academy",
-        "url": "https://www.credly.com/badges/f3ba8382-8ffb-4820-b862-711e600ad46e/linked_in_profile"
+        "date": "September 2026 | Cisco Networking Academy",
+        "credentialId": "Badge: 6182c554-469a-4e94-a159-2cb82b9b2e3e"
       }
     ],
     "skills": [
       {
-        "label": "Machine Learning & Deep Learning",
-        "text": "PyTorch, Hugging Face Transformers, Scikit-Learn, Computer Vision (ResUNet), vLLM, Foundation Models"
+        "category": "Machine Learning & Generative AI: ",
+        "label": "Machine Learning & Generative AI",
+        "items": "PyTorch, Scikit-learn, NumPy, Pandas, Computer Vision, Generative AI, RAG, Information Retrieval, LLMs, vLLM",
+        "text": "PyTorch, Scikit-learn, NumPy, Pandas, Computer Vision, Generative AI, RAG, Information Retrieval, LLMs, vLLM"
       },
       {
-        "label": "NLP & Low-Resource Languages",
-        "text": "IndicBERT, XLM-RoBERTa, 1D-CNN + BiLSTM + CRF, Word Segmentation, Sequence Tagging"
+        "category": "NLP & Deep Sequence Modeling: ",
+        "label": "NLP & Deep Sequence Modeling",
+        "items": "Hugging Face Transformers, IndicBERT, XLM-RoBERTa, BiGRU+CRF, Tokenization, Prompt Engineering, Evaluation Benchmarks",
+        "text": "Hugging Face Transformers, IndicBERT, XLM-RoBERTa, BiGRU+CRF, Tokenization, Prompt Engineering, Evaluation Benchmarks"
       },
       {
-        "label": "Cloud, Languages & CS",
-        "text": "Python, Java, SQL (PostgreSQL, MySQL), Distributed Systems, Docker, Git, CI/CD, AWS"
+        "category": "Engineering, Data & Cloud Platforms: ",
+        "label": "Engineering, Data & Cloud Platforms",
+        "items": "Python, Java, SQL (PostgreSQL, MySQL), Apache Spark, PySpark, FastAPI, REST APIs, AWS, Automated CI/CD, Git & GitHub, Figma",
+        "text": "Python, Java, SQL (PostgreSQL, MySQL), Apache Spark, PySpark, FastAPI, REST APIs, AWS, Automated CI/CD, Git & GitHub, Figma"
       }
     ]
   },
